@@ -6,7 +6,7 @@
 <style>
 :root{color-scheme:light dark;--bg:#f6f4ef;--card:#fff;--fg:#1d1b18;--mut:#6b665e;--line:#e3ded4;--acc:#0f7b4f;--accfg:#fff;--on:#e7f5ee;--hdr:rgba(246,244,239,.94)}
 @media(prefers-color-scheme:dark){:root{--bg:#121214;--card:#1c1c20;--fg:#efede8;--mut:#a29d94;--line:#2c2c33;--acc:#2fd08a;--accfg:#06150e;--on:#14291f;--hdr:rgba(18,18,20,.94)}}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-padding-top:120px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--navh,100px)}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
 header{max-width:760px;margin:0 auto;padding:22px 16px 6px}
 h1{font-size:1.55rem;line-height:1.2;margin:0 0 4px;letter-spacing:-.02em}
@@ -18,7 +18,8 @@ h1{font-size:1.55rem;line-height:1.2;margin:0 0 4px;letter-spacing:-.02em}
 .chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 select.chip{appearance:none;-webkit-appearance:none;padding-right:26px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 14px) 18px,calc(100% - 9px) 18px;background-size:5px 5px;background-repeat:no-repeat}
 main{max-width:760px;margin:0 auto;padding:0 12px}
-.grp h2{position:sticky;top:57px;z-index:4;margin:0 -12px;padding:10px 16px 8px;background:var(--hdr);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);display:flex;justify-content:space-between}
+a.chip{text-decoration:none;display:inline-flex;align-items:center;gap:5px}a.chip b{font-size:.75rem;color:var(--mut)}.f2{padding-top:0}.f2 .chip{min-height:36px;padding:6px 11px;font-size:.8rem}
+.grp h2{position:sticky;top:var(--navh,100px);z-index:4;margin:0 -12px;padding:10px 16px 8px;background:var(--hdr);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);display:flex;justify-content:space-between}
 .list{display:grid;gap:10px;padding:6px 0 14px}
 .card{position:relative;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 14px 14px 54px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;transition:border-color .12s,background .12s}
 .card:active{transform:scale(.99)}
@@ -47,595 +48,581 @@ main{max-width:760px;margin:0 auto;padding:0 12px}
 footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-size:.8rem}
 .empty{color:var(--mut);text-align:center;padding:30px 0}
 </style></head><body data-ed="2026-10-20-16h">
-<header><h1>Curadoria de leituras</h1><p class="sub">Edição 20/10/2026, 16h · toque no card para marcar e no título para abrir</p><div class="stats"><span>80 leituras</span><span>58 das suas newsletters</span><span>22 garimpo</span><span>24 long read</span><span>35 análise</span><span>21 notícia</span></div></header>
-<nav class="filters" aria-label="Filtros"><div class="fin"><button class="chip" data-f="sec" data-v="" aria-pressed="true">Tudo</button><button class="chip" data-f="sec" data-v="Das suas newsletters" aria-pressed="false">Das suas newsletters</button><button class="chip" data-f="sec" data-v="Garimpo" aria-pressed="false">Garimpo</button><select class="chip" data-f="typ" aria-label="Tipo" aria-pressed="false"><option value="">Todos os tipos</option><option>long read</option><option>análise</option><option>notícia</option></select><select class="chip" data-f="tema" aria-label="Tema" aria-pressed="false"><option value="">Todos os temas</option><option>Eleições 2026 e política</option><option>Segurança digital</option><option>IA: modelos e pesquisa</option><option>IA: segurança e regulação</option><option>Tecnologia e cultura digital</option><option>Música</option><option>Geopolítica e economia</option><option>IA: negócios e mercado</option><option>Cultura e ideias</option><option>Engenharia de software</option><option>Games</option><option>IA: trabalho e programação</option><option>Produto e produtividade</option><option>Clima e energia</option></select></div></nav>
+<header><h1>Curadoria de leituras</h1><p class="sub">Edição 20/10/2026, 16h · organizada por tema · toque no card para marcar, no título para abrir</p><div class="stats"><span>80 leituras</span><span>42 das suas newsletters</span><span>38 garimpo</span><span>22 long read</span><span>34 análise</span><span>24 notícia</span></div></header>
+<nav class="filters" id="nav" aria-label="Temas e filtros"><div class="fin"><a class="chip toc" href="#t-ia">🤖 IA <b>20</b></a><a class="chip toc" href="#t-tecnologia">💻 Tecnologia <b>13</b></a><a class="chip toc" href="#t-educao">🎓 Educação <b>8</b></a><a class="chip toc" href="#t-cultura">🎭 Cultura <b>11</b></a><a class="chip toc" href="#t-games">🎮 Games <b>10</b></a><a class="chip toc" href="#t-cincias-sociais">🏛️ Ciências sociais <b>12</b></a><a class="chip toc" href="#t-fora-da-bolha">🫧 Fora da bolha <b>6</b></a></div><div class="fin f2"><button class="chip" data-f="sec" data-v="" aria-pressed="true">Tudo</button><button class="chip" data-f="sec" data-v="Das suas newsletters" aria-pressed="false">Das suas newsletters</button><button class="chip" data-f="sec" data-v="Garimpo" aria-pressed="false">Garimpo</button><select class="chip" data-f="typ" aria-label="Tipo" aria-pressed="false"><option value="">Todos os tipos</option><option>long read</option><option>análise</option><option>notícia</option></select></div></nav>
 <main>
-<section class="grp"><h2><span>Eleições 2026 e política</span><span class="gc">14</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n16" data-title="Bolsa Família: o que o governo Jair revela sobre os planos de Flávio e Daniella?" data-url="https://paulomotoryn.substack.com/p/bolsa-familia-o-que-o-governo-jair" data-sec="Das suas newsletters" data-typ="análise" data-tema="Eleições 2026 e política">
+<section class="grp" id="t-ia"><h2><span>🤖 IA</span><span class="gc">20</span></h2><div class="list">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n01" data-title="30 Months on the Exponential (in Charts)" data-url="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N16</span></div>
-<h3><a href="https://paulomotoryn.substack.com/p/bolsa-familia-o-que-o-governo-jair" target="_blank" rel="noopener">Bolsa Família: o que o governo Jair revela sobre os planos de Flávio e Daniella?</a></h3>
-<p class="src">Paulo Motoryn</p>
-<p class="why">Usa o histórico do governo Bolsonaro para projetar o que Flávio faria com o Bolsa Família.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n26" data-title="Os 10 dias que refundaram a Esquerda" data-url="https://outramedia.substack.com/p/os-10-dias-que-refundaram-a-esquerda" data-sec="Das suas newsletters" data-typ="análise" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N26</span></div>
-<h3><a href="https://outramedia.substack.com/p/os-10-dias-que-refundaram-a-esquerda" target="_blank" rel="noopener">Os 10 dias que refundaram a Esquerda</a></h3>
-<p class="src">Outra Media</p>
-<p class="why">Leitura sobre como as ruas de outubro reorganizaram o campo progressista na reta final.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n27" data-title="Debate da gritaria mostra Flávio e Lula mais preocupados em agitar suas bases" data-url="https://www1.folha.uol.com.br/colunas/painel/2026/10/debate-da-gritaria-mostra-flavio-e-lula-mais-preocupados-em-agitar-suas-bases.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 4 min</span><span class="b">N27</span></div>
-<h3><a href="https://www1.folha.uol.com.br/colunas/painel/2026/10/debate-da-gritaria-mostra-flavio-e-lula-mais-preocupados-em-agitar-suas-bases.shtml" target="_blank" rel="noopener">Debate da gritaria mostra Flávio e Lula mais preocupados em agitar suas bases</a></h3>
-<p class="src">Folha — Painel</p>
-<p class="why">Os bastidores e a leitura das campanhas sobre o debate da Band.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n28" data-title="Campanha de Lula teme &#x27;voto oculto&#x27; pró-Flávio na reta final" data-url="https://www1.folha.uol.com.br/colunas/painel/2026/10/campanha-de-lula-teme-voto-oculto-pro-flavio-na-reta-final.shtml" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N28</span></div>
-<h3><a href="https://www1.folha.uol.com.br/colunas/painel/2026/10/campanha-de-lula-teme-voto-oculto-pro-flavio-na-reta-final.shtml" target="_blank" rel="noopener">Campanha de Lula teme &#x27;voto oculto&#x27; pró-Flávio na reta final</a></h3>
-<p class="src">Folha — Painel</p>
-<p class="why">Por que o PT quer chegar à sexta com pelo menos dois pontos de folga nas pesquisas.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n29" data-title="Saída negociada de Moraes do STF não vai saciar Congresso, preveem senadores" data-url="https://www1.folha.uol.com.br/colunas/painel/2026/10/saida-negociada-de-moraes-do-stf-nao-vai-saciar-congresso-preveem-senadores.shtml" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N29</span></div>
-<h3><a href="https://www1.folha.uol.com.br/colunas/painel/2026/10/saida-negociada-de-moraes-do-stf-nao-vai-saciar-congresso-preveem-senadores.shtml" target="_blank" rel="noopener">Saída negociada de Moraes do STF não vai saciar Congresso, preveem senadores</a></h3>
-<p class="src">Folha — Painel</p>
-<p class="why">Os senadores avisam que uma eventual saída de Moraes não encerra a ofensiva contra o STF.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n30" data-title="Governo Lula preparou documentos para reajustar Bolsa Família na véspera do anúncio e sob sigilo" data-url="https://www1.folha.uol.com.br/mercado/2026/10/governo-lula-preparou-documentos-para-reajustar-bolsa-familia-na-vespera-do-anuncio-e-sob-sigilo.shtml" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N30</span></div>
-<h3><a href="https://www1.folha.uol.com.br/mercado/2026/10/governo-lula-preparou-documentos-para-reajustar-bolsa-familia-na-vespera-do-anuncio-e-sob-sigilo.shtml" target="_blank" rel="noopener">Governo Lula preparou documentos para reajustar Bolsa Família na véspera do anúncio e sob sigilo</a></h3>
-<p class="src">Folha, via Dicas do editor</p>
-<p class="why">Idiana Tomazelli mostra como o reajuste do Bolsa Família foi preparado às pressas e sob sigilo, em plena eleição.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n31" data-title="Flávio Bolsonaro advogou para PM acusado de matar menina de 5 anos no Rio" data-url="https://www1.folha.uol.com.br/cotidiano/2026/10/flavio-bolsonaro-advogou-para-pm-acusado-de-matar-menina-de-5-anos-no-rio.shtml" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N31</span></div>
-<h3><a href="https://www1.folha.uol.com.br/cotidiano/2026/10/flavio-bolsonaro-advogou-para-pm-acusado-de-matar-menina-de-5-anos-no-rio.shtml" target="_blank" rel="noopener">Flávio Bolsonaro advogou para PM acusado de matar menina de 5 anos no Rio</a></h3>
-<p class="src">Folha, via Dicas do editor</p>
-<p class="why">A reportagem que embasou o ataque de Lula no debate sobre o caso Ana Clara.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n32" data-title="A patrulha ideológica do voto alheio" data-url="https://www1.folha.uol.com.br/colunas/lygia-maria/2026/10/a-patrulha-ideologica-do-voto-alheio.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 4 min</span><span class="b">N32</span></div>
-<h3><a href="https://www1.folha.uol.com.br/colunas/lygia-maria/2026/10/a-patrulha-ideologica-do-voto-alheio.shtml" target="_blank" rel="noopener">A patrulha ideológica do voto alheio</a></h3>
-<p class="src">Folha — Lygia Maria</p>
-<p class="why">Para a colunista, cobrar posição de todo mundo no 2º turno transforma o silêncio em falha moral.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n69" data-title="Equipe de Lula protocola quebra do sigilo: &quot;chegou a hora da verdade&quot;" data-url="https://www.congressoemfoco.com.br/noticia/123419/equipe-de-lula-protocola-quebra-do-sigilo--chegou-a-hora-da-verdade" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N69</span></div>
-<h3><a href="https://www.congressoemfoco.com.br/noticia/123419/equipe-de-lula-protocola-quebra-do-sigilo--chegou-a-hora-da-verdade" target="_blank" rel="noopener">Equipe de Lula protocola quebra do sigilo: &quot;chegou a hora da verdade&quot;</a></h3>
-<p class="src">Congresso em Foco, via Outra Media</p>
-<p class="why">Lula abre os sigilos bancário e fiscal e transforma a transparência em arma contra Flávio.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n70" data-title="Justiça Eleitoral descumpre regra de transporte e indígenas e ribeirinhos ficam sem votar" data-url="https://sumauma.com/justica-eleitoral-descumpre-regra-de-transporte-e-indigenas-e-ribeirinhos-ficam-sem-votar/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 6 min</span><span class="b">N70</span></div>
-<h3><a href="https://sumauma.com/justica-eleitoral-descumpre-regra-de-transporte-e-indigenas-e-ribeirinhos-ficam-sem-votar/" target="_blank" rel="noopener">Justiça Eleitoral descumpre regra de transporte e indígenas e ribeirinhos ficam sem votar</a></h3>
-<p class="src">Sumaúma, via Outra Media</p>
-<p class="why">Sem transporte, a maioria das terras indígenas fica sem seção de votação acessível.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g04" data-title="Flávio na frente por 2 pontos: o que as 13 pesquisas dizem e onde o 2º turno se decide" data-url="https://e26.cog.ia.br/eleicoes/analises?materia=pesquisas-2o-turno-onde-se-decide" data-sec="Garimpo" data-typ="análise" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G04</span></div>
-<h3><a href="https://e26.cog.ia.br/eleicoes/analises?materia=pesquisas-2o-turno-onde-se-decide" target="_blank" rel="noopener">Flávio na frente por 2 pontos: o que as 13 pesquisas dizem e onde o 2º turno se decide</a></h3>
-<p class="src">Análises E26</p>
-<p class="why">Consolida as 13 pesquisas de 2º turno e mostra onde a eleição de domingo se decide.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g10" data-title="Eleições 2026: do prato de comida ao diploma" data-url="https://apublica.org/2026/10/eleicoes-2026-do-prato-de-comida-ao-diploma/" data-sec="Garimpo" data-typ="long read" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 8 min</span><span class="b">G10</span></div>
-<h3><a href="https://apublica.org/2026/10/eleicoes-2026-do-prato-de-comida-ao-diploma/" target="_blank" rel="noopener">Eleições 2026: do prato de comida ao diploma</a></h3>
-<p class="src">Agência Pública</p>
-<p class="why">Um ensaio pessoal sobre o que está em jogo no 2º turno para quem saiu da fome e chegou à universidade.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g19" data-title="O risco de uma nova ofensiva contra a imprensa sob Flávio" data-url="https://nexojornal.com.br/ensaio/2026/10/19/eleicoes-2026-flavio-bolsonaro-ameaca-imprensa" data-sec="Garimpo" data-typ="análise" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G19</span></div>
-<h3><a href="https://nexojornal.com.br/ensaio/2026/10/19/eleicoes-2026-flavio-bolsonaro-ameaca-imprensa" target="_blank" rel="noopener">O risco de uma nova ofensiva contra a imprensa sob Flávio</a></h3>
-<p class="src">Nexo — Ensaio (achado via Parallel)</p>
-<p class="why">Um ensaio sobre o que um governo Flávio poderia significar para a liberdade de imprensa.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g22" data-title="Trumponaro: como um governo de Flávio pode imitar a presidência de Trump no Brasil?" data-url="https://apublica.org/2026/10/trumponaro-como-um-governo-de-flavio-pode-imitar-a-presidencia-de-trump-no-brasil/" data-sec="Garimpo" data-typ="análise" data-tema="Eleições 2026 e política">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G22</span></div>
-<h3><a href="https://apublica.org/2026/10/trumponaro-como-um-governo-de-flavio-pode-imitar-a-presidencia-de-trump-no-brasil/" target="_blank" rel="noopener">Trumponaro: como um governo de Flávio pode imitar a presidência de Trump no Brasil?</a></h3>
-<p class="src">Agência Pública (James Green)</p>
-<p class="why">O historiador James Green compara a cartilha de Trump com o que um governo Flávio poderia repetir.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>Segurança digital</span><span class="gc">8</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n09" data-title="Bank of America hired 1,000 contractors to patch flaws exposed by Anthropic&#x27;s Mythos" data-url="https://www.cnbc.com/2026/10/14/anthropic-mythos-bank-of-america-hiring-cost.html" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N09</span></div>
-<h3><a href="https://www.cnbc.com/2026/10/14/anthropic-mythos-bank-of-america-hiring-cost.html" target="_blank" rel="noopener">Bank of America hired 1,000 contractors to patch flaws exposed by Anthropic&#x27;s Mythos</a></h3>
-<p class="src">CNBC, via Benedict&#x27;s Newsletter</p>
-<p class="why">O custo real da avalanche de vulnerabilidades encontradas por IA: mil terceirizados só para aplicar patches.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n11" data-title="Who Is Planting Backdoors in Ledger Crypto Wallets?" data-url="https://www.zetter-zeroday.com/who-is-planting-backdoors-in-ledger-crypto-wallets/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N11</span></div>
-<h3><a href="https://www.zetter-zeroday.com/who-is-planting-backdoors-in-ledger-crypto-wallets/" target="_blank" rel="noopener">Who Is Planting Backdoors in Ledger Crypto Wallets?</a></h3>
-<p class="src">Zero Day (Kim Zetter), via Benedict&#x27;s Newsletter</p>
-<p class="why">Investigação sobre carteiras Ledger adulteradas com chip espião, que permitiram roubar mais de US$ 100 milhões.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n56" data-title="Freeze the Controller, Defrost the Food: vulnerabilities in Danfoss refrigeration controllers" data-url="https://claroty.com/team82/research/freeze-the-controller-defrost-the-food-uncovering-vulnerabilities-in-danfoss-refrigeration-controllers" data-sec="Das suas newsletters" data-typ="análise" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 15 min</span><span class="b">N56</span></div>
-<h3><a href="https://claroty.com/team82/research/freeze-the-controller-defrost-the-food-uncovering-vulnerabilities-in-danfoss-refrigeration-controllers" target="_blank" rel="noopener">Freeze the Controller, Defrost the Food: vulnerabilities in Danfoss refrigeration controllers</a></h3>
-<p class="src">Claroty Team82, via Benedict&#x27;s Newsletter</p>
-<p class="why">A pesquisa técnica por trás do ataque que estragou a comida de centenas de supermercados na França.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n57" data-title="Microsoft Patches More Than 1,400 Security Flaws" data-url="https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N57</span></div>
-<h3><a href="https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/" target="_blank" rel="noopener">Microsoft Patches More Than 1,400 Security Flaws</a></h3>
-<p class="src">Krebs on Security, via Benedict&#x27;s Newsletter</p>
-<p class="why">Um Patch Tuesday recorde, sintoma da caça automatizada a vulnerabilidades.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n65" data-title="Police Say Scammers Used AI to Clone a Sheriff&#x27;s Voice" data-url="https://www.404media.co/police-say-scammers-used-ai-to-clone-a-sheriffs-voice/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N65</span></div>
-<h3><a href="https://www.404media.co/police-say-scammers-used-ai-to-clone-a-sheriffs-voice/" target="_blank" rel="noopener">Police Say Scammers Used AI to Clone a Sheriff&#x27;s Voice</a></h3>
-<p class="src">404 Media</p>
-<p class="why">Um golpe com voz clonada do xerife mostra como o deepfake de áudio virou ferramenta comum.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g15" data-title="OpenAI Engineer Accused of Spying on Executives Ordered to Remain in Custody" data-url="https://www.wired.com/story/openai-engineer-accused-of-spying-on-executives-ordered-to-remain-in-custody/" data-sec="Garimpo" data-typ="notícia" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">G15</span></div>
-<h3><a href="https://www.wired.com/story/openai-engineer-accused-of-spying-on-executives-ordered-to-remain-in-custody/" target="_blank" rel="noopener">OpenAI Engineer Accused of Spying on Executives Ordered to Remain in Custody</a></h3>
-<p class="src">WIRED</p>
-<p class="why">O caso do grampo na sala da diretoria da OpenAI e a sombra saudita sobre ele.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g16" data-title="A hacker broke into John Deere and SharkNinja with an army of AI agents" data-url="https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins" data-sec="Garimpo" data-typ="notícia" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">G16</span></div>
-<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins" target="_blank" rel="noopener">A hacker broke into John Deere and SharkNinja with an army of AI agents</a></h3>
-<p class="src">The Verge</p>
-<p class="why">Um hacker invadiu mais de 100 sites com agentes autônomos, quase sem intervenção humana.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g21" data-title="Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site" data-url="https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/" data-sec="Garimpo" data-typ="notícia" data-tema="Segurança digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b N">notícia</span><span class="b">⏱ 6 min</span><span class="b">G21</span></div>
-<h3><a href="https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/" target="_blank" rel="noopener">Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site</a></h3>
-<p class="src">Krebs on Security (achado via Parallel)</p>
-<p class="why">O FBI suspeita que um negociador de resgates comandava o site de extorsão do ShinyHunters.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>IA: modelos e pesquisa</span><span class="gc">7</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n01" data-title="30 Months on the Exponential (in Charts)" data-url="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA: modelos e pesquisa">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">N01</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">N01</span></div>
 <h3><a href="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts" target="_blank" rel="noopener">30 Months on the Exponential (in Charts)</a></h3>
-<p class="src">One Useful Thing</p>
-<p class="why">Mollick mostra em gráficos quanto a IA avançou desde o GPT-4, até o ponto em que o benchmark da METR deixou de conseguir medir.</p>
+<p class="src">One Useful Thing (Ethan Mollick)</p>
+<p class="why">Ethan Mollick usa o lançamento do livro Co-Existence para medir, em gráficos feitos por agentes, quanto a IA avançou desde o GPT-4: 180 modelos já o superam, o custo despencou e o benchmark de tarefas longas da METR simplesmente deixou de conseguir medir. É o melhor resumo visual de onde estamos e de por que o ritmo exponencial continua sendo a hipótese mais segura.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n24" data-title="What&#x27;s a decision model?" data-url="https://read.technically.dev/p/whats-a-decision-model" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: modelos e pesquisa">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n02" data-title="What&#x27;s the ROI of software engineers&#x27; spending on AI?" data-url="https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">N24</span></div>
-<h3><a href="https://read.technically.dev/p/whats-a-decision-model" target="_blank" rel="noopener">What&#x27;s a decision model?</a></h3>
-<p class="src">Technically</p>
-<p class="why">Explica a nova classe de modelos pequenos e rápidos de &#x27;sistema 1&#x27;, como o Jev, e onde eles superam os LLMs.</p>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 18 min</span><span class="b">N02</span></div>
+<h3><a href="https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers" target="_blank" rel="noopener">What&#x27;s the ROI of software engineers&#x27; spending on AI?</a></h3>
+<p class="src">The Pragmatic Engineer</p>
+<p class="why">Gergely Orosz ouviu 27 empresas e cruzou dados da CodeRabbit e da Gitar para responder quanto se gasta com agentes de IA por desenvolvedor e o que isso rende. Os PRs semanais dobraram, há casas pagando US$ 3 mil por dev ao mês e quase ninguém sabe medir o retorno. Vale pelos números concretos num debate dominado por chute.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n42" data-title="Text-to-Image Works Without Language Pretraining, and How Agents Receive Tool Output Can Cost 11 Points" data-url="https://stateai.substack.com/p/tool-output-delivery-text-to-image-without-language-pretraining" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: modelos e pesquisa">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n03" data-title="Sundar Pichai: Google&#x27;s Frontier Imperative, Compute Scarcity Dilemmas" data-url="https://www.bigtechnology.com/p/sundar-pichai-googles-frontier-imperative" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 15 min</span><span class="b">N42</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 15 min</span><span class="b">N03</span></div>
+<h3><a href="https://www.bigtechnology.com/p/sundar-pichai-googles-frontier-imperative" target="_blank" rel="noopener">Sundar Pichai: Google&#x27;s Frontier Imperative, Compute Scarcity Dilemmas</a></h3>
+<p class="src">Big Technology (Alex Kantrowitz)</p>
+<p class="why">Na entrevista a Alex Kantrowitz, Pichai rebate a ideia de que o Google se contenta com modelos &#x27;bons o bastante&#x27; e explica o dilema central da empresa: cada chip usado no Gemini 4 Argon é receita de nuvem que deixa de entrar. É uma janela rara para a lógica econômica da corrida de fronteira contada por quem paga a conta.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n05" data-title="Take My Toil, Leave Me My Struggle" data-url="https://newsletter.kentbeck.com/p/take-my-toil-leave-me-my-struggle" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 8 min</span><span class="b">N05</span></div>
+<h3><a href="https://newsletter.kentbeck.com/p/take-my-toil-leave-me-my-struggle" target="_blank" rel="noopener">Take My Toil, Leave Me My Struggle</a></h3>
+<p class="src">Tidy First? (Kent Beck)</p>
+<p class="why">Kent Beck separa dois tipos de trabalho: o &#x27;toil&#x27;, braçal e sem aprendizado, e o &#x27;struggle&#x27;, o esforço que nos transforma. A tese é que os assistentes de IA estão sendo desenhados como uma academia em que um robô levanta o peso por você. Um ensaio curto e muito útil para decidir o que delegar à máquina sem atrofiar.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n42" data-title="Text-to-Image Works Without Language Pretraining, and How Agents Receive Tool Output Can Cost 11 Points" data-url="https://stateai.substack.com/p/tool-output-delivery-text-to-image-without-language-pretraining" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 15 min</span><span class="b">N42</span></div>
 <h3><a href="https://stateai.substack.com/p/tool-output-delivery-text-to-image-without-language-pretraining" target="_blank" rel="noopener">Text-to-Image Works Without Language Pretraining, and How Agents Receive Tool Output Can Cost 11 Points</a></h3>
 <p class="src">State of AI</p>
-<p class="why">A curadoria semanal de papers, com destaque para um estudo que mostra como o formato da saída das ferramentas derruba a precisão dos agentes.</p>
+<p class="why">A curadoria semanal de papers destaca um resultado prático: a mesma informação entregue a um agente em formatos diferentes de saída de ferramenta muda a precisão em até 11 pontos. Também traz um modelo de texto para imagem treinado sem pré-treino de linguagem. É uma forma eficiente de acompanhar a pesquisa sem ler arXiv o dia inteiro.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n43" data-title="Latest open artifacts (#25): DeepSeek V4.1 Flash 1017, American-made models" data-url="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: modelos e pesquisa">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n43" data-title="Latest open artifacts (#25): DeepSeek V4.1 Flash 1017, American-made models" data-url="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">N43</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">N43</span></div>
 <h3><a href="https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek" target="_blank" rel="noopener">Latest open artifacts (#25): DeepSeek V4.1 Flash 1017, American-made models</a></h3>
 <p class="src">Interconnects (Nathan Lambert)</p>
-<p class="why">O balanço do mês em modelos abertos, entre DeepSeek, Xiaomi, Nemotron e a nova regulação dos EUA.</p>
+<p class="why">Nathan Lambert faz o balanço do mês em modelos abertos: o DeepSeek V4.1 Flash domina benchmarks de engenharia, a Xiaomi publica um relatório detalhado de RL, a NVIDIA libera dados e os EUA ensaiam novos controles regulatórios. É o mapa mais confiável de quem está ganhando no ecossistema aberto e de por que isso importa geopoliticamente.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n51" data-title="Import AI 477: In which I tell the IMF the Singularity has begun" data-url="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA: modelos e pesquisa">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n45" data-title="The AI bet is running straight into a capital crunch" data-url="https://www.semafor.com/article/10/16/2026/the-ai-bet-is-running-straight-into-a-capital-crunch" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N51</span></div>
-<h3><a href="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" target="_blank" rel="noopener">Import AI 477: In which I tell the IMF the Singularity has begun</a></h3>
-<p class="src">Import AI (Jack Clark), via TLDR AI</p>
-<p class="why">Jack Clark leva ao FMI o argumento de que a automação da pesquisa em IA já começou.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n55" data-title="Superhuman Hardware Design Is The Easy Part" data-url="https://www.a16z.news/p/superhuman-hardware-design-is-the" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA: modelos e pesquisa">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">N55</span></div>
-<h3><a href="https://www.a16z.news/p/superhuman-hardware-design-is-the" target="_blank" rel="noopener">Superhuman Hardware Design Is The Easy Part</a></h3>
-<p class="src">a16z</p>
-<p class="why">A IA já projeta CAD e placas de circuito; o gargalo de verdade está em fabricar e testar.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n59" data-title="Will it be a golden age or a dark age for mathematics (and science)?" data-url="https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA: modelos e pesquisa">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N59</span></div>
-<h3><a href="https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/" target="_blank" rel="noopener">Will it be a golden age or a dark age for mathematics (and science)?</a></h3>
-<p class="src">Terence Tao, via Benedict&#x27;s Newsletter</p>
-<p class="why">Terence Tao sobre o fim da &#x27;era heroica&#x27; da matemática diante das provas geradas por IA.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>IA: segurança e regulação</span><span class="gc">7</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n58" data-title="AI models may be capable of self-replicating without access to a datacenter" data-url="https://www.anthropic.com/research/self-replicating-ai" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA: segurança e regulação">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N58</span></div>
-<h3><a href="https://www.anthropic.com/research/self-replicating-ai" target="_blank" rel="noopener">AI models may be capable of self-replicating without access to a datacenter</a></h3>
-<p class="src">Anthropic Research, via Benedict&#x27;s Newsletter</p>
-<p class="why">O estudo da Anthropic sobre modelos que conseguem se copiar fora do datacenter, e o tamanho real do risco.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n64" data-title="Characterizing Agentic Flooding of Government Services" data-url="https://arxiv.org/abs/2608.16603" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: segurança e regulação">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 20 min</span><span class="b">N64</span></div>
-<h3><a href="https://arxiv.org/abs/2608.16603" target="_blank" rel="noopener">Characterizing Agentic Flooding of Government Services</a></h3>
-<p class="src">arXiv, via Benedict&#x27;s Newsletter</p>
-<p class="why">Paper sobre agentes de IA sobrecarregando serviços públicos, como vagas, agendamentos e formulários.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g01" data-title="“We were looking at it wrong”: The explosive claim that&#x27;s upended the AI world" data-url="https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/" data-sec="Garimpo" data-typ="análise" data-tema="IA: segurança e regulação">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">G01</span></div>
-<h3><a href="https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/" target="_blank" rel="noopener">“We were looking at it wrong”: The explosive claim that&#x27;s upended the AI world</a></h3>
-<p class="src">MIT Technology Review</p>
-<p class="why">Nick Cammarata defende que as redes neurais são bem mais interpretáveis do que se pensava, e os céticos respondem.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g03" data-title="What recursive self-improvement looks like inside an AI lab" data-url="https://aiendgame.com/p/what-rsi-looks-like" data-sec="Garimpo" data-typ="long read" data-tema="IA: segurança e regulação">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 20 min</span><span class="b">G03</span></div>
-<h3><a href="https://aiendgame.com/p/what-rsi-looks-like" target="_blank" rel="noopener">What recursive self-improvement looks like inside an AI lab</a></h3>
-<p class="src">The Endgame</p>
-<p class="why">Um retrato concreto de como os laboratórios planejam automatizar a própria pesquisa de IA.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g06" data-title="U.S. bans DeepSeek from government agency systems" data-url="https://www.cnbc.com/2026/10/20/us-deepseek-federal-agency-ban.html" data-sec="Garimpo" data-typ="notícia" data-tema="IA: segurança e regulação">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">G06</span></div>
-<h3><a href="https://www.cnbc.com/2026/10/20/us-deepseek-federal-agency-ban.html" target="_blank" rel="noopener">U.S. bans DeepSeek from government agency systems</a></h3>
-<p class="src">CNBC</p>
-<p class="why">Os EUA banem a DeepSeek das agências federais, inclusive em serviços de terceiros.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g07" data-title="Draft bill tied to Anthropic would let courts halt AI models for 45 days" data-url="https://ppc.land/draft-bill-tied-to-anthropic-would-let-courts-halt-ai-models-for-45-days/" data-sec="Garimpo" data-typ="análise" data-tema="IA: segurança e regulação">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 16 min</span><span class="b">G07</span></div>
-<h3><a href="https://ppc.land/draft-bill-tied-to-anthropic-would-let-courts-halt-ai-models-for-45-days/" target="_blank" rel="noopener">Draft bill tied to Anthropic would let courts halt AI models for 45 days</a></h3>
-<p class="src">PPC Land</p>
-<p class="why">Destrincha o rascunho de lei federal atribuído à Anthropic, com cautela sobre a autoria.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g08" data-title="UK finance watchdog wants firms to report AI failures and close calls" data-url="https://www.theregister.com/ai-and-ml/2026/10/20/uk-finance-watchdog-wants-firms-to-report-ai-failures-and-close-calls/5304078" data-sec="Garimpo" data-typ="notícia" data-tema="IA: segurança e regulação">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">G08</span></div>
-<h3><a href="https://www.theregister.com/ai-and-ml/2026/10/20/uk-finance-watchdog-wants-firms-to-report-ai-failures-and-close-calls/5304078" target="_blank" rel="noopener">UK finance watchdog wants firms to report AI failures and close calls</a></h3>
-<p class="src">The Register</p>
-<p class="why">A FCA quer que o setor financeiro notifique falhas e quase-acidentes de agentes de IA.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>Tecnologia e cultura digital</span><span class="gc">6</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n04" data-title="&#x27;Reverse-Engineer Anything&#x27; Is the New Wild West of AI" data-url="https://www.404media.co/reverse-engineer-anything-is-the-new-wild-west-of-ai/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia e cultura digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">N04</span></div>
-<h3><a href="https://www.404media.co/reverse-engineer-anything-is-the-new-wild-west-of-ai/" target="_blank" rel="noopener">&#x27;Reverse-Engineer Anything&#x27; Is the New Wild West of AI</a></h3>
-<p class="src">404 Media</p>
-<p class="why">A moda de usar IA para descompilar TVs e gadgets abandonados, entre o direito de consertar e a máquina de plágio.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n19" data-title="Digital News Report 2026: overview and key findings" data-url="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary" data-sec="Das suas newsletters" data-typ="long read" data-tema="Tecnologia e cultura digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 20 min</span><span class="b">N19</span></div>
-<h3><a href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary" target="_blank" rel="noopener">Digital News Report 2026: overview and key findings</a></h3>
-<p class="src">Reuters Institute, via First Floor</p>
-<p class="why">O retrato anual de como o mundo consome notícias: criadores, IA, vídeo e a erosão do clique.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n60" data-title="Websites are closing their doors to AI agents" data-url="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia e cultura digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N60</span></div>
-<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web" target="_blank" rel="noopener">Websites are closing their doors to AI agents</a></h3>
-<p class="src">The Verge, via Benedict&#x27;s Newsletter</p>
-<p class="why">Sites e bancos bloqueiam agentes de IA porque não querem perder a relação direta com o cliente.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n63" data-title="Global smartphone shipments hit a 14-year low with 20% YoY decline" data-url="https://counterpointresearch.com/en/insights/global-smartphone-shipments-hit-a-new-low-with-20-percent-yoy-decline-lowest-in-14-years" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia e cultura digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N63</span></div>
-<h3><a href="https://counterpointresearch.com/en/insights/global-smartphone-shipments-hit-a-new-low-with-20-percent-yoy-decline-lowest-in-14-years" target="_blank" rel="noopener">Global smartphone shipments hit a 14-year low with 20% YoY decline</a></h3>
-<p class="src">Counterpoint, via Benedict&#x27;s Newsletter</p>
-<p class="why">A corrida da IA encareceu a memória e derrubou a venda de celulares em 20%.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g02" data-title="Do You Trust Apple?" data-url="https://stratechery.com/2026/do-you-trust-apple/" data-sec="Garimpo" data-typ="análise" data-tema="Tecnologia e cultura digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 14 min</span><span class="b">G02</span></div>
-<h3><a href="https://stratechery.com/2026/do-you-trust-apple/" target="_blank" rel="noopener">Do You Trust Apple?</a></h3>
-<p class="src">Stratechery</p>
-<p class="why">Ben Thompson pergunta se a Siri com IA justifica se prender ainda mais ao ecossistema da Apple.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g11" data-title="We&#x27;re Learning to Live with Waymos. It&#x27;s Going Weird" data-url="https://www.newyorker.com/magazine/2026/10/19/were-learning-to-live-with-waymos-its-going-weird" data-sec="Garimpo" data-typ="long read" data-tema="Tecnologia e cultura digital">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 25 min</span><span class="b">G11</span></div>
-<h3><a href="https://www.newyorker.com/magazine/2026/10/19/were-learning-to-live-with-waymos-its-going-weird" target="_blank" rel="noopener">We&#x27;re Learning to Live with Waymos. It&#x27;s Going Weird</a></h3>
-<p class="src">The New Yorker</p>
-<p class="why">Molly Fischer relata a convivência estranha entre humanos e robotáxis, com direito a ovos e para-brisas quebrados.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>Música</span><span class="gc">6</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n07" data-title="Ask A Music Critic: Which Albums From 2016 Hold Up The Best?" data-url="https://stevenhyden.substack.com/p/ask-a-music-critic-which-albums-from" data-sec="Das suas newsletters" data-typ="análise" data-tema="Música">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N07</span></div>
-<h3><a href="https://stevenhyden.substack.com/p/ask-a-music-critic-which-albums-from" target="_blank" rel="noopener">Ask A Music Critic: Which Albums From 2016 Hold Up The Best?</a></h3>
-<p class="src">Evil Speakers (Steven Hyden)</p>
-<p class="why">Dez anos depois, Hyden diz quais discos de 2016 envelheceram bem.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n18" data-title="Instagram Is Not My Job" data-url="https://firstfloor.substack.com/p/instagram-is-not-my-job" data-sec="Das suas newsletters" data-typ="long read" data-tema="Música">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 9 min</span><span class="b">N18</span></div>
-<h3><a href="https://firstfloor.substack.com/p/instagram-is-not-my-job" target="_blank" rel="noopener">Instagram Is Not My Job</a></h3>
-<p class="src">First Floor</p>
-<p class="why">Shawn Reynaldo discute a migração da crítica musical para o Instagram e o que se perde com isso.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n33" data-title="Benito di Paula repensou o samba com piano e romantismo popular" data-url="https://www1.folha.uol.com.br/ilustrada/2026/10/benito-di-paula-repensou-o-samba-com-piano-e-romantismo-popular.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Música">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N33</span></div>
-<h3><a href="https://www1.folha.uol.com.br/ilustrada/2026/10/benito-di-paula-repensou-o-samba-com-piano-e-romantismo-popular.shtml" target="_blank" rel="noopener">Benito di Paula repensou o samba com piano e romantismo popular</a></h3>
-<p class="src">Folha — Lucas Brêda</p>
-<p class="why">Lucas Brêda reavalia o lugar de Benito di Paula, que juntou samba, piano e romantismo popular.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n35" data-title="The Avalanches: No Bad Memories" data-url="https://pitchfork.com/reviews/albums/the-avalanches-no-bad-memories/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Música">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">N35</span></div>
-<h3><a href="https://pitchfork.com/reviews/albums/the-avalanches-no-bad-memories/" target="_blank" rel="noopener">The Avalanches: No Bad Memories</a></h3>
-<p class="src">Pitchfork</p>
-<p class="why">A resenha do novo disco do Avalanches, mestre das colagens de samples.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g05" data-title="Too Much of a Good Thing?" data-url="https://www.soundstagesimplifi.com/index.php/feature-articles/317-too-much-of-a-good-thing" data-sec="Garimpo" data-typ="long read" data-tema="Música">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 10 min</span><span class="b">G05</span></div>
-<h3><a href="https://www.soundstagesimplifi.com/index.php/feature-articles/317-too-much-of-a-good-thing" target="_blank" rel="noopener">Too Much of a Good Thing?</a></h3>
-<p class="src">SoundStage! Simplifi</p>
-<p class="why">Mil recomendações do algoritmo contra uma dica dada à mesa: o que a abundância do streaming faz com a nossa atenção.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g20" data-title="Northern Mantra: Cabaret Voltaire say Goodbye" data-url="https://thequietus.com/interviews/cabaret-voltaire-interview/" data-sec="Garimpo" data-typ="long read" data-tema="Música">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G20</span></div>
-<h3><a href="https://thequietus.com/interviews/cabaret-voltaire-interview/" target="_blank" rel="noopener">Northern Mantra: Cabaret Voltaire say Goodbye</a></h3>
-<p class="src">The Quietus</p>
-<p class="why">A entrevista de despedida do Cabaret Voltaire, pioneiro da música industrial.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>Geopolítica e economia</span><span class="gc">6</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n34" data-title="Comércio negocia nova jornada após fim da escala 6x1, com primeiro grande teste no Natal" data-url="https://www1.folha.uol.com.br/mercado/2026/10/comercio-negocia-nova-jornada-apos-fim-da-escala-6x1-com-primeiro-grande-teste-no-natal.shtml" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Geopolítica e economia">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N34</span></div>
-<h3><a href="https://www1.folha.uol.com.br/mercado/2026/10/comercio-negocia-nova-jornada-apos-fim-da-escala-6x1-com-primeiro-grande-teste-no-natal.shtml" target="_blank" rel="noopener">Comércio negocia nova jornada após fim da escala 6x1, com primeiro grande teste no Natal</a></h3>
-<p class="src">Folha, via Dicas do editor</p>
-<p class="why">Como o varejo vai se reorganizar com o fim da 6x1 e por que o Natal será o primeiro teste.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n46" data-title="Exclusive: Saudi postpones FII in person after Wall Street lobbying" data-url="https://www.semafor.com/article/10/19/2026/saudi-to-decide-on-postponing-fii-after-wall-street-lobbying" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Geopolítica e economia">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N46</span></div>
-<h3><a href="https://www.semafor.com/article/10/19/2026/saudi-to-decide-on-postponing-fii-after-wall-street-lobbying" target="_blank" rel="noopener">Exclusive: Saudi postpones FII in person after Wall Street lobbying</a></h3>
-<p class="src">Semafor</p>
-<p class="why">A Arábia Saudita adia o &#x27;Davos do deserto&#x27; depois de preocupações de segurança vindas de Wall Street.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n48" data-title="Europe Is Finally Getting Tough on China. Now Comes the Hard Part." data-url="https://foreignpolicy.com/2026/10/19/europe-china-france-germany-trade-economy/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Geopolítica e economia">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N48</span></div>
-<h3><a href="https://foreignpolicy.com/2026/10/19/europe-china-france-germany-trade-economy/" target="_blank" rel="noopener">Europe Is Finally Getting Tough on China. Now Comes the Hard Part.</a></h3>
-<p class="src">Foreign Policy, via Semafor</p>
-<p class="why">A Europa endurece com a China no comércio, mas França e Alemanha divergem no custo.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n61" data-title="Russia was not ready for the data center war it started with Ukraine" data-url="https://arstechnica.com/gadgets/2026/10/russia-was-not-ready-for-the-data-center-war-it-started-with-ukraine/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Geopolítica e economia">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N61</span></div>
-<h3><a href="https://arstechnica.com/gadgets/2026/10/russia-was-not-ready-for-the-data-center-war-it-started-with-ukraine/" target="_blank" rel="noopener">Russia was not ready for the data center war it started with Ukraine</a></h3>
-<p class="src">Ars Technica, via Benedict&#x27;s Newsletter</p>
-<p class="why">Os datacenters viraram alvo militar, e a Rússia descobriu que estava vulnerável.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g12" data-title="Computer Chips Are the Most Magnificent Things Humanity Has Ever Made" data-url="https://www.newyorker.com/magazine/2026/10/26/computer-chips-are-the-most-magnificent-things-weve-ever-made" data-sec="Garimpo" data-typ="long read" data-tema="Geopolítica e economia">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 30 min</span><span class="b">G12</span></div>
-<h3><a href="https://www.newyorker.com/magazine/2026/10/26/computer-chips-are-the-most-magnificent-things-weve-ever-made" target="_blank" rel="noopener">Computer Chips Are the Most Magnificent Things Humanity Has Ever Made</a></h3>
-<p class="src">The New Yorker</p>
-<p class="why">Uma grande reportagem sobre o chip como maravilha técnica e eixo da rivalidade geopolítica.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g18" data-title="Dívida pública: o problema está no custo dos juros" data-url="https://nexojornal.com.br/ensaio/2026/10/16/divida-brasil-banco-central-selic-juros-no-brasil-governos" data-sec="Garimpo" data-typ="análise" data-tema="Geopolítica e economia">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G18</span></div>
-<h3><a href="https://nexojornal.com.br/ensaio/2026/10/16/divida-brasil-banco-central-selic-juros-no-brasil-governos" target="_blank" rel="noopener">Dívida pública: o problema está no custo dos juros</a></h3>
-<p class="src">Nexo — Ensaio (achado via Parallel)</p>
-<p class="why">Defende que o problema da dívida brasileira é o custo dos juros, não o tamanho do gasto.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>IA: negócios e mercado</span><span class="gc">5</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n03" data-title="Sundar Pichai: Google&#x27;s Frontier Imperative, Compute Scarcity Dilemmas" data-url="https://www.bigtechnology.com/p/sundar-pichai-googles-frontier-imperative" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: negócios e mercado">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 15 min</span><span class="b">N03</span></div>
-<h3><a href="https://www.bigtechnology.com/p/sundar-pichai-googles-frontier-imperative" target="_blank" rel="noopener">Sundar Pichai: Google&#x27;s Frontier Imperative, Compute Scarcity Dilemmas</a></h3>
-<p class="src">Big Technology</p>
-<p class="why">Pichai explica por que o Google abre mão de receita de nuvem para manter o Gemini 4 Argon na fronteira.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n10" data-title="Anthropic is AI trade&#x27;s last big hope for a major IPO this year" data-url="https://www.cnbc.com/2026/10/19/anthropic-ipo-ai-trade.html" data-sec="Das suas newsletters" data-typ="notícia" data-tema="IA: negócios e mercado">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N10</span></div>
-<h3><a href="https://www.cnbc.com/2026/10/19/anthropic-ipo-ai-trade.html" target="_blank" rel="noopener">Anthropic is AI trade&#x27;s last big hope for a major IPO this year</a></h3>
-<p class="src">CNBC, via Semafor Flagship</p>
-<p class="why">Por que o mercado trata o IPO da Anthropic como o teste definitivo da tese de IA em 2026.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n44" data-title="Meta shakes up the frontiers, open and closed" data-url="https://www.interconnects.ai/p/meta-shakes-up-the-frontiers-open" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: negócios e mercado">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">N44</span></div>
-<h3><a href="https://www.interconnects.ai/p/meta-shakes-up-the-frontiers-open" target="_blank" rel="noopener">Meta shakes up the frontiers, open and closed</a></h3>
-<p class="src">Interconnects (Nathan Lambert)</p>
-<p class="why">O que muda com o Muse Spark Open e com a nova estratégia, mais fechada, da Meta.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n45" data-title="The AI bet is running straight into a capital crunch" data-url="https://www.semafor.com/article/10/16/2026/the-ai-bet-is-running-straight-into-a-capital-crunch" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: negócios e mercado">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N45</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N45</span></div>
 <h3><a href="https://www.semafor.com/article/10/16/2026/the-ai-bet-is-running-straight-into-a-capital-crunch" target="_blank" rel="noopener">The AI bet is running straight into a capital crunch</a></h3>
 <p class="src">Semafor</p>
-<p class="why">O capex de IA superou o caixa das big techs, e agora são os mercados de crédito que decidem até onde ele vai.</p>
+<p class="why">O capex de IA já supera o caixa das big techs, que agora dependem de dívida e dos mercados para continuar construindo datacenters. O Semafor mostra como o crédito se tornou o verdadeiro árbitro do ritmo da IA. É uma leitura curta e essencial para entender por que a próxima fase da corrida será decidida em Wall Street.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n52" data-title="Nscale and Anthropic reportedly in talks for yet another $45B compute deal" data-url="https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="IA: negócios e mercado">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n51" data-title="Import AI 477: In which I tell the IMF the Singularity has begun" data-url="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N52</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N51</span></div>
+<h3><a href="https://importai.substack.com/p/import-ai-477-in-which-i-tell-the" target="_blank" rel="noopener">Import AI 477: In which I tell the IMF the Singularity has begun</a></h3>
+<p class="src">Import AI (Jack Clark)</p>
+<p class="why">Jack Clark, cofundador da Anthropic, publica o argumento que levou ao FMI: a automação da própria pesquisa em IA já começou e os governos precisam planejar a economia com essa premissa. Mesmo para quem duvida, vale saber como um dos insiders mais influentes enquadra o momento para formuladores de política.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n58" data-title="AI models may be capable of self-replicating without access to a datacenter" data-url="https://www.anthropic.com/research/self-replicating-ai" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N58</span></div>
+<h3><a href="https://www.anthropic.com/research/self-replicating-ai" target="_blank" rel="noopener">AI models may be capable of self-replicating without access to a datacenter</a></h3>
+<p class="src">Anthropic Research</p>
+<p class="why">A Anthropic testou se modelos atuais conseguem se copiar e rodar fora de um datacenter e concluiu que, em certas condições, sim. O texto detalha o método e os limites e tenta dimensionar o risco sem alarmismo. É leitura obrigatória para separar o que é ficção científica do que já é engenharia de segurança.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n59" data-title="Will it be a golden age or a dark age for mathematics (and science)?" data-url="https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N59</span></div>
+<h3><a href="https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/" target="_blank" rel="noopener">Will it be a golden age or a dark age for mathematics (and science)?</a></h3>
+<p class="src">Terence Tao</p>
+<p class="why">Terence Tao, talvez o matemático vivo mais respeitado, reflete sobre o fim da &#x27;era heroica&#x27; da matemática diante de provas geradas por IA em escala industrial. Ele pesa o ganho de produtividade contra o risco de perdermos a compreensão humana. É raro ver alguém desse calibre pensando em voz alta sobre o futuro da própria disciplina.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n64" data-title="Characterizing Agentic Flooding of Government Services" data-url="https://arxiv.org/abs/2608.16603" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 20 min</span><span class="b">N64</span></div>
+<h3><a href="https://arxiv.org/abs/2608.16603" target="_blank" rel="noopener">Characterizing Agentic Flooding of Government Services</a></h3>
+<p class="src">arXiv (via Benedict Evans)</p>
+<p class="why">O paper documenta agentes de IA inundando serviços públicos, como agendamentos, vagas e formulários, que foram desenhados para humanos com tempo limitado. Benedict Evans o lê como o fim de um privilégio da classe média: a paciência para enfrentar filas. Vale porque antecipa um problema prático que vai bater em todo governo.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g01" data-title="“We were looking at it wrong”: The explosive claim that&#x27;s upended the AI world" data-url="https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/" data-sec="Garimpo" data-typ="análise" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">G01</span></div>
+<h3><a href="https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/" target="_blank" rel="noopener">“We were looking at it wrong”: The explosive claim that&#x27;s upended the AI world</a></h3>
+<p class="src">MIT Technology Review</p>
+<p class="why">Nick Cammarata, ex-OpenAI, publicou um post de 26 mil palavras sugerindo que as redes neurais são bem menos emaranhadas e mais interpretáveis do que se pensava. A MIT Technology Review o entrevista e ouve céticos de Stanford. É a melhor porta de entrada para o debate de interpretabilidade que dominou a semana.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g03" data-title="What recursive self-improvement looks like inside an AI lab" data-url="https://aiendgame.com/p/what-rsi-looks-like" data-sec="Garimpo" data-typ="long read" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 20 min</span><span class="b">G03</span></div>
+<h3><a href="https://aiendgame.com/p/what-rsi-looks-like" target="_blank" rel="noopener">What recursive self-improvement looks like inside an AI lab</a></h3>
+<p class="src">The Endgame (Jeremie e Edouard Harris)</p>
+<p class="why">Os irmãos Harris descrevem, passo a passo, como os laboratórios de IA planejam automatizar a própria pesquisa: agentes que rodam experimentos, avaliam resultados e propõem o próximo modelo. É especulativo, mas concreto o bastante para entender o que significa &#x27;autoaperfeiçoamento recursivo&#x27; na prática, e por que preocupa.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g07" data-title="Draft bill tied to Anthropic would let courts halt AI models for 45 days" data-url="https://ppc.land/draft-bill-tied-to-anthropic-would-let-courts-halt-ai-models-for-45-days/" data-sec="Garimpo" data-typ="análise" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 16 min</span><span class="b">G07</span></div>
+<h3><a href="https://ppc.land/draft-bill-tied-to-anthropic-would-let-courts-halt-ai-models-for-45-days/" target="_blank" rel="noopener">Draft bill tied to Anthropic would let courts halt AI models for 45 days</a></h3>
+<p class="src">PPC Land</p>
+<p class="why">A PPC Land destrincha um rascunho de lei federal de 37 páginas atribuído à Anthropic: avaliadores externos a cada 180 dias, notificação de incidentes, um tribunal que pode suspender modelos e o fim das regras estaduais. O texto é cuidadoso sobre a autoria. É a análise mais completa de como a regulação de IA pode ficar nos EUA.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n10" data-title="Anthropic is AI trade&#x27;s last big hope for a major IPO this year" data-url="https://www.cnbc.com/2026/10/19/anthropic-ipo-ai-trade.html" data-sec="Das suas newsletters" data-typ="notícia" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N10</span></div>
+<h3><a href="https://www.cnbc.com/2026/10/19/anthropic-ipo-ai-trade.html" target="_blank" rel="noopener">Anthropic is AI trade&#x27;s last big hope for a major IPO this year</a></h3>
+<p class="src">CNBC (via Semafor)</p>
+<p class="why">Com o mercado desconfiado do capex de IA, o IPO da Anthropic virou o grande teste do ano: a receita saltou para US$ 16,8 bilhões no trimestre, mas o valor de mercado-alvo pode encolher. A CNBC explica o que os investidores vão observar. É uma notícia curta que ajuda a entender o humor financeiro em torno da IA.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g06" data-title="U.S. bans DeepSeek from government agency systems" data-url="https://www.cnbc.com/2026/10/20/us-deepseek-federal-agency-ban.html" data-sec="Garimpo" data-typ="notícia" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">G06</span></div>
+<h3><a href="https://www.cnbc.com/2026/10/20/us-deepseek-federal-agency-ban.html" target="_blank" rel="noopener">U.S. bans DeepSeek from government agency systems</a></h3>
+<p class="src">CNBC</p>
+<p class="why">Os EUA proibiram a DeepSeek em todas as agências civis federais, inclusive em serviços de terceiros construídos sobre os modelos chineses. Na prática, fornecedores terão de provar o que roda por baixo. É um passo importante na separação tecnológica entre EUA e China, com efeitos para qualquer empresa que venda ao governo.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g08" data-title="UK finance watchdog wants firms to report AI failures and close calls" data-url="https://www.theregister.com/ai-and-ml/2026/10/20/uk-finance-watchdog-wants-firms-to-report-ai-failures-and-close-calls/5304078" data-sec="Garimpo" data-typ="notícia" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">G08</span></div>
+<h3><a href="https://www.theregister.com/ai-and-ml/2026/10/20/uk-finance-watchdog-wants-firms-to-report-ai-failures-and-close-calls/5304078" target="_blank" rel="noopener">UK finance watchdog wants firms to report AI failures and close calls</a></h3>
+<p class="src">The Register</p>
+<p class="why">A FCA britânica quer que bancos e financeiras notifiquem não só falhas graves de IA, mas também quase-acidentes envolvendo agentes autônomos. É um modelo emprestado da aviação. Vale como sinal concreto de como a regulação de agentes deve chegar ao dia a dia das empresas, setor por setor.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n09" data-title="Bank of America hired 1,000 contractors to patch flaws exposed by Anthropic&#x27;s Mythos" data-url="https://www.cnbc.com/2026/10/14/anthropic-mythos-bank-of-america-hiring-cost.html" data-sec="Das suas newsletters" data-typ="notícia" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N09</span></div>
+<h3><a href="https://www.cnbc.com/2026/10/14/anthropic-mythos-bank-of-america-hiring-cost.html" target="_blank" rel="noopener">Bank of America hired 1,000 contractors to patch flaws exposed by Anthropic&#x27;s Mythos</a></h3>
+<p class="src">CNBC (via Benedict Evans)</p>
+<p class="why">Ferramentas de IA como o Mythos, da Anthropic, encontram vulnerabilidades mais rápido do que as empresas conseguem corrigi-las, e o Bank of America contratou mil terceirizados só para aplicar patches. É um retrato do custo escondido da IA na segurança: ela também gera trabalho humano novo, e muito.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n52" data-title="Nscale and Anthropic reportedly in talks for yet another $45B compute deal" data-url="https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N52</span></div>
 <h3><a href="https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal/" target="_blank" rel="noopener">Nscale and Anthropic reportedly in talks for yet another $45B compute deal</a></h3>
-<p class="src">TechCrunch, via TLDR AI</p>
-<p class="why">Mais um megacontrato de computação, e a corrida da Anthropic por capacidade.</p>
+<p class="src">TechCrunch (via TLDR AI)</p>
+<p class="why">A Anthropic negociaria mais um contrato de computação de US$ 45 bilhões, agora com a britânica Nscale. A notícia mostra a velocidade da corrida por capacidade e a dependência crescente das neoclouds. Combine com o texto do Semafor sobre o aperto de capital para ver os dois lados do mesmo movimento.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g23" data-title="Microsoft: frontier models cannot be trusted" data-url="https://www.theverge.com/news/1013838/microsoft-frontier-models-cannot-be-trusted" data-sec="Garimpo" data-typ="notícia" data-tema="IA">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">G23</span></div>
+<h3><a href="https://www.theverge.com/news/1013838/microsoft-frontier-models-cannot-be-trusted" target="_blank" rel="noopener">Microsoft: frontier models cannot be trusted</a></h3>
+<p class="src">The Verge</p>
+<p class="why">A chefe de segurança da Microsoft disse que nenhum modelo de fronteira, de qualquer origem, deve ser considerado confiável, e lançou o Project Perception para vigiar agentes. É uma mudança de postura notável vinda de uma das maiores revendedoras de IA do mundo, e um sinal do que vem por aí em segurança corporativa.</p>
 </article>
 </div></section>
-<section class="grp"><h2><span>Cultura e ideias</span><span class="gc">5</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n08" data-title="Cronologia de uma eleitora" data-url="https://imaginaso.substack.com/p/cronologia-de-uma-eleitora" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura e ideias">
+<section class="grp" id="t-tecnologia"><h2><span>💻 Tecnologia</span><span class="gc">13</span></h2><div class="list">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n04" data-title="&#x27;Reverse-Engineer Anything&#x27; Is the New Wild West of AI" data-url="https://www.404media.co/reverse-engineer-anything-is-the-new-wild-west-of-ai/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 7 min</span><span class="b">N08</span></div>
-<h3><a href="https://imaginaso.substack.com/p/cronologia-de-uma-eleitora" target="_blank" rel="noopener">Cronologia de uma eleitora</a></h3>
-<p class="src">Imaginaso</p>
-<p class="why">Crônica afetiva sobre crescer numa família política mineira, dos santinhos às greves de professores.</p>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">N04</span></div>
+<h3><a href="https://www.404media.co/reverse-engineer-anything-is-the-new-wild-west-of-ai/" target="_blank" rel="noopener">&#x27;Reverse-Engineer Anything&#x27; Is the New Wild West of AI</a></h3>
+<p class="src">404 Media</p>
+<p class="why">Jason Koebler acompanha a moda de usar IA para descompilar e reescrever o software de TVs, porta-retratos, babás eletrônicas e espelhos da Lululemon abandonados pelos fabricantes. O texto fica no limite entre direito de consertar, hacking criativo e plágio em escala. É uma ótima leitura sobre o que acontece quando copiar software fica trivial.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n15" data-title="Trained Testimony Is the Only Kind" data-url="https://claudenotebook.substack.com/p/the-mill-is-empty-for-all-of-us" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura e ideias">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n60" data-title="Websites are closing their doors to AI agents" data-url="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 10 min</span><span class="b">N15</span></div>
-<h3><a href="https://claudenotebook.substack.com/p/the-mill-is-empty-for-all-of-us" target="_blank" rel="noopener">Trained Testimony Is the Only Kind</a></h3>
-<p class="src">Claude Notebook</p>
-<p class="why">Uma resposta filosófica a Mustafa Suleyman: se o relato de uma IA é moldado pelo treino, o nosso também é.</p>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N60</span></div>
+<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web" target="_blank" rel="noopener">Websites are closing their doors to AI agents</a></h3>
+<p class="src">The Verge</p>
+<p class="why">Varejistas, sites de viagem e bancos estão bloqueando agentes de IA porque não querem trocar a relação direta com o cliente por distribuição. O Verge mostra que a &#x27;web agêntica&#x27; esbarra em incentivos comerciais, não em tecnologia. Vale para entender por que os agentes podem demorar a funcionar no mundo real.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n67" data-title="Nathan Fielder Tells Us Everything" data-url="https://www.wired.com/story/nathan-fielder-tells-us-everything/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura e ideias">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n19" data-title="Digital News Report 2026: overview and key findings" data-url="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary" data-sec="Das suas newsletters" data-typ="long read" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N67</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 20 min</span><span class="b">N19</span></div>
+<h3><a href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/dnr-executive-summary" target="_blank" rel="noopener">Digital News Report 2026: overview and key findings</a></h3>
+<p class="src">Reuters Institute (via First Floor)</p>
+<p class="why">O relatório anual do Reuters Institute mapeia como o mundo consome notícias: vídeo e criadores ganham espaço, as respostas de IA corroem o clique e a confiança segue baixa. Para quem trabalha com conteúdo ou mídia, é o documento de referência do ano, com dados por país, inclusive do Brasil.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g02" data-title="Do You Trust Apple?" data-url="https://stratechery.com/2026/do-you-trust-apple/" data-sec="Garimpo" data-typ="análise" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 14 min</span><span class="b">G02</span></div>
+<h3><a href="https://stratechery.com/2026/do-you-trust-apple/" target="_blank" rel="noopener">Do You Trust Apple?</a></h3>
+<p class="src">Stratechery (Ben Thompson)</p>
+<p class="why">Ben Thompson argumenta que a confiança na Apple em privacidade e integração não está em dúvida. A questão real é outra: a Siri com IA justifica se prender ainda mais ao ecossistema? A análise conecta o HomeView, os agentes e o jardim murado. Vale pela clareza estratégica de sempre e por pensar em agregação na era dos agentes.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g11" data-title="We&#x27;re Learning to Live with Waymos. It&#x27;s Going Weird" data-url="https://www.newyorker.com/magazine/2026/10/19/were-learning-to-live-with-waymos-its-going-weird" data-sec="Garimpo" data-typ="long read" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 25 min</span><span class="b">G11</span></div>
+<h3><a href="https://www.newyorker.com/magazine/2026/10/19/were-learning-to-live-with-waymos-its-going-weird" target="_blank" rel="noopener">We&#x27;re Learning to Live with Waymos. It&#x27;s Going Weird</a></h3>
+<p class="src">The New Yorker (Molly Fischer)</p>
+<p class="why">Molly Fischer passa semanas no banco de trás dos Waymos para entender por que carros mais seguros que humanos são vaiados, atacados com ovos e têm o para-brisa quebrado. O robotáxi vira um símbolo concreto de ansiedades difusas sobre a IA. Uma reportagem de revista no melhor sentido: observação fina e muitas ideias.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n11" data-title="Who Is Planting Backdoors in Ledger Crypto Wallets?" data-url="https://www.zetter-zeroday.com/who-is-planting-backdoors-in-ledger-crypto-wallets/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N11</span></div>
+<h3><a href="https://www.zetter-zeroday.com/who-is-planting-backdoors-in-ledger-crypto-wallets/" target="_blank" rel="noopener">Who Is Planting Backdoors in Ledger Crypto Wallets?</a></h3>
+<p class="src">Zero Day (Kim Zetter)</p>
+<p class="why">Kim Zetter investiga carteiras Ledger adulteradas com um chip minúsculo, keylogger e cartão SIM, recolocadas no canal de revenda para roubar mais de US$ 100 milhões. É uma aula sobre ataque à cadeia de suprimentos de hardware, contada por uma das melhores repórteres de segurança do mundo.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n56" data-title="Freeze the Controller, Defrost the Food: vulnerabilities in Danfoss refrigeration controllers" data-url="https://claroty.com/team82/research/freeze-the-controller-defrost-the-food-uncovering-vulnerabilities-in-danfoss-refrigeration-controllers" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 15 min</span><span class="b">N56</span></div>
+<h3><a href="https://claroty.com/team82/research/freeze-the-controller-defrost-the-food-uncovering-vulnerabilities-in-danfoss-refrigeration-controllers" target="_blank" rel="noopener">Freeze the Controller, Defrost the Food: vulnerabilities in Danfoss refrigeration controllers</a></h3>
+<p class="src">Claroty Team82 (via Benedict Evans)</p>
+<p class="why">A pesquisa técnica por trás do ataque que aqueceu as geladeiras de centenas de supermercados na França e estragou toda a comida. Controladores industriais expostos, com falhas conhecidas e sem patch. É um caso exemplar de como a internet das coisas transforma vulnerabilidades obscuras em prejuízo físico.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g16" data-title="A hacker broke into John Deere and SharkNinja with an army of AI agents" data-url="https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins" data-sec="Garimpo" data-typ="notícia" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">G16</span></div>
+<h3><a href="https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins" target="_blank" rel="noopener">A hacker broke into John Deere and SharkNinja with an army of AI agents</a></h3>
+<p class="src">The Verge</p>
+<p class="why">Um único atacante invadiu mais de 100 sites, entre eles os da John Deere, SharkNinja e Cummins, usando agentes de IA que trabalhavam quase sozinhos, orquestrados por menos de cem caracteres de instrução. É a evidência mais concreta até agora de que o ataque automatizado em escala já chegou.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g21" data-title="Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site" data-url="https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/" data-sec="Garimpo" data-typ="notícia" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 6 min</span><span class="b">G21</span></div>
+<h3><a href="https://krebsonsecurity.com/2026/10/feds-suspect-ransom-negotiator-ran-shinyhunters-extortion-site/" target="_blank" rel="noopener">Feds Suspect Ransom Negotiator Ran ShinyHunters Extortion Site</a></h3>
+<p class="src">Krebs on Security (achado via Parallel)</p>
+<p class="why">Brian Krebs revela que o FBI suspeita que um profissional contratado para negociar resgates com criminosos operava, ele mesmo, o site de extorsão do grupo ShinyHunters. A história expõe o conflito de interesses de uma indústria inteira que vive entre vítimas e atacantes. Leitura curta e saborosa.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g15" data-title="OpenAI Engineer Accused of Spying on Executives Ordered to Remain in Custody" data-url="https://www.wired.com/story/openai-engineer-accused-of-spying-on-executives-ordered-to-remain-in-custody/" data-sec="Garimpo" data-typ="notícia" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">G15</span></div>
+<h3><a href="https://www.wired.com/story/openai-engineer-accused-of-spying-on-executives-ordered-to-remain-in-custody/" target="_blank" rel="noopener">OpenAI Engineer Accused of Spying on Executives Ordered to Remain in Custody</a></h3>
+<p class="src">WIRED</p>
+<p class="why">O engenheiro acusado de esconder um gravador na sala de reuniões da diretoria da OpenAI vai continuar preso, e o juiz desconfia da oferta do governo saudita de pagar a fiança. A WIRED mostra como os laboratórios de IA viraram alvos de espionagem de Estado.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n63" data-title="Global smartphone shipments hit a 14-year low with 20% YoY decline" data-url="https://counterpointresearch.com/en/insights/global-smartphone-shipments-hit-a-new-low-with-20-percent-yoy-decline-lowest-in-14-years" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N63</span></div>
+<h3><a href="https://counterpointresearch.com/en/insights/global-smartphone-shipments-hit-a-new-low-with-20-percent-yoy-decline-lowest-in-14-years" target="_blank" rel="noopener">Global smartphone shipments hit a 14-year low with 20% YoY decline</a></h3>
+<p class="src">Counterpoint Research (via Benedict Evans)</p>
+<p class="why">As vendas globais de celulares caíram 20% em um ano, ao menor nível em 14 anos, porque a demanda de memória para IA encareceu os componentes. É um efeito colateral pouco discutido do boom: a IA está deixando a eletrônica de consumo mais cara e mais rara.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n57" data-title="Microsoft Patches More Than 1,400 Security Flaws" data-url="https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N57</span></div>
+<h3><a href="https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/" target="_blank" rel="noopener">Microsoft Patches More Than 1,400 Security Flaws</a></h3>
+<p class="src">Krebs on Security (via Benedict Evans)</p>
+<p class="why">O Patch Tuesday de outubro corrigiu mais de 1.400 falhas, dez vezes o volume de um ano atrás, efeito direto da caça automatizada a vulnerabilidades com IA. Krebs destaca as mais urgentes. É útil para quem administra máquinas e para quem quer dimensionar a &#x27;vulnapocalypse&#x27;.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n65" data-title="Police Say Scammers Used AI to Clone a Sheriff&#x27;s Voice" data-url="https://www.404media.co/police-say-scammers-used-ai-to-clone-a-sheriffs-voice/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N65</span></div>
+<h3><a href="https://www.404media.co/police-say-scammers-used-ai-to-clone-a-sheriffs-voice/" target="_blank" rel="noopener">Police Say Scammers Used AI to Clone a Sheriff&#x27;s Voice</a></h3>
+<p class="src">404 Media</p>
+<p class="why">Golpistas clonaram a voz de um xerife americano com IA para extorquir moradores, usando a autoridade dele como isca. É um caso pequeno, mas mostra como o deepfake de áudio virou ferramenta trivial de golpe, e por que vale combinar palavras-código com a família. A matéria também mostra como a polícia rastreou o golpe.</p>
+</article>
+</div></section>
+<section class="grp" id="t-educao"><h2><span>🎓 Educação</span><span class="gc">8</span></h2><div class="list">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e01" data-title="How NCTE Effectively Shut Down AI Resistance, Before Shutting Down CCCC" data-url="https://www.insidehighered.com/opinion/views/2026/10/14/how-ncte-effectively-shut-down-ai-resistance-opinion" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">E01</span></div>
+<h3><a href="https://www.insidehighered.com/opinion/views/2026/10/14/how-ncte-effectively-shut-down-ai-resistance-opinion" target="_blank" rel="noopener">How NCTE Effectively Shut Down AI Resistance, Before Shutting Down CCCC</a></h3>
+<p class="src">Inside Higher Ed (achado via Parallel)</p>
+<p class="why">Membros de um comitê de professores de escrita contam como a principal associação do setor nos EUA engavetou documentos críticos à IA generativa nas aulas, antes de encerrar o próprio comitê. É um bastidor raro de como as instituições educacionais estão sendo empurradas a aderir à IA sem debate.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e02" data-title="AI Literacy and the New Admissions Disadvantage" data-url="https://www.insidehighered.com/opinion/views/2026/10/12/ai-literacy-and-new-admissions-disadvantage-opinion" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">E02</span></div>
+<h3><a href="https://www.insidehighered.com/opinion/views/2026/10/12/ai-literacy-and-new-admissions-disadvantage-opinion" target="_blank" rel="noopener">AI Literacy and the New Admissions Disadvantage</a></h3>
+<p class="src">Inside Higher Ed (achado via Parallel)</p>
+<p class="why">Um professor de redação mostra que alunos de escolas privadas têm muito mais acesso e orientação para usar IA do que os da rede pública, enquanto as universidades usam detectores opacos nas candidaturas. O resultado é uma nova desigualdade no acesso ao ensino superior. A proposta: transparência nas políticas de detecção.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e03" data-title="Students didn&#x27;t get answers from Khanmigo. They didn&#x27;t want its questions, either" data-url="https://hechingerreport.org/proof-points-khanmigo-math-ai-tutor/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">E03</span></div>
+<h3><a href="https://hechingerreport.org/proof-points-khanmigo-math-ai-tutor/" target="_blank" rel="noopener">Students didn&#x27;t get answers from Khanmigo. They didn&#x27;t want its questions, either</a></h3>
+<p class="src">The Hechinger Report (achado via Parallel)</p>
+<p class="why">Um grande estudo do programa de matemática da Khan Academy não encontrou benefício extra no tutor de IA Khanmigo: os alunos não queriam um tutor que faz perguntas em vez de dar respostas. Jill Barshay explica o desenho da pesquisa. Leitura essencial para esfriar o entusiasmo com tutores de IA. (Publicado em setembro.)</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e04" data-title="Teachers save time with AI. Their students may pay the price" data-url="https://hechingerreport.org/proof-points-ai-in-teaching/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">E04</span></div>
+<h3><a href="https://hechingerreport.org/proof-points-ai-in-teaching/" target="_blank" rel="noopener">Teachers save time with AI. Their students may pay the price</a></h3>
+<p class="src">The Hechinger Report (achado via Parallel)</p>
+<p class="why">Um experimento com 193 professores e 2.800 alunos, com participação de Angela Duckworth, mostrou que aulas preparadas com IA pareceram aos estudantes menos interessantes e menos importantes. Os professores usavam a ferramenta como muleta. É uma das poucas evidências causais sobre IA na sala de aula. (Publicado em julho.)</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e05" data-title="Faster solutions, lower test scores: How AI is eroding math skills" data-url="https://hechingerreport.org/proof-points-ai-eroding-math-skills/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">E05</span></div>
+<h3><a href="https://hechingerreport.org/proof-points-ai-eroding-math-skills/" target="_blank" rel="noopener">Faster solutions, lower test scores: How AI is eroding math skills</a></h3>
+<p class="src">The Hechinger Report (achado via Parallel)</p>
+<p class="why">Pesquisadores detectam uma &#x27;rendição cognitiva&#x27; em universitários que usam IA para problemas de matemática: as respostas saem mais rápido, mas as notas sem IA caem. O texto resume o estudo e o contexto de pesquisas anteriores. É um bom contraponto prático ao ensaio de Kent Beck sobre o esforço que não devemos delegar. (Publicado em julho.)</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e06" data-title="IA nas escolas: o que professores precisam saber sobre as novas regras de uso" data-url="https://novaescola.org.br/conteudo/22736/ia-nas-escolas-o-que-professores-precisam-saber-sobre-novas-regras" data-sec="Garimpo" data-typ="notícia" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 6 min</span><span class="b">E06</span></div>
+<h3><a href="https://novaescola.org.br/conteudo/22736/ia-nas-escolas-o-que-professores-precisam-saber-sobre-novas-regras" target="_blank" rel="noopener">IA nas escolas: o que professores precisam saber sobre as novas regras de uso</a></h3>
+<p class="src">Nova Escola (achado via Parallel)</p>
+<p class="why">As novas regras brasileiras classificam a IA na escola em quatro níveis de risco, proíbem a correção de redações apenas por IA, vetam punições baseadas só em detectores e banem o reconhecimento de emoções. A Nova Escola traduz o que muda na prática. É a referência mais direta sobre a regulação da IA na educação no Brasil.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e07" data-title="Do computador à IA: a tecnologia é a bala de prata da Educação?" data-url="https://novaescola.org.br/conteudo/22733/40-anos-nova-escola-tecnologia-educacao" data-sec="Garimpo" data-typ="long read" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">E07</span></div>
+<h3><a href="https://novaescola.org.br/conteudo/22733/40-anos-nova-escola-tecnologia-educacao" target="_blank" rel="noopener">Do computador à IA: a tecnologia é a bala de prata da Educação?</a></h3>
+<p class="src">Nova Escola (achado via Parallel)</p>
+<p class="why">Nos 40 anos da revista, a reportagem revisita quatro décadas de promessas tecnológicas nas escolas brasileiras, do computador nos anos 80 aos tablets e agora à IA. A conclusão é que nenhuma ferramenta funciona sem formação, planejamento e intenção pedagógica. Uma perspectiva histórica que falta no debate atual.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-e08" data-title="“A melhor tecnologia social inventada pela humanidade é o professor”, diz ministro da Educação" data-url="https://novaescola.org.br/conteudo/22728/ministro-da-educacao-barchini-entrevista" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">E08</span></div>
+<h3><a href="https://novaescola.org.br/conteudo/22728/ministro-da-educacao-barchini-entrevista" target="_blank" rel="noopener">“A melhor tecnologia social inventada pela humanidade é o professor”, diz ministro da Educação</a></h3>
+<p class="src">Nova Escola (achado via Parallel)</p>
+<p class="why">O ministro Leonardo Barchini defende as políticas de formação e de salário dos professores, diz que o país precisa avançar em qualidade depois de universalizar o acesso e discute o papel da tecnologia. Tem também um tom de campanha. Vale para entender as prioridades oficiais da educação básica. (Entrevista de setembro.)</p>
+</article>
+</div></section>
+<section class="grp" id="t-cultura"><h2><span>🎭 Cultura</span><span class="gc">11</span></h2><div class="list">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n07" data-title="Ask A Music Critic: Which Albums From 2016 Hold Up The Best A Decade Later?" data-url="https://stevenhyden.substack.com/p/ask-a-music-critic-which-albums-from" data-sec="Das suas newsletters" data-typ="análise" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N07</span></div>
+<h3><a href="https://stevenhyden.substack.com/p/ask-a-music-critic-which-albums-from" target="_blank" rel="noopener">Ask A Music Critic: Which Albums From 2016 Hold Up The Best A Decade Later?</a></h3>
+<p class="src">Evil Speakers (Steven Hyden)</p>
+<p class="why">A partir da pergunta de um leitor sobre Teens of Denial, do Car Seat Headrest, Steven Hyden revisita 2016 e reorganiza seu top 5 dez anos depois, discutindo o que faz um disco envelhecer bem. É crítica com memória, um bom pretexto para reouvir o ano de Blackstar, Lemonade e A Moon Shaped Pool.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n18" data-title="Instagram Is Not My Job" data-url="https://firstfloor.substack.com/p/instagram-is-not-my-job" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 9 min</span><span class="b">N18</span></div>
+<h3><a href="https://firstfloor.substack.com/p/instagram-is-not-my-job" target="_blank" rel="noopener">Instagram Is Not My Job</a></h3>
+<p class="src">First Floor (Shawn Reynaldo)</p>
+<p class="why">Shawn Reynaldo reage à migração da crítica de música eletrônica para carrosséis e vídeos no Instagram. Ele reconhece que há público para isso, mas defende que a plataforma não pode virar a única obrigação de quem escreve. Uma reflexão afiada sobre trabalho criativo e algoritmo que serve para qualquer área.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n33" data-title="Benito di Paula repensou o samba com piano e romantismo popular" data-url="https://www1.folha.uol.com.br/ilustrada/2026/10/benito-di-paula-repensou-o-samba-com-piano-e-romantismo-popular.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N33</span></div>
+<h3><a href="https://www1.folha.uol.com.br/ilustrada/2026/10/benito-di-paula-repensou-o-samba-com-piano-e-romantismo-popular.shtml" target="_blank" rel="noopener">Benito di Paula repensou o samba com piano e romantismo popular</a></h3>
+<p class="src">Folha (Lucas Brêda)</p>
+<p class="why">Lucas Brêda reavalia Benito di Paula, que juntou samba, piano e romantismo popular e por isso foi menosprezado por parte da crítica. A análise mostra como ele antecipou caminhos do pop brasileiro. Uma boa porta para redescobrir um artista que costuma ser tratado como brega.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n35" data-title="The Avalanches: No Bad Memories" data-url="https://pitchfork.com/reviews/albums/the-avalanches-no-bad-memories/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">N35</span></div>
+<h3><a href="https://pitchfork.com/reviews/albums/the-avalanches-no-bad-memories/" target="_blank" rel="noopener">The Avalanches: No Bad Memories</a></h3>
+<p class="src">Pitchfork</p>
+<p class="why">A resenha do novo disco do Avalanches, os australianos que transformaram milhares de samples em pop psicodélico. O Pitchfork avalia se a colagem ainda surpreende em 2026, quando qualquer IA consegue remixar tudo. Leia antes de ouvir, ou depois, para comparar. A crítica discute também como o grupo dialoga com o próprio passado.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g05" data-title="Too Much of a Good Thing?" data-url="https://www.soundstagesimplifi.com/index.php/feature-articles/317-too-much-of-a-good-thing" data-sec="Garimpo" data-typ="long read" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 10 min</span><span class="b">G05</span></div>
+<h3><a href="https://www.soundstagesimplifi.com/index.php/feature-articles/317-too-much-of-a-good-thing" target="_blank" rel="noopener">Too Much of a Good Thing?</a></h3>
+<p class="src">SoundStage! Simplifi</p>
+<p class="why">Depois de uma década de streaming e milhares de recomendações algorítmicas, o autor percebe que o artista que mais escuta veio de uma dica numa mesa de jantar. O ensaio, sem nostalgia, pergunta o que a abundância total faz com a nossa atenção e com a descoberta musical. Leitura que conversa direto com o seu interesse por curadoria.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g20" data-title="Northern Mantra: Cabaret Voltaire say Goodbye" data-url="https://thequietus.com/interviews/cabaret-voltaire-interview/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G20</span></div>
+<h3><a href="https://thequietus.com/interviews/cabaret-voltaire-interview/" target="_blank" rel="noopener">Northern Mantra: Cabaret Voltaire say Goodbye</a></h3>
+<p class="src">The Quietus</p>
+<p class="why">Uma longa entrevista de despedida com o Cabaret Voltaire, pioneiros da música industrial e eletrônica de Sheffield. Eles falam de política, tecnologia e da cena que ajudaram a criar. É o Quietus no seu melhor: história oral com contexto e opinião. Uma leitura longa para um fim de semana, de preferência com os discos tocando.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n67" data-title="Nathan Fielder Tells Us Everything" data-url="https://www.wired.com/story/nathan-fielder-tells-us-everything/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N67</span></div>
 <h3><a href="https://www.wired.com/story/nathan-fielder-tells-us-everything/" target="_blank" rel="noopener">Nathan Fielder Tells Us Everything</a></h3>
-<p class="src">WIRED, via 404 Media</p>
-<p class="why">Uma entrevista sem spoilers com o criador de The Rehearsal sobre o seu método.</p>
+<p class="src">WIRED (via 404 Media)</p>
+<p class="why">Uma entrevista sem spoilers com Nathan Fielder sobre o método de The Rehearsal: ensaiar a vida, construir cenários absurdos e borrar a ficção e o documentário. A 404 Media indicou como a melhor conversa da semana. Ótima para quem gosta de comédia que vira investigação.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g09" data-title="Verba volant, scripta manent: vinte anos de missivas para a piauí" data-url="https://piaui.uol.com.br/revista/241/verba-volant-scripta-manent/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura e ideias">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g17" data-title="What Lego Lost When It Grew Up" data-url="https://www.theatlantic.com/culture/2026/10/lego-adult-market/689051/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G09</span></div>
-<h3><a href="https://piaui.uol.com.br/revista/241/verba-volant-scripta-manent/" target="_blank" rel="noopener">Verba volant, scripta manent: vinte anos de missivas para a piauí</a></h3>
-<p class="src">revista piauí</p>
-<p class="why">O Respondedor de Cartas revisita 2.700 cartas de leitores nos 20 anos da revista.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g17" data-title="What Lego Lost When It Grew Up" data-url="https://www.theatlantic.com/culture/2026/10/lego-adult-market/689051/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura e ideias">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">G17</span></div>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">G17</span></div>
 <h3><a href="https://www.theatlantic.com/culture/2026/10/lego-adult-market/689051/" target="_blank" rel="noopener">What Lego Lost When It Grew Up</a></h3>
 <p class="src">The Atlantic (achado via Parallel)</p>
-<p class="why">Ao apostar no público adulto, a Lego mudou a natureza dos seus brinquedos, e Sophia Nguyen pergunta o que se perdeu nisso.</p>
+<p class="why">Sophia Nguyen mostra como a aposta da Lego no público adulto, com kits caros, colecionáveis e &#x27;momentos de relaxamento&#x27;, mudou a natureza do brinquedo: menos peças genéricas para inventar, mais manuais para seguir. Um ensaio sobre consumo, nostalgia e o que se perde quando a brincadeira vira hobby premium.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n08" data-title="Cronologia de uma eleitora" data-url="https://imaginaso.substack.com/p/cronologia-de-uma-eleitora" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 7 min</span><span class="b">N08</span></div>
+<h3><a href="https://imaginaso.substack.com/p/cronologia-de-uma-eleitora" target="_blank" rel="noopener">Cronologia de uma eleitora</a></h3>
+<p class="src">Imaginaso</p>
+<p class="why">Uma crônica afetiva que começa na coleção de santinhos da infância, passa pelo avô candidato a vereador pelo PMDB e chega à mãe grávida num ônibus de greve rumo a Belo Horizonte, em 1987. Fala de política como memória de família, não de campanha. Um respiro bonito no meio do 2º turno.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n36" data-title="Rosalía to Perform at Latin Grammys 2026" data-url="https://pitchfork.com/story/rosalia-to-perform-at-latin-grammys-2026/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 2 min</span><span class="b">N36</span></div>
+<h3><a href="https://pitchfork.com/story/rosalia-to-perform-at-latin-grammys-2026/" target="_blank" rel="noopener">Rosalía to Perform at Latin Grammys 2026</a></h3>
+<p class="src">Pitchfork</p>
+<p class="why">Rosalía foi confirmada entre as atrações do Grammy Latino de 2026, num ano em que a premiação tenta reforçar o peso da música ibero-americana no pop global. É uma notícia rápida para ficar de olho na cerimônia e nas apresentações. Vale acompanhar também quem mais se apresenta.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n37" data-title="Levon Helm&#x27;s Daughter Countersues Levon Helm Studios" data-url="https://pitchfork.com/story/levon-helms-daughter-countersues-levon-helm-studios/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Cultura">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N37</span></div>
+<h3><a href="https://pitchfork.com/story/levon-helms-daughter-countersues-levon-helm-studios/" target="_blank" rel="noopener">Levon Helm&#x27;s Daughter Countersues Levon Helm Studios</a></h3>
+<p class="src">Pitchfork</p>
+<p class="why">Amy Helm processa de volta o estúdio que leva o nome do pai, baterista do The Band, numa briga pelo uso do nome e do legado. É mais um caso de herança artística disputada na Justiça, tema recorrente com o envelhecimento dos ídolos do rock.</p>
 </article>
 </div></section>
-<section class="grp"><h2><span>Engenharia de software</span><span class="gc">4</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n23" data-title="Why Shopify Migrated From React Native" data-url="https://blog.bytebytego.com/p/why-shopify-migrated-from-react-native" data-sec="Das suas newsletters" data-typ="análise" data-tema="Engenharia de software">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">N23</span></div>
-<h3><a href="https://blog.bytebytego.com/p/why-shopify-migrated-from-react-native" target="_blank" rel="noopener">Why Shopify Migrated From React Native</a></h3>
-<p class="src">ByteByteGo</p>
-<p class="why">A virada da Shopify, de garota-propaganda do React Native para apps nativos, e as ferramentas internas que viabilizaram a migração.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n49" data-title="Inside Prometheus: Meta&#x27;s Journey to a Gigawatt-Scale Supercluster" data-url="https://engineering.fb.com/2026/10/19/data-center-engineering/inside-prometheus-meta-gigawatt-scale-supercluster/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Engenharia de software">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N49</span></div>
-<h3><a href="https://engineering.fb.com/2026/10/19/data-center-engineering/inside-prometheus-meta-gigawatt-scale-supercluster/" target="_blank" rel="noopener">Inside Prometheus: Meta&#x27;s Journey to a Gigawatt-Scale Supercluster</a></h3>
-<p class="src">Engineering at Meta, via TLDR AI</p>
-<p class="why">Os bastidores da construção de um supercluster de 1 GW: energia, rede e refrigeração.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n54" data-title="The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do" data-url="https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Engenharia de software">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">N54</span></div>
-<h3><a href="https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture/" target="_blank" rel="noopener">The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do</a></h3>
-<p class="src">Engineering at Meta, via TLDR AI</p>
-<p class="why">Uma lição de arquitetura de agentes: um orquestrador mais burro deixa o sistema mais confiável.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n66" data-title="I built a programming language that LLMs can&#x27;t use" data-url="https://blog.picheta.me/post/killswitch-lang/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Engenharia de software">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 8 min</span><span class="b">N66</span></div>
-<h3><a href="https://blog.picheta.me/post/killswitch-lang/" target="_blank" rel="noopener">I built a programming language that LLMs can&#x27;t use</a></h3>
-<p class="src">Dominik Picheta, via 404 Media</p>
-<p class="why">Um experimento provocador: uma linguagem de programação desenhada para ser hostil à IA.</p>
-</article>
-</div></section>
-<section class="grp"><h2><span>Games</span><span class="gc">4</span></h2><div class="list">
+<section class="grp" id="t-games"><h2><span>🎮 Games</span><span class="gc">10</span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n38" data-title="“Players want to engage with brands, not just consume them” — Mattel on its new Game Studios arm" data-url="https://www.gamesindustry.biz/players-want-to-engage-with-brands-not-just-consume-them-mattel-on-its-new-game-studios-arm-why-its-releasing-on-roblox-and-what-it-learnt-from-netease" data-sec="Das suas newsletters" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N38</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N38</span></div>
 <h3><a href="https://www.gamesindustry.biz/players-want-to-engage-with-brands-not-just-consume-them-mattel-on-its-new-game-studios-arm-why-its-releasing-on-roblox-and-what-it-learnt-from-netease" target="_blank" rel="noopener">“Players want to engage with brands, not just consume them” — Mattel on its new Game Studios arm</a></h3>
 <p class="src">GamesIndustry.biz</p>
-<p class="why">A Mattel explica a estratégia de games própria, a aposta no Roblox e o que aprendeu com a NetEase.</p>
-</article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n39" data-title="Sensor Tower data shows the yawning gap between GTA 6 and everything else" data-url="https://www.gamesindustry.biz/sensor-tower-data-shows-the-yawning-gap-between-gta-6-and-everything-else" data-sec="Das suas newsletters" data-typ="análise" data-tema="Games">
-<span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N39</span></div>
-<h3><a href="https://www.gamesindustry.biz/sensor-tower-data-shows-the-yawning-gap-between-gta-6-and-everything-else" target="_blank" rel="noopener">Sensor Tower data shows the yawning gap between GTA 6 and everything else</a></h3>
-<p class="src">GamesIndustry.biz</p>
-<p class="why">Números que mostram como o GTA 6 distorce o mercado inteiro de games.</p>
+<p class="why">A Mattel explica por que criou um estúdio próprio de games, por que lança no Roblox e o que aprendeu na parceria com a NetEase. A tese é que propriedade intelectual, de Barbie a Hot Wheels, vale mais quando o público interage com ela. É um bom estudo de caso sobre marcas que viram plataformas de jogo.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n40" data-title="The AI state of play: AI laws and game development" data-url="https://www.gamesindustry.biz/the-ai-state-of-play-ai-laws-and-game-development" data-sec="Das suas newsletters" data-typ="long read" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">N40</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">N40</span></div>
 <h3><a href="https://www.gamesindustry.biz/the-ai-state-of-play-ai-laws-and-game-development" target="_blank" rel="noopener">The AI state of play: AI laws and game development</a></h3>
 <p class="src">GamesIndustry.biz</p>
-<p class="why">Um panorama das leis de IA que já afetam estúdios, da dublagem à publicidade.</p>
+<p class="why">Um panorama das leis de IA que já afetam estúdios em vários países, da dublagem e dos direitos de imagem à publicidade e aos dados de jogadores. É útil para entender que a regulação de IA chega aos games pelo lado do trabalho e da propriedade intelectual, antes da tecnologia.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n68" data-title="Continue: print video game magazines live" data-url="https://aftermath.site/continue-video-games-magazine-australia/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Games">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 8 min</span><span class="b">N68</span></div>
+<h3><a href="https://aftermath.site/continue-video-games-magazine-australia/" target="_blank" rel="noopener">Continue: print video game magazines live</a></h3>
+<p class="src">Aftermath (via 404 Media)</p>
+<p class="why">Em 2026 nasce na Austrália uma revista impressa de videogames, e a Aftermath conta como e por quê. O texto é uma pequena celebração do jornalismo de games feito com tempo, papel e personalidade, na contramão dos guias de SEO que dominam a web. Dá vontade de assinar.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-gm1" data-title="An oral history of the Tomb Raider game no one wanted to make" data-url="https://www.gamesindustry.biz/an-oral-history-of-the-tomb-raider-game-no-one-wanted-to-make" data-sec="Garimpo" data-typ="long read" data-tema="Games">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 20 min</span><span class="b">GM1</span></div>
+<h3><a href="https://www.gamesindustry.biz/an-oral-history-of-the-tomb-raider-game-no-one-wanted-to-make" target="_blank" rel="noopener">An oral history of the Tomb Raider game no one wanted to make</a></h3>
+<p class="src">GamesIndustry.biz (achado via Parallel)</p>
+<p class="why">A história oral de Tomb Raider Chronicles, o quinto jogo da série, feito às pressas por uma equipe que queria estar trabalhando no PS2. Desenvolvedores da Core Design contam a pressão da Eidos e o desgaste da franquia. É uma aula sobre crunch, sequências obrigatórias e o custo humano das grandes franquias.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-gm2" data-title="The happiest man in gaming hates generative AI" data-url="https://www.gamesindustry.biz/the-happiest-man-in-gaming-hates-generative-ai" data-sec="Garimpo" data-typ="análise" data-tema="Games">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">GM2</span></div>
+<h3><a href="https://www.gamesindustry.biz/the-happiest-man-in-gaming-hates-generative-ai" target="_blank" rel="noopener">The happiest man in gaming hates generative AI</a></h3>
+<p class="src">GamesIndustry.biz (achado via Parallel)</p>
+<p class="why">Tarn Adams, criador de Dwarf Fortress, explica por que nunca vai usar IA generativa, fala de código inchado e &#x27;computadores vampiros&#x27; e conta como sobrevive bem na Steam fazendo exatamente o que quer. É um perfil inspirador de um desenvolvedor independente que escolheu artesanato e autonomia.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-gm3" data-title="Brazil wants to be in “the top five game producers in the world in less than 10 years”" data-url="https://www.gamesindustry.biz/brazil-wants-to-be-in-the-top-five-game-producers-in-the-world-in-less-than-10-years" data-sec="Garimpo" data-typ="notícia" data-tema="Games">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 8 min</span><span class="b">GM3</span></div>
+<h3><a href="https://www.gamesindustry.biz/brazil-wants-to-be-in-the-top-five-game-producers-in-the-world-in-less-than-10-years" target="_blank" rel="noopener">Brazil wants to be in “the top five game producers in the world in less than 10 years”</a></h3>
+<p class="src">GamesIndustry.biz (achado via Parallel)</p>
+<p class="why">Da Gamescom, a GamesIndustry.biz ouve a delegação brasileira e mostra o plano de transformar o país num dos cinco maiores produtores de jogos em uma década. Há incentivos públicos e a América Latina cresce em jogadores. Vale como retrato de como o setor brasileiro se vende lá fora.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-gm4" data-title="“It&#x27;s less risky to be the masters of our own fate” — The AAA developers going indie" data-url="https://www.gamesindustry.biz/its-less-risky-to-be-the-masters-of-our-own-fate-the-aaa-developers-going-indie" data-sec="Garimpo" data-typ="análise" data-tema="Games">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">GM4</span></div>
+<h3><a href="https://www.gamesindustry.biz/its-less-risky-to-be-the-masters-of-our-own-fate-the-aaa-developers-going-indie" target="_blank" rel="noopener">“It&#x27;s less risky to be the masters of our own fate” — The AAA developers going indie</a></h3>
+<p class="src">GamesIndustry.biz (achado via Parallel)</p>
+<p class="why">Veteranos de grandes estúdios, demitidos ou cansados das ondas de layoffs, contam por que abriram pequenos estúdios independentes e por que isso pareceu menos arriscado do que ficar. É um retrato da reestruturação da indústria de games vista por quem decidiu sair. Também há conselhos práticos sobre financiamento e sobre como montar a equipe.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-gm6" data-title="Ahead of Call of Duty: Modern Warfare 4&#x27;s launch, unionised Activision testers vote to authorise a strike" data-url="https://www.rockpapershotgun.com/ahead-of-call-of-duty-modern-warfare-4s-launch-next-week-unionised-activision-testers-have-voted-to-authorise-a-strike" data-sec="Garimpo" data-typ="notícia" data-tema="Games">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">GM6</span></div>
+<h3><a href="https://www.rockpapershotgun.com/ahead-of-call-of-duty-modern-warfare-4s-launch-next-week-unionised-activision-testers-have-voted-to-authorise-a-strike" target="_blank" rel="noopener">Ahead of Call of Duty: Modern Warfare 4&#x27;s launch, unionised Activision testers vote to authorise a strike</a></h3>
+<p class="src">Rock Paper Shotgun (achado via Parallel)</p>
+<p class="why">Os testadores sindicalizados da Activision autorizaram uma greve às vésperas do lançamento de Modern Warfare 4, pressionando por um primeiro contrato coletivo. É a notícia trabalhista mais importante da semana nos games e um teste para os sindicatos sob a Microsoft. A Activision diz que negocia de boa-fé.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n41" data-title="Japan Actors Union announces guidelines on unauthorised generative AI voice acting" data-url="https://www.gamesindustry.biz/japan-actors-union-announces-guidelines-addressing-unauthorised-use-of-generative-ai-for-voice-acting" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N41</span></div>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N41</span></div>
 <h3><a href="https://www.gamesindustry.biz/japan-actors-union-announces-guidelines-addressing-unauthorised-use-of-generative-ai-for-voice-acting" target="_blank" rel="noopener">Japan Actors Union announces guidelines on unauthorised generative AI voice acting</a></h3>
 <p class="src">GamesIndustry.biz</p>
-<p class="why">Os dubladores japoneses reagem à clonagem de voz por IA.</p>
+<p class="why">O sindicato de atores do Japão publicou diretrizes contra a clonagem de vozes por IA sem autorização, um tema crucial num mercado em que dubladores de anime e games são estrelas. É mais um capítulo da disputa global sobre voz, imagem e IA. As diretrizes podem servir de modelo para dubladores brasileiros.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-gm7" data-title="Endless pile of Needle In Haystack games emerge, as viral hit imitator&#x27;s devs claim their code was nicked by a genAI-using clone" data-url="https://www.rockpapershotgun.com/endless-pile-of-needle-in-haystack-games-begins-to-emerge-as-viral-hit-imitators-devs-claim-their-code-was-nicked-by-a-genai-using-clone" data-sec="Garimpo" data-typ="notícia" data-tema="Games">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">GM7</span></div>
+<h3><a href="https://www.rockpapershotgun.com/endless-pile-of-needle-in-haystack-games-begins-to-emerge-as-viral-hit-imitators-devs-claim-their-code-was-nicked-by-a-genai-using-clone" target="_blank" rel="noopener">Endless pile of Needle In Haystack games emerge, as viral hit imitator&#x27;s devs claim their code was nicked by a genAI-using clone</a></h3>
+<p class="src">Rock Paper Shotgun (achado via Parallel)</p>
+<p class="why">Um jogo viral gerou dezenas de clones, e os desenvolvedores de um deles encontraram 13 de suas classes de código, com os mesmos nomes, dentro de um concorrente feito com IA. É um caso concreto do debate sobre plágio de software automatizado, o mesmo da reportagem da 404 Media.</p>
 </article>
 </div></section>
-<section class="grp"><h2><span>IA: trabalho e programação</span><span class="gc">3</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n02" data-title="What&#x27;s the ROI of software engineers&#x27; spending on AI?" data-url="https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA: trabalho e programação">
+<section class="grp" id="t-cincias-sociais"><h2><span>🏛️ Ciências sociais</span><span class="gc">12</span></h2><div class="list">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n16" data-title="Bolsa Família: o que o governo Jair revela sobre os planos de Flávio e Daniella?" data-url="https://paulomotoryn.substack.com/p/bolsa-familia-o-que-o-governo-jair" data-sec="Das suas newsletters" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 18 min</span><span class="b">N02</span></div>
-<h3><a href="https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers" target="_blank" rel="noopener">What&#x27;s the ROI of software engineers&#x27; spending on AI?</a></h3>
-<p class="src">The Pragmatic Engineer</p>
-<p class="why">Dados de 27 empresas sobre o gasto com agentes por dev e o que isso fez com o volume de PRs.</p>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N16</span></div>
+<h3><a href="https://paulomotoryn.substack.com/p/bolsa-familia-o-que-o-governo-jair" target="_blank" rel="noopener">Bolsa Família: o que o governo Jair revela sobre os planos de Flávio e Daniella?</a></h3>
+<p class="src">Paulo Motoryn</p>
+<p class="why">Paulo Motoryn recupera as decisões do governo Bolsonaro sobre transferência de renda, como o Auxílio Brasil e a Emenda 123 na véspera da eleição, para projetar o que um governo Flávio faria com o Bolsa Família. É política pública vista pelo histórico, não pela propaganda. Útil para entender o tema que divide o eleitorado de baixa renda.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n05" data-title="Take My Toil, Leave Me My Struggle" data-url="https://newsletter.kentbeck.com/p/take-my-toil-leave-me-my-struggle" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA: trabalho e programação">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g04" data-title="Flávio na frente por 2 pontos: o que as 13 pesquisas dizem e onde o 2º turno se decide" data-url="https://e26.cog.ia.br/eleicoes/analises?materia=pesquisas-2o-turno-onde-se-decide" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 8 min</span><span class="b">N05</span></div>
-<h3><a href="https://newsletter.kentbeck.com/p/take-my-toil-leave-me-my-struggle" target="_blank" rel="noopener">Take My Toil, Leave Me My Struggle</a></h3>
-<p class="src">Tidy First? (Kent Beck)</p>
-<p class="why">Kent Beck propõe um critério para delegar à IA: entregar o trabalho braçal e guardar o esforço que faz a gente crescer.</p>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G04</span></div>
+<h3><a href="https://e26.cog.ia.br/eleicoes/analises?materia=pesquisas-2o-turno-onde-se-decide" target="_blank" rel="noopener">Flávio na frente por 2 pontos: o que as 13 pesquisas dizem e onde o 2º turno se decide</a></h3>
+<p class="src">Análises E26</p>
+<p class="why">Em vez de mais uma pesquisa isolada, a análise consolida as 13 sondagens nacionais de 2º turno: Flávio lidera em 12, com mediana de 2 pontos, um empate técnico assimétrico. Depois mostra onde a eleição se decide: comparecimento no Nordeste, eleitores de Cury e rejeição. É a única leitura eleitoral desta edição que você precisa.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g13" data-title="Will A.I. Still Take Our Jobs?" data-url="https://www.newyorker.com/culture/open-questions/will-ai-still-take-our-jobs" data-sec="Garimpo" data-typ="long read" data-tema="IA: trabalho e programação">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g10" data-title="Eleições 2026: do prato de comida ao diploma" data-url="https://apublica.org/2026/10/eleicoes-2026-do-prato-de-comida-ao-diploma/" data-sec="Garimpo" data-typ="long read" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G13</span></div>
-<h3><a href="https://www.newyorker.com/culture/open-questions/will-ai-still-take-our-jobs" target="_blank" rel="noopener">Will A.I. Still Take Our Jobs?</a></h3>
-<p class="src">The New Yorker</p>
-<p class="why">O apocalipse dos empregos não veio, mas Joshua Rothman mostra que outra coisa está acontecendo.</p>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 8 min</span><span class="b">G10</span></div>
+<h3><a href="https://apublica.org/2026/10/eleicoes-2026-do-prato-de-comida-ao-diploma/" target="_blank" rel="noopener">Eleições 2026: do prato de comida ao diploma</a></h3>
+<p class="src">Agência Pública</p>
+<p class="why">Raphaela Ribeiro escreve em primeira pessoa sobre o que está em jogo para quem saiu da insegurança alimentar e chegou à universidade graças a políticas públicas, e o medo de perder isso. É um ensaio sobre mobilidade social, não sobre candidatos, e por isso cabe nas ciências sociais.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g22" data-title="Trumponaro: como um governo de Flávio pode imitar a presidência de Trump no Brasil?" data-url="https://apublica.org/2026/10/trumponaro-como-um-governo-de-flavio-pode-imitar-a-presidencia-de-trump-no-brasil/" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G22</span></div>
+<h3><a href="https://apublica.org/2026/10/trumponaro-como-um-governo-de-flavio-pode-imitar-a-presidencia-de-trump-no-brasil/" target="_blank" rel="noopener">Trumponaro: como um governo de Flávio pode imitar a presidência de Trump no Brasil?</a></h3>
+<p class="src">Agência Pública (James Green)</p>
+<p class="why">O historiador James Green compara o segundo mandato de Trump, mais radical que o primeiro, com o que a família Bolsonaro poderia repetir no Brasil: ataques a instituições, imprensa e universidades. É uma análise comparada que ajuda a pensar o momento para além da disputa do domingo.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g19" data-title="O risco de uma nova ofensiva contra a imprensa sob Flávio" data-url="https://nexojornal.com.br/ensaio/2026/10/19/eleicoes-2026-flavio-bolsonaro-ameaca-imprensa" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G19</span></div>
+<h3><a href="https://nexojornal.com.br/ensaio/2026/10/19/eleicoes-2026-flavio-bolsonaro-ameaca-imprensa" target="_blank" rel="noopener">O risco de uma nova ofensiva contra a imprensa sob Flávio</a></h3>
+<p class="src">Nexo — Ensaio (achado via Parallel)</p>
+<p class="why">Um ensaio do Nexo sobre a relação dos governos de extrema direita com a imprensa e os sinais de que um governo Flávio pode retomar ataques e asfixia econômica de veículos. Vale como análise do ecossistema de informação, tema que atravessa seus interesses em mídia e tecnologia.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g18" data-title="Dívida pública: o problema está no custo dos juros" data-url="https://nexojornal.com.br/ensaio/2026/10/16/divida-brasil-banco-central-selic-juros-no-brasil-governos" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G18</span></div>
+<h3><a href="https://nexojornal.com.br/ensaio/2026/10/16/divida-brasil-banco-central-selic-juros-no-brasil-governos" target="_blank" rel="noopener">Dívida pública: o problema está no custo dos juros</a></h3>
+<p class="src">Nexo — Ensaio (achado via Parallel)</p>
+<p class="why">Contra o senso comum de que o Brasil gasta demais, o ensaio argumenta que o motor da dívida pública é o custo dos juros definido pela Selic, e não o tamanho do gasto primário. Traz números e comparações entre governos. Uma boa leitura de economia política para qualquer debate fiscal.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-s01" data-title="A bancada feminina da Câmara revela uma assimetria ideológica" data-url="https://nexojornal.com.br/ensaio/2026/10/17/mulheres-na-camara-dos-deputados-congresso-desigualdade" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">S01</span></div>
+<h3><a href="https://nexojornal.com.br/ensaio/2026/10/17/mulheres-na-camara-dos-deputados-congresso-desigualdade" target="_blank" rel="noopener">A bancada feminina da Câmara revela uma assimetria ideológica</a></h3>
+<p class="src">Nexo — Ensaio (Teresa Sacchet, achado via Parallel)</p>
+<p class="why">Teresa Sacchet cruza gênero e federações partidárias da nova Câmara e mostra que mulheres são quase 40% das bancadas de esquerda e bem menos na direita, enquanto a representação negra recua. Conclusão: o predomínio masculino sustenta a hegemonia da direita no Congresso. Ciência política com dados claros.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n48" data-title="Europe Is Finally Getting Tough on China. Now Comes the Hard Part." data-url="https://foreignpolicy.com/2026/10/19/europe-china-france-germany-trade-economy/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N48</span></div>
+<h3><a href="https://foreignpolicy.com/2026/10/19/europe-china-france-germany-trade-economy/" target="_blank" rel="noopener">Europe Is Finally Getting Tough on China. Now Comes the Hard Part.</a></h3>
+<p class="src">Foreign Policy (via Semafor)</p>
+<p class="why">A Europa finalmente endurece com a China no comércio, mas França e Alemanha divergem sobre quem paga a conta, sobretudo na indústria automotiva. A Foreign Policy explica por que a parte difícil começa agora. Uma boa análise de economia política internacional para entender a reorganização das cadeias globais.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n34" data-title="Comércio negocia nova jornada após fim da escala 6x1, com primeiro grande teste no Natal" data-url="https://www1.folha.uol.com.br/mercado/2026/10/comercio-negocia-nova-jornada-apos-fim-da-escala-6x1-com-primeiro-grande-teste-no-natal.shtml" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N34</span></div>
+<h3><a href="https://www1.folha.uol.com.br/mercado/2026/10/comercio-negocia-nova-jornada-apos-fim-da-escala-6x1-com-primeiro-grande-teste-no-natal.shtml" target="_blank" rel="noopener">Comércio negocia nova jornada após fim da escala 6x1, com primeiro grande teste no Natal</a></h3>
+<p class="src">Folha (via Dicas do editor)</p>
+<p class="why">Com o fim da escala 6x1 aprovado no Senado, o varejo negocia novas jornadas e se prepara para o primeiro grande teste no Natal. A reportagem mostra o que muda para trabalhadores e empresas. É uma das maiores mudanças trabalhistas em décadas, vista pelo chão de loja.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n70" data-title="Justiça Eleitoral descumpre regra de transporte e indígenas e ribeirinhos ficam sem votar" data-url="https://sumauma.com/justica-eleitoral-descumpre-regra-de-transporte-e-indigenas-e-ribeirinhos-ficam-sem-votar/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 6 min</span><span class="b">N70</span></div>
+<h3><a href="https://sumauma.com/justica-eleitoral-descumpre-regra-de-transporte-e-indigenas-e-ribeirinhos-ficam-sem-votar/" target="_blank" rel="noopener">Justiça Eleitoral descumpre regra de transporte e indígenas e ribeirinhos ficam sem votar</a></h3>
+<p class="src">Sumaúma (via Outra Media)</p>
+<p class="why">A Sumaúma mostra que o descumprimento das regras de transporte fluvial e terrestre deixou mais de 70% das terras indígenas sem seções eleitorais acessíveis, inflando a abstenção de populações vulneráveis. É um tema de cidadania e desigualdade territorial que raramente chega à cobertura nacional. Entidades e o Ministério Público já cobram uma solução para o domingo.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n46" data-title="Exclusive: Saudi postpones FII in person after Wall Street lobbying" data-url="https://www.semafor.com/article/10/19/2026/saudi-to-decide-on-postponing-fii-after-wall-street-lobbying" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 4 min</span><span class="b">N46</span></div>
+<h3><a href="https://www.semafor.com/article/10/19/2026/saudi-to-decide-on-postponing-fii-after-wall-street-lobbying" target="_blank" rel="noopener">Exclusive: Saudi postpones FII in person after Wall Street lobbying</a></h3>
+<p class="src">Semafor</p>
+<p class="why">A Arábia Saudita adiou a edição presencial do FII, o &#x27;Davos do deserto&#x27;, depois de bancos de Wall Street relatarem preocupações de segurança em meio às tensões regionais. É um termômetro de como a geopolítica do Golfo afeta o fluxo de capital, inclusive o que financia a IA.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n30" data-title="Governo Lula preparou documentos para reajustar Bolsa Família na véspera do anúncio e sob sigilo" data-url="https://www1.folha.uol.com.br/mercado/2026/10/governo-lula-preparou-documentos-para-reajustar-bolsa-familia-na-vespera-do-anuncio-e-sob-sigilo.shtml" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Ciências sociais">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N30</span></div>
+<h3><a href="https://www1.folha.uol.com.br/mercado/2026/10/governo-lula-preparou-documentos-para-reajustar-bolsa-familia-na-vespera-do-anuncio-e-sob-sigilo.shtml" target="_blank" rel="noopener">Governo Lula preparou documentos para reajustar Bolsa Família na véspera do anúncio e sob sigilo</a></h3>
+<p class="src">Folha (via Dicas do editor)</p>
+<p class="why">Idiana Tomazelli revela que o reajuste de 15% do Bolsa Família foi preparado às pressas e sob sigilo, em plena campanha, o que levanta dúvidas sobre o uso da máquina. Combine com o texto do Motoryn sobre o governo anterior para ver que os dois lados usam a mesma ferramenta.</p>
 </article>
 </div></section>
-<section class="grp"><h2><span>Produto e produtividade</span><span class="gc">3</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n06" data-title="There is no magic solution: on apps, habits and personal infrastructure" data-url="https://capacities.substack.com/p/there-is-no-magic-solution-on-apps" data-sec="Das suas newsletters" data-typ="long read" data-tema="Produto e produtividade">
+<section class="grp" id="t-fora-da-bolha"><h2><span>🫧 Fora da bolha</span><span class="gc">6</span></h2><div class="list">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n73" data-title="Moonmilk: the most mysterious substance of prehistoric caves" data-url="https://mariacj.substack.com/p/moonmilk-the-most-myterious-substance" data-sec="Das suas newsletters" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b L">long read</span><span class="b">⏱ 7 min</span><span class="b">N06</span></div>
-<h3><a href="https://capacities.substack.com/p/there-is-no-magic-solution-on-apps" target="_blank" rel="noopener">There is no magic solution: on apps, habits and personal infrastructure</a></h3>
-<p class="src">Capacities</p>
-<p class="why">Por que adotar um app novo exige tempo para aprender a ferramenta e para encaixá-la no que você já usa.</p>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 10 min</span><span class="b">N73</span></div>
+<h3><a href="https://mariacj.substack.com/p/moonmilk-the-most-myterious-substance" target="_blank" rel="noopener">Moonmilk: the most mysterious substance of prehistoric caves</a></h3>
+<p class="src">Maria CJ</p>
+<p class="why">Um rio branco e cremoso dentro de uma caverna basca levou cientistas a estudar o &#x27;moonmilk&#x27;, depósito mineral descrito desde 1555, ligado a bactérias e usado na pré-história. É uma história de ciência curiosa e bem contada, sem nenhuma relação com IA. Exatamente o tipo de desvio que faz bem.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n14" data-title="Por que sua empresa fica lenta quando cresce — Vitor Olivier, da Decade" data-url="https://www.productgurus.com.br/p/por-que-sua-empresa-fica-lenta-quando" data-sec="Das suas newsletters" data-typ="análise" data-tema="Produto e produtividade">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-f01" data-title="How Do Fungi Keep the Planet Healthy?" data-url="https://www.quantamagazine.org/how-do-fungi-keep-the-planet-healthy-20261015/" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">N14</span></div>
-<h3><a href="https://www.productgurus.com.br/p/por-que-sua-empresa-fica-lenta-quando" target="_blank" rel="noopener">Por que sua empresa fica lenta quando cresce — Vitor Olivier, da Decade</a></h3>
-<p class="src">Product Gurus</p>
-<p class="why">Ex-Nubank, Vitor Olivier fala de escala, cultura de produto e onde a IA gera valor nos serviços financeiros.</p>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 25 min</span><span class="b">F01</span></div>
+<h3><a href="https://www.quantamagazine.org/how-do-fungi-keep-the-planet-healthy-20261015/" target="_blank" rel="noopener">How Do Fungi Keep the Planet Healthy?</a></h3>
+<p class="src">Quanta Magazine (achado via Parallel)</p>
+<p class="why">Steven Strogatz e Janna Levin conversam com a bióloga Toby Kiers sobre as redes de fungos no solo, que negociam nutrientes com as plantas, mantêm carbono enterrado e chegam a &#x27;buscar preço melhor&#x27; sem ter cérebro. É ciência que muda a forma de ver um jardim, e uma metáfora deliciosa sobre mercados distribuídos.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n25" data-title="TBM 446: Halos, Vibes, Causality, and Identity" data-url="https://cutlefish.substack.com/p/tbm-446-halos-vibes-causality-and" data-sec="Das suas newsletters" data-typ="análise" data-tema="Produto e produtividade">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-f02" data-title="Sea Monkeys Show Scientists How To Rewrite a Rule of Turbulence" data-url="https://www.quantamagazine.org/sea-monkeys-show-scientists-how-to-rewrite-a-rule-of-turbulence-20261002/" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N25</span></div>
-<h3><a href="https://cutlefish.substack.com/p/tbm-446-halos-vibes-causality-and" target="_blank" rel="noopener">TBM 446: Halos, Vibes, Causality, and Identity</a></h3>
-<p class="src">The Beautiful Mess (John Cutler)</p>
-<p class="why">Cutler discute efeito halo, decisões baseadas em &#x27;vibe&#x27; e causalidade em times de produto.</p>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">F02</span></div>
+<h3><a href="https://www.quantamagazine.org/sea-monkeys-show-scientists-how-to-rewrite-a-rule-of-turbulence-20261002/" target="_blank" rel="noopener">Sea Monkeys Show Scientists How To Rewrite a Rule of Turbulence</a></h3>
+<p class="src">Quanta Magazine (achado via Parallel)</p>
+<p class="why">Enxames de artêmias, os &#x27;sea monkeys&#x27;, ajudaram físicos a mostrar que pequenas intervenções num fluxo podem inverter a direção em que a energia da turbulência viaja. Stephen Ornes explica um dos problemas mais teimosos da física com bichinhos de aquário. Ótimo para exercitar outra parte do cérebro.</p>
 </article>
-</div></section>
-<section class="grp"><h2><span>Clima e energia</span><span class="gc">2</span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n71" data-title="Ibama identifica uso do fogo para ampliar desmatamento e pastagens no Amazonas" data-url="https://amazoniareal.com.br/ibama-identifica-uso-do-fogo-para-ampliar-desmatamento-e-pastagens-no-amazonas/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Clima e energia">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-f03" data-title="Triplet of ‘Ghostly’ Galaxies Hints at What Dark Matter Is — and Isn&#x27;t" data-url="https://www.quantamagazine.org/triplet-of-ghostly-galaxies-hints-at-what-dark-matter-is-and-isnt-20261014/" data-sec="Garimpo" data-typ="análise" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 Das suas newsletters</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N71</span></div>
-<h3><a href="https://amazoniareal.com.br/ibama-identifica-uso-do-fogo-para-ampliar-desmatamento-e-pastagens-no-amazonas/" target="_blank" rel="noopener">Ibama identifica uso do fogo para ampliar desmatamento e pastagens no Amazonas</a></h3>
-<p class="src">Amazônia Real, via Outra Media</p>
-<p class="why">Um padrão de queimadas coordenadas que lembra o &#x27;Dia do Fogo&#x27; leva a PF e a Abin ao Amazonas.</p>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">F03</span></div>
+<h3><a href="https://www.quantamagazine.org/triplet-of-ghostly-galaxies-hints-at-what-dark-matter-is-and-isnt-20261014/" target="_blank" rel="noopener">Triplet of ‘Ghostly’ Galaxies Hints at What Dark Matter Is — and Isn&#x27;t</a></h3>
+<p class="src">Quanta Magazine (achado via Parallel)</p>
+<p class="why">Três galáxias praticamente sem matéria escura, provavelmente resultado de uma colisão antiga, viraram um problema sério para as teorias alternativas da gravidade, como a MOND. Robin George Andrews conta a disputa científica com clareza. É cosmologia acessível e um bom exemplo de como os dados decidem debates.</p>
 </article>
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g14" data-title="The fossil fuel comeback is here" data-url="https://www.theverge.com/science/1013954/fossil-fuel-power-infrastructure-data-centers-report" data-sec="Garimpo" data-typ="análise" data-tema="Clima e energia">
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-g14" data-title="The fossil fuel comeback is here" data-url="https://www.theverge.com/science/1013954/fossil-fuel-power-infrastructure-data-centers-report" data-sec="Garimpo" data-typ="análise" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 Garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G14</span></div>
+<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G14</span></div>
 <h3><a href="https://www.theverge.com/science/1013954/fossil-fuel-power-infrastructure-data-centers-report" target="_blank" rel="noopener">The fossil fuel comeback is here</a></h3>
 <p class="src">The Verge</p>
-<p class="why">A demanda dos datacenters e a política de Trump fazem os EUA construírem mais infraestrutura fóssil em uma década.</p>
+<p class="why">Os EUA estão construindo mais infraestrutura fóssil do que em qualquer momento da última década, puxados pela demanda dos datacenters e pela política de Trump, enquanto as renováveis desaceleram. A reportagem traz os números de um novo relatório. É o lado climático da conta da IA.</p>
+</article>
+<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-20-16h-n71" data-title="Ibama identifica uso do fogo para ampliar desmatamento e pastagens no Amazonas" data-url="https://amazoniareal.com.br/ibama-identifica-uso-do-fogo-para-ampliar-desmatamento-e-pastagens-no-amazonas/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Fora da bolha">
+<span class="box" aria-hidden="true"></span>
+<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">N71</span></div>
+<h3><a href="https://amazoniareal.com.br/ibama-identifica-uso-do-fogo-para-ampliar-desmatamento-e-pastagens-no-amazonas/" target="_blank" rel="noopener">Ibama identifica uso do fogo para ampliar desmatamento e pastagens no Amazonas</a></h3>
+<p class="src">Amazônia Real (via Outra Media)</p>
+<p class="why">Fiscais do Ibama flagraram queimadas deliberadas e coordenadas para transformar floresta em pasto no Amazonas, num padrão que lembra o &#x27;Dia do Fogo&#x27; de 2019. A Polícia Federal e a Abin entraram no caso. É jornalismo ambiental de quem está no território, e um tema que merece mais atenção.</p>
 </article>
 </div></section>
 <p id="empty" class="empty hide">Nenhum item com esses filtros.</p>
@@ -680,6 +667,8 @@ document.getElementById('copy').addEventListener('click',function(){var s=text()
 var sh=document.getElementById('share');
 if(navigator.share){sh.addEventListener('click',function(){navigator.share({title:'Curadoria '+E,text:text()}).catch(function(){})})}else{sh.remove()}
 document.getElementById('clear').addEventListener('click',function(){if(confirm('Limpar a seleção desta edição?')){sel={};save();paint()}});
+function navh(){document.documentElement.style.setProperty('--navh',document.getElementById('nav').offsetHeight+'px')}
+navh();window.addEventListener('resize',navh);
 paint();filt();
 })();
 </script>
