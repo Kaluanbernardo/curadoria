@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Curadoria de leituras · 2026-10-20-15h</title>
+<meta name="theme-color" content="#14121a">
+<style>
+:root{--bg:#14121a;--card:#1e1b27;--fg:#f2eff7;--mut:#a9a3b8;--acc:#1ed760;--line:#2e2a3a}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:env(safe-area-inset-top) 0 40px}
+header{padding:28px 18px 8px;max-width:760px;margin:0 auto}
+header h1{font-size:1.7rem;line-height:1.2;margin:0 0 6px;letter-spacing:-.02em}
+header p{color:var(--mut);margin:4px 0}
+.note{background:#2a2438;border:1px solid #3d3552;border-radius:12px;padding:12px 14px;margin:14px 0 4px;color:var(--fg)}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.stats span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:.82rem;color:var(--mut)}
+main{max-width:760px;margin:0 auto;padding:8px 12px;display:grid;gap:18px}
+@media(min-width:900px){main{max-width:1100px;grid-template-columns:1fr 1fr}header{max-width:1100px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.top{position:relative}.top img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:#000}
+.num{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.72);color:#fff;font-weight:800;border-radius:10px;padding:2px 10px;font-size:1.1rem}
+.body{padding:14px 16px 18px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.b{font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:999px;letter-spacing:.01em}
+.nac{background:#0f3d24;color:#7ef0a8}.int{background:#1f2c48;color:#9cc0ff}
+.acc{background:#3a2a10;color:#ffcf73}.desc{background:#3b1834;color:#ff9ad8}
+h2{font-size:1.3rem;line-height:1.25;margin:2px 0}
+.artist{margin:0 0 6px;font-weight:600}.date{color:var(--mut);font-weight:400}
+h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:14px 0 2px}
+.body p{margin:0}
+.src{margin-top:12px!important;font-size:.85rem;color:var(--mut)}.src a{color:#c9b8ff}
+.spot{display:block;text-align:center;margin-top:14px;background:var(--acc);color:#04120a;font-weight:800;text-decoration:none;padding:12px;border-radius:12px}
+.vote{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.v{font:inherit;font-weight:700;border-radius:12px;padding:12px 4px;border:1px solid var(--line);background:#26222f;color:var(--fg);cursor:pointer;min-height:48px}
+.v:active{transform:scale(.97)}.up:hover{border-color:#1ed760}.mid:hover{border-color:#ffcf73}.down:hover{border-color:#ff6b6b}
+.crit{list-style:none;padding:0;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:8px}.crit a{display:inline-block;background:#26222f;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:#c9b8ff;text-decoration:none;font-weight:600}.nota{color:var(--fg);font-weight:700}
+.pl{display:block;text-align:center;margin:12px 0 4px;background:var(--acc);color:#04120a;font-weight:800;text-decoration:none;padding:12px;border-radius:12px}
+.codes{margin-top:8px!important;font-size:.82rem;color:var(--mut);text-align:center}
+code{background:#0e0c13;border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--fg);user-select:all;-webkit-user-select:all}
+.ok{display:block;text-align:center;font-size:.85rem;color:#7ef0a8;margin-top:6px;min-height:1.2em}
+#toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(120%);background:#f2eff7;color:#14121a;font-weight:700;padding:10px 16px;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.4);transition:transform .25s;z-index:9;max-width:92vw;text-align:center}
+#toast.show{transform:translateX(-50%) translateY(0)}
+footer{max-width:760px;margin:24px auto 0;padding:0 18px;color:var(--mut);font-size:.82rem}
+.card h2 a{color:var(--fg);text-decoration:none}.card h2 a:hover{text-decoration:underline}
+.pick{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--mut);margin-bottom:10px;cursor:pointer}.pick input{width:22px;height:22px;accent-color:#1ed760}
+.pick .num{position:static;font-size:.8rem}.card.on{border-color:#1ed760}
+.nl{background:#0f3d24;color:#7ef0a8}.ga{background:#1f2c48;color:#9cc0ff}.lr{background:#3b1834;color:#ff9ad8}.an{background:#3a2a10;color:#ffcf73}.nw{background:#2e2a3a;color:#d6d0e4}.tm{background:#26222f;color:#a9a3b8}
+.bar{position:sticky;bottom:0;background:rgba(20,18,26,.95);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:center;align-items:center;z-index:5}
+.bar button{font:inherit;font-weight:800;border:0;border-radius:12px;padding:12px 18px;background:var(--acc);color:#04120a;cursor:pointer}
+#cnt{color:var(--mut);font-size:.9rem}#fb{display:none;max-width:760px;margin:12px auto;padding:0 12px}#fb textarea{width:100%;min-height:160px;background:#0e0c13;color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:10px;font:13px/1.4 monospace}</style></head><body>
+<header>
+ <h1>Curadoria de leituras · 20 out 2026</h1>
+ <p>Edição 1 · 2026-10-20-15h · newsletters das últimas ~24h + garimpo na web</p>
+ <div class="note">Marque o que quer ler e toque em <b>Copiar selecionados</b>. Depois cole a lista no chat; ela também serve de feedback para as próximas edições.</div>
+ <div class="stats"><span>19 leituras</span><span>11 das newsletters</span><span>8 garimpo</span><span>6 long reads</span><span>7 análises</span><span>6 notícias</span></div>
+</header>
+<main>
+<article class="card" id="n01">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n01" data-title="30 Months on the Exponential (in Charts)" data-url="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts"> <span class="num">N01</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b lr">long read</span><span class="b tm">⏱ ~12 min</span></div>
+  <h2><a href="https://www.oneusefulthing.org/p/30-months-on-the-exponential-in-charts" target="_blank" rel="noopener">30 Months on the Exponential (in Charts)</a></h2>
+  <p class="artist">One Useful Thing (Ethan Mollick) <span class="date">· IA – progresso e uso</span></p>
+  <h3>Por que ler</h3><p>Mollick usa o lançamento do novo livro para medir, em gráficos, quanto a IA avançou desde o GPT-4 — inclusive o momento em que o benchmark da METR deixou de dar conta. Bom panorama para recalibrar expectativas.</p>
+ </div>
+</article>
+<article class="card" id="n02">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n02" data-title="What&#x27;s the ROI of software engineers&#x27; spending on AI?" data-url="https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers"> <span class="num">N02</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b an">análise</span><span class="b tm">⏱ ~18 min</span></div>
+  <h2><a href="https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers" target="_blank" rel="noopener">What&#x27;s the ROI of software engineers&#x27; spending on AI?</a></h2>
+  <p class="artist">The Pragmatic Engineer <span class="date">· IA – trabalho e engenharia</span></p>
+  <h3>Por que ler</h3><p>Dados de 27 empresas sobre quanto se gasta com agentes de IA por dev e o que isso fez com o volume de PRs. É um raro retrato com números de algo que quase todo mundo discute no chute.</p>
+ </div>
+</article>
+<article class="card" id="n03">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n03" data-title="Sundar Pichai: Google&#x27;s Frontier Imperative, Compute Scarcity Dilemmas" data-url="https://www.bigtechnology.com/p/sundar-pichai-googles-frontier-imperative"> <span class="num">N03</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b an">análise</span><span class="b tm">⏱ ~15 min</span></div>
+  <h2><a href="https://www.bigtechnology.com/p/sundar-pichai-googles-frontier-imperative" target="_blank" rel="noopener">Sundar Pichai: Google&#x27;s Frontier Imperative, Compute Scarcity Dilemmas</a></h2>
+  <p class="artist">Big Technology (Alex Kantrowitz) <span class="date">· IA – negócios e Big Tech</span></p>
+  <h3>Por que ler</h3><p>Entrevista longa com Pichai sobre o Gemini 4 Argon e o dilema de dividir chips entre a pesquisa de fronteira e a receita de nuvem. Ajuda a entender a disputa pelo topo da IA.</p>
+ </div>
+</article>
+<article class="card" id="n04">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n04" data-title="&#x27;Reverse Engineer Everything&#x27; Is the New Wild West of AI" data-url="https://www.404media.co/reverse-engineer-anything-is-the-new-wild-west-of-ai/"> <span class="num">N04</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b an">análise</span><span class="b tm">⏱ ~9 min</span></div>
+  <h2><a href="https://www.404media.co/reverse-engineer-anything-is-the-new-wild-west-of-ai/" target="_blank" rel="noopener">&#x27;Reverse Engineer Everything&#x27; Is the New Wild West of AI</a></h2>
+  <p class="artist">404 Media <span class="date">· Tecnologia, hacking e cultura digital</span></p>
+  <h3>Por que ler</h3><p>Jason Koebler sobre a moda de usar IA para descompilar e reescrever o software de TVs, porta-retratos e gadgets abandonados. Fica no meio do caminho entre o direito de consertar e a máquina de plágio.</p>
+ </div>
+</article>
+<article class="card" id="n05">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n05" data-title="Take My Toil, Leave Me My Struggle" data-url="https://newsletter.kentbeck.com/p/take-my-toil-leave-me-my-struggle"> <span class="num">N05</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b lr">long read</span><span class="b tm">⏱ ~8 min</span></div>
+  <h2><a href="https://newsletter.kentbeck.com/p/take-my-toil-leave-me-my-struggle" target="_blank" rel="noopener">Take My Toil, Leave Me My Struggle</a></h2>
+  <p class="artist">Tidy First? (Kent Beck) <span class="date">· IA – trabalho e engenharia</span></p>
+  <h3>Por que ler</h3><p>Ensaio curto e afiado: a IA deveria tirar de nós o trabalho braçal (toil), não o esforço que nos faz crescer (struggle). Um bom critério para decidir o que delegar.</p>
+ </div>
+</article>
+<article class="card" id="n06">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n06" data-title="There is no magic solution: on apps, habits and personal infrastructure" data-url="https://capacities.substack.com/p/there-is-no-magic-solution-on-apps"> <span class="num">N06</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b lr">long read</span><span class="b tm">⏱ ~7 min</span></div>
+  <h2><a href="https://capacities.substack.com/p/there-is-no-magic-solution-on-apps" target="_blank" rel="noopener">There is no magic solution: on apps, habits and personal infrastructure</a></h2>
+  <p class="artist">Capacities <span class="date">· Produtividade e ferramentas de pensamento</span></p>
+  <h3>Por que ler</h3><p>Reflexão sobre adotar apps novos olhando duas dimensões: aprender a ferramenta e encaixá-la no que você já usa. Útil para quem vive testando ferramentas de PKM.</p>
+ </div>
+</article>
+<article class="card" id="n07">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n07" data-title="Ask A Music Critic: Which Albums From 2016 Hold Up The Best?" data-url="https://stevenhyden.substack.com/p/ask-a-music-critic-which-albums-from"> <span class="num">N07</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b an">análise</span><span class="b tm">⏱ ~8 min</span></div>
+  <h2><a href="https://stevenhyden.substack.com/p/ask-a-music-critic-which-albums-from" target="_blank" rel="noopener">Ask A Music Critic: Which Albums From 2016 Hold Up The Best?</a></h2>
+  <p class="artist">Evil Speakers (Steven Hyden) <span class="date">· Música e crítica</span></p>
+  <h3>Por que ler</h3><p>Dez anos depois, Hyden revisita os discos de 2016 (Car Seat Headrest e companhia) e diz quais envelheceram bem. Crítica com memória e boas dicas para reouvir.</p>
+ </div>
+</article>
+<article class="card" id="n08">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n08" data-title="Cronologia de uma eleitora" data-url="https://imaginaso.substack.com/p/cronologia-de-uma-eleitora"> <span class="num">N08</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b lr">long read</span><span class="b tm">⏱ ~7 min</span></div>
+  <h2><a href="https://imaginaso.substack.com/p/cronologia-de-uma-eleitora" target="_blank" rel="noopener">Cronologia de uma eleitora</a></h2>
+  <p class="artist">Imaginaso <span class="date">· Política brasileira e eleições 2026</span></p>
+  <h3>Por que ler</h3><p>Crônica pessoal sobre crescer numa família política de Minas, dos santinhos de PMDB às greves. Um respiro humano no meio da reta final do 2º turno.</p>
+ </div>
+</article>
+<article class="card" id="n09">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n09" data-title="Sigilo, Meta e os votos na Amazônia" data-url="https://outramedia.substack.com/p/sigilo-meta-e-os-votos-na-amazonia"> <span class="num">N09</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b nw">notícia</span><span class="b tm">⏱ ~5 min</span></div>
+  <h2><a href="https://outramedia.substack.com/p/sigilo-meta-e-os-votos-na-amazonia" target="_blank" rel="noopener">Sigilo, Meta e os votos na Amazônia</a></h2>
+  <p class="artist">Outra Media <span class="date">· Política brasileira e eleições 2026</span></p>
+  <h3>Por que ler</h3><p>Resumo do dia: Lula abre os sigilos, a Meta responde ao TSE sobre equilíbrio algorítmico, queimadas coordenadas no Amazonas e indígenas sem acesso às urnas. Cada nota tem link para a reportagem original.</p>
+ </div>
+</article>
+<article class="card" id="n10">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n10" data-title="What&#x27;s behind the sell-off in AI neocloud stocks like CoreWeave and Nebius" data-url="https://www.cnbc.com/2026/10/15/whats-behind-the-sell-off-in-ai-neocloud-stocks-like-coreweave-and-nebius-.html"> <span class="num">N10</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b nw">notícia</span><span class="b tm">⏱ ~5 min</span></div>
+  <h2><a href="https://www.cnbc.com/2026/10/15/whats-behind-the-sell-off-in-ai-neocloud-stocks-like-coreweave-and-nebius-.html" target="_blank" rel="noopener">What&#x27;s behind the sell-off in AI neocloud stocks like CoreWeave and Nebius</a></h2>
+  <p class="artist">CNBC (via Benedict&#x27;s Newsletter nº 665) <span class="date">· IA – negócios e Big Tech</span></p>
+  <h3>Por que ler</h3><p>Benedict Evans destacou a reportagem: Wall Street começa a duvidar de financiar o capex de IA, e as neoclouds sentem primeiro. Contexto importante para a tese da bolha.</p>
+ </div>
+</article>
+<article class="card" id="n11">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-n11" data-title="Who is planting backdoors in Ledger crypto wallets?" data-url="https://www.zetter-zeroday.com/who-is-planting-backdoors-in-ledger-crypto-wallets/"> <span class="num">N11</span> Selecionar</label>
+  <div class="badges"><span class="b nl">📬 Das suas newsletters</span><span class="b nw">notícia</span><span class="b tm">⏱ ~8 min</span></div>
+  <h2><a href="https://www.zetter-zeroday.com/who-is-planting-backdoors-in-ledger-crypto-wallets/" target="_blank" rel="noopener">Who is planting backdoors in Ledger crypto wallets?</a></h2>
+  <p class="artist">Zero Day (Kim Zetter), via Benedict&#x27;s Newsletter <span class="date">· Segurança e cibercrime</span></p>
+  <h3>Por que ler</h3><p>Carteiras Ledger adulteradas com chip espião e SIM voltaram ao canal de revenda e permitiram roubar mais de US$ 100 milhões. Apuração de primeira sobre ataque à cadeia de suprimentos.</p>
+ </div>
+</article>
+<article class="card" id="g01">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g01" data-title="“We were looking at it wrong”: The explosive claim that&#x27;s upended the AI world" data-url="https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/"> <span class="num">G01</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b an">análise</span><span class="b tm">⏱ ~12 min</span></div>
+  <h2><a href="https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/" target="_blank" rel="noopener">“We were looking at it wrong”: The explosive claim that&#x27;s upended the AI world</a></h2>
+  <p class="artist">MIT Technology Review <span class="date">· IA – segurança e interpretabilidade</span></p>
+  <h3>Por que ler</h3><p>Entrevista com Nick Cammarata sobre o post viral de 26 mil palavras que diz que redes neurais seriam bem mais interpretáveis do que se pensava, com o contraponto de céticos de Stanford.</p>
+ </div>
+</article>
+<article class="card" id="g02">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g02" data-title="Do You Trust Apple?" data-url="https://stratechery.com/2026/do-you-trust-apple/"> <span class="num">G02</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b an">análise</span><span class="b tm">⏱ ~14 min</span></div>
+  <h2><a href="https://stratechery.com/2026/do-you-trust-apple/" target="_blank" rel="noopener">Do You Trust Apple?</a></h2>
+  <p class="artist">Stratechery (Ben Thompson) <span class="date">· IA – negócios e Big Tech</span></p>
+  <h3>Por que ler</h3><p>Thompson pergunta se a Siri com IA justifica se prender ainda mais ao ecossistema Apple, o que dialoga com o HomeView comentado por Evans.</p>
+ </div>
+</article>
+<article class="card" id="g03">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g03" data-title="What recursive self-improvement looks like inside an AI lab" data-url="https://aiendgame.com/p/what-rsi-looks-like"> <span class="num">G03</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b lr">long read</span><span class="b tm">⏱ ~20 min</span></div>
+  <h2><a href="https://aiendgame.com/p/what-rsi-looks-like" target="_blank" rel="noopener">What recursive self-improvement looks like inside an AI lab</a></h2>
+  <p class="artist">The Endgame (Jeremie e Edouard Harris) <span class="date">· IA – segurança e interpretabilidade</span></p>
+  <h3>Por que ler</h3><p>Um retrato concreto de como os laboratórios planejam automatizar a própria pesquisa de IA. Leitura densa e especulativa, que complementa bem o texto do Mollick.</p>
+ </div>
+</article>
+<article class="card" id="g04">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g04" data-title="Flávio na frente por 2 pontos: o que as 13 pesquisas dizem e onde o 2º turno se decide" data-url="https://e26.cog.ia.br/eleicoes/analises?materia=pesquisas-2o-turno-onde-se-decide"> <span class="num">G04</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b an">análise</span><span class="b tm">⏱ ~10 min</span></div>
+  <h2><a href="https://e26.cog.ia.br/eleicoes/analises?materia=pesquisas-2o-turno-onde-se-decide" target="_blank" rel="noopener">Flávio na frente por 2 pontos: o que as 13 pesquisas dizem e onde o 2º turno se decide</a></h2>
+  <p class="artist">Análises E26 <span class="date">· Política brasileira e eleições 2026</span></p>
+  <h3>Por que ler</h3><p>Consolida as 13 pesquisas de 2º turno e mostra onde a eleição de domingo se decide (Nordeste, comparecimento, eleitores de Cury). Vale mais do que ler cada pesquisa solta.</p>
+ </div>
+</article>
+<article class="card" id="g05">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g05" data-title="Too Much of a Good Thing?" data-url="https://www.soundstagesimplifi.com/index.php/feature-articles/317-too-much-of-a-good-thing"> <span class="num">G05</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b lr">long read</span><span class="b tm">⏱ ~10 min</span></div>
+  <h2><a href="https://www.soundstagesimplifi.com/index.php/feature-articles/317-too-much-of-a-good-thing" target="_blank" rel="noopener">Too Much of a Good Thing?</a></h2>
+  <p class="artist">SoundStage! Simplifi <span class="date">· Música e crítica</span></p>
+  <h3>Por que ler</h3><p>Ensaio sobre o que a abundância do streaming faz com a nossa atenção: mil recomendações de algoritmo contra uma indicação feita numa mesa de jantar.</p>
+ </div>
+</article>
+<article class="card" id="g06">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g06" data-title="U.S. bans DeepSeek from government agency systems" data-url="https://www.cnbc.com/2026/10/20/us-deepseek-federal-agency-ban.html"> <span class="num">G06</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b nw">notícia</span><span class="b tm">⏱ ~4 min</span></div>
+  <h2><a href="https://www.cnbc.com/2026/10/20/us-deepseek-federal-agency-ban.html" target="_blank" rel="noopener">U.S. bans DeepSeek from government agency systems</a></h2>
+  <p class="artist">CNBC <span class="date">· IA – regulação e geopolítica</span></p>
+  <h3>Por que ler</h3><p>Os EUA proíbem a DeepSeek nas agências federais, inclusive em serviços de terceiros construídos sobre os modelos dela. É o próximo passo da guerra fria da IA.</p>
+ </div>
+</article>
+<article class="card" id="g07">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g07" data-title="Draft bill tied to Anthropic would let courts halt AI models for 45 days" data-url="https://ppc.land/draft-bill-tied-to-anthropic-would-let-courts-halt-ai-models-for-45-days/"> <span class="num">G07</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b nw">notícia</span><span class="b tm">⏱ ~16 min</span></div>
+  <h2><a href="https://ppc.land/draft-bill-tied-to-anthropic-would-let-courts-halt-ai-models-for-45-days/" target="_blank" rel="noopener">Draft bill tied to Anthropic would let courts halt AI models for 45 days</a></h2>
+  <p class="artist">PPC Land <span class="date">· IA – regulação e geopolítica</span></p>
+  <h3>Por que ler</h3><p>Destrincha o rascunho de lei federal atribuído à Anthropic: avaliadores externos, notificação de incidentes e um tribunal que pode suspender modelos. É cauteloso sobre a autoria.</p>
+ </div>
+</article>
+<article class="card" id="g08">
+ <div class="body">
+  <label class="pick"><input type="checkbox" class="sel" data-id="2026-10-20-15h-g08" data-title="UK finance watchdog wants firms to report AI failures and close calls" data-url="https://www.theregister.com/ai-and-ml/2026/10/20/uk-finance-watchdog-wants-firms-to-report-ai-failures-and-close-calls/5304078"> <span class="num">G08</span> Selecionar</label>
+  <div class="badges"><span class="b ga">🔎 Garimpo</span><span class="b nw">notícia</span><span class="b tm">⏱ ~4 min</span></div>
+  <h2><a href="https://www.theregister.com/ai-and-ml/2026/10/20/uk-finance-watchdog-wants-firms-to-report-ai-failures-and-close-calls/5304078" target="_blank" rel="noopener">UK finance watchdog wants firms to report AI failures and close calls</a></h2>
+  <p class="artist">The Register <span class="date">· IA – regulação e geopolítica</span></p>
+  <h3>Por que ler</h3><p>A FCA quer que o setor financeiro notifique falhas e quase-acidentes de agentes de IA. É um sinal de como a regulação de agentes deve chegar na prática.</p>
+ </div>
+</article>
+</main>
+<div id="fb"><p>Não deu para copiar automaticamente. Selecione e copie o texto abaixo:</p><textarea id="fbt" readonly></textarea></div>
+<footer>Resumos parafraseados das fontes. Tempos de leitura são estimativas. Os links de rastreamento das newsletters foram trocados pelas URLs originais.</footer>
+<div class="bar"><span id="cnt">0 selecionados</span><button id="copy" type="button">Copiar selecionados</button></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+var E="2026-10-20-15h",t=document.getElementById('toast'),h;
+function toast(m){t.textContent=m;t.classList.add('show');clearTimeout(h);h=setTimeout(function(){t.classList.remove('show')},2600)}
+function fallback(s){var a=document.createElement('textarea');a.value=s;a.setAttribute('readonly','');a.style.position='fixed';a.style.top='-1000px';a.style.opacity='0';document.body.appendChild(a);a.focus();a.select();try{a.setSelectionRange(0,s.length)}catch(e){}var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(a);return ok}
+function sel(){return Array.prototype.slice.call(document.querySelectorAll('.sel:checked'))}
+function upd(){var n=sel().length;document.getElementById('cnt').textContent=n+(n==1?' selecionado':' selecionados');document.querySelectorAll('.sel').forEach(function(c){c.closest('.card').classList.toggle('on',c.checked)})}
+document.addEventListener('change',function(e){if(e.target.classList.contains('sel'))upd()});
+function done(s,ok){if(ok){toast('Lista copiada, é só colar no chat')}else{toast('Não consegui copiar; o texto está logo abaixo');var f=document.getElementById('fb');f.style.display='block';var x=document.getElementById('fbt');x.value=s;x.focus();x.select();f.scrollIntoView({behavior:'smooth'})}}
+document.getElementById('copy').addEventListener('click',function(){var c=sel();if(!c.length){toast('Nenhum item selecionado');return}
+ var s='Curadoria '+E+' — selecionados:\n'+c.map(function(x){return x.dataset.id+' | '+x.dataset.title+' | '+x.dataset.url}).join('\n');
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s).then(function(){done(s,true)},function(){done(s,fallback(s))})}else{done(s,fallback(s))}
+});
+upd();
+})();
+</script>
+</body></html>
