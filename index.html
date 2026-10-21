@@ -1,7 +1,34 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Curadoria de leituras</title><meta name="color-scheme" content="light dark">
-<script>try{var m=localStorage.getItem("curadoria:theme");if(m=="light"||m=="dark")document.documentElement.dataset.theme=m}catch(e){}</script>
-<style>:root{color-scheme:light dark}body{font:18px/1.5 -apple-system,system-ui,sans-serif;max-width:640px;margin:0 auto;padding:28px 18px}a{color:inherit}
-.cta{display:block;text-align:center;background:#0f7b4f;color:#fff;font-weight:800;text-decoration:none;padding:16px;border-radius:14px;margin:18px 0}li{margin:8px 0}</style></head>
-<body><h1>Curadoria de leituras</h1><a class="cta" href="e/2026-10-21-06h.html">Abrir a edição mais recente (2026-10-21-06h) →</a>
-<h2>Edições</h2><ul><li><a href="e/2026-10-21-06h.html">21/10/2026 · 06h</a></li><li><a href="e/2026-10-20-16h.html">20/10/2026 · 16h</a></li><li><a href="e/2026-10-20-15h.html">20/10/2026 · 15h</a></li></ul></body></html>
+<title>Curadoria de leituras</title><meta name="color-scheme" content="light dark"><script>try{var m=localStorage.getItem("curadoria:theme");if(m=="light"||m=="dark")document.documentElement.dataset.theme=m;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<style>
+:root{--bg:#fbfaf7;--fg:#1b1a17;--mut:#5f5a52;--line:#e6e1d7;--acc:#b8400b;--card:#fff;color-scheme:light}
+:root[data-theme=dark]{--bg:#121214;--fg:#eeebe5;--mut:#a8a299;--line:#2c2c31;--acc:#ff8a57;--card:#1b1b1f;color-scheme:dark}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overflow-wrap:anywhere}
+.serif,h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+#thm{min-width:44px;min-height:44px;border:1px solid var(--line);background:var(--card);border-radius:22px;flex:0 0 auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 130px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:28px 0 8px}
+h1{font-size:2.1rem;line-height:1.1;margin:.1em 0 .2em}.ey{color:var(--acc);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.82rem;margin:0}
+.lede{color:var(--mut);margin:0}
+nav.idx{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:16px 0 8px;padding:6px 0}
+nav.idx a{display:flex;justify-content:space-between;min-height:44px;align-items:center;text-decoration:none;font-weight:600;border-bottom:1px dotted var(--line)}nav.idx a:last-child{border:0}nav.idx a span{color:var(--mut);font-weight:400}nav.idx a span b{color:var(--acc)}
+h2{font-size:1.6rem;margin:48px 0 4px;padding-top:8px;border-top:3px solid var(--fg);scroll-margin-top:12px}h2 small{font:500 .95rem/1 -apple-system,sans-serif;color:var(--mut);margin-left:8px}
+article{padding:22px 0;border-bottom:1px solid var(--line)}
+.meta{font-size:.9rem;color:var(--mut);margin:0 0 4px}.meta b{color:var(--acc);font-weight:700;text-transform:uppercase;font-size:.82rem;letter-spacing:.08em}
+article h3{font-size:1.4rem;line-height:1.25;margin:0 0 8px;font-weight:600}article h3 a{text-decoration:none;display:block;min-height:44px}article h3 a:hover{text-decoration:underline}
+p.r{margin:0 0 12px;font-size:18px;line-height:1.65;max-width:66ch}
+.act{display:flex;gap:10px}.act a,.act button{min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border-radius:22px;border:1px solid var(--line);background:var(--card);text-decoration:none;font-size:.95rem;font-weight:600}
+.act button[aria-pressed=true]{background:var(--acc);color:#fff;border-color:var(--acc)}article.on h3{color:var(--acc)}
+footer{color:var(--mut);font-size:.9rem;padding:32px 0}footer a{display:inline-flex;min-height:44px;align-items:center}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:8px;align-items:center;justify-content:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--fg);color:var(--bg);transform:translateY(110%);transition:transform .2s}
+.bar.on{transform:none}.bar span{flex:1;max-width:520px;font-weight:600}
+.bar button{min-height:44px;padding:0 18px;border-radius:22px;border:0;background:var(--acc);color:#fff;font-weight:700}.bar .gh{background:transparent;color:var(--bg);border:1px solid currentColor}
+#toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--acc);color:#fff;padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .2s;z-index:30;pointer-events:none}#toast.on{opacity:1}
+#fb{position:fixed;left:16px;right:16px;bottom:74px;z-index:25;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}#fb textarea{width:100%;height:140px;font-size:15px}
+@media(min-width:980px){.wrap{display:grid;grid-template-columns:240px minmax(0,700px);gap:64px;justify-content:center}header{grid-column:1/-1}aside{position:sticky;top:20px;align-self:start}nav.idx{margin-top:0}}
+.home{max-width:680px;margin:0 auto;padding:0 22px 60px}.cta{display:flex;min-height:56px;align-items:center;justify-content:center;background:var(--acc);color:#fff;font-weight:700;text-decoration:none;border-radius:28px;margin:20px 0 8px}ul{list-style:none;padding:0;margin:0}li a{display:flex;min-height:52px;align-items:center;border-bottom:1px solid var(--line);text-decoration:none;font-size:1.1rem}</style></head>
+<body><div class="home"><header><div><p class="ey">Curadoria de leituras</p><h1>Edições</h1></div><button id="thm" type="button"></button></header>
+<a class="cta" href="e/2026-10-21-06h.html">Abrir a mais recente (21/10, 06h) →</a>
+<h2>Todas</h2><ul><li><a href="e/2026-10-21-06h.html">21/10/2026 · 06h</a></li><li><a href="e/2026-10-20-16h.html">20/10/2026 · 16h</a></li><li><a href="e/2026-10-20-15h.html">20/10/2026 · 15h</a></li></ul></div><script>function setTh(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('curadoria:theme',t)}catch(e){}var b=document.getElementById('thm');b.textContent=t=='dark'?'☀':'☾';b.dataset.m=t;b.setAttribute('aria-label',t=='dark'?'Mudar para modo claro':'Mudar para modo escuro')}
+setTh(document.documentElement.dataset.theme||'light');document.getElementById('thm').onclick=function(){setTh(document.documentElement.dataset.theme=='dark'?'light':'dark')};</script></body></html>
