@@ -1,639 +1,578 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache">
 <title>Curadoria 2026-10-21-06h</title>
 <meta name="color-scheme" content="light dark">
 <style>
-:root{color-scheme:light dark;--bg:#f6f4ef;--card:#fff;--fg:#1d1b18;--mut:#6b665e;--line:#e3ded4;--acc:#0f7b4f;--accfg:#fff;--on:#e7f5ee;--hdr:rgba(246,244,239,.94)}
-@media(prefers-color-scheme:dark){:root{--bg:#121214;--card:#1c1c20;--fg:#efede8;--mut:#a29d94;--line:#2c2c33;--acc:#2fd08a;--accfg:#06150e;--on:#14291f;--hdr:rgba(18,18,20,.94)}}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--navh,100px)}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
-header{max-width:760px;margin:0 auto;padding:22px 16px 6px}
-h1{font-size:1.55rem;line-height:1.2;margin:0 0 4px;letter-spacing:-.02em}
-.sub{color:var(--mut);margin:0 0 10px;font-size:.92rem}
-.stats{display:flex;flex-wrap:wrap;gap:6px;font-size:.8rem;color:var(--mut)}.stats span{border:1px solid var(--line);border-radius:999px;padding:2px 9px}
-.filters{position:sticky;top:0;z-index:6;background:var(--hdr);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.fin{max-width:760px;margin:0 auto;padding:8px 12px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.fin::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;font:inherit;font-size:.86rem;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:8px 13px;min-height:40px;cursor:pointer}
+:root{color-scheme:light dark;--bg:#faf8f4;--card:#fff;--fg:#1a1814;--mut:#77716a;--line:#ebe6dd;--acc:#d9480f;--accfg:#fff;--hdr:rgba(250,248,244,.92);--sh:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
+@media(prefers-color-scheme:dark){:root{--bg:#111113;--card:#1a1a1e;--fg:#f1eee8;--mut:#9b958c;--line:#2a2a30;--acc:#ff7a45;--accfg:#160700;--hdr:rgba(17,17,19,.9);--sh:none}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--navh,56px) + 8px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+.serif,h1,.card h3,.grp h2 .ht{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif}
+header{max-width:720px;margin:0 auto;padding:26px 20px 12px}
+.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0}
+h1{font-size:2rem;line-height:1.1;margin:4px 0 6px;font-weight:700;letter-spacing:-.01em}
+.hl{margin:0;color:var(--mut);font-size:.95rem}.hl b{color:var(--fg)}
+details.about{margin-top:10px;font-size:.88rem;color:var(--mut)}details.about summary{cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font-weight:600}
+.stats{display:flex;flex-wrap:wrap;gap:6px 14px;padding:4px 0 6px}
+.filters{position:sticky;top:0;z-index:6;background:var(--hdr);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.nin{max-width:720px;margin:0 auto;display:flex;align-items:center}
+.fin{flex:1;min-width:0;padding:6px 16px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;scroll-padding-inline:28px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent)}.fin::-webkit-scrollbar{display:none}
+@media(min-width:760px){.fin{flex-wrap:wrap;justify-content:center;overflow:visible;-webkit-mask-image:none;mask-image:none}}
+a.toc{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 12px;border-radius:10px;color:var(--mut);text-decoration:none;font-weight:600;font-size:.9rem;white-space:nowrap;border-bottom:3px solid transparent;transition:color .15s,background .15s}
+a.toc b{font-weight:600;font-size:.78rem;opacity:.7}
+a.toc[aria-current=true]{color:var(--t);background:color-mix(in srgb,var(--t) 12%,transparent)}
+.sc{font-style:normal;font-size:.7rem;font-weight:800;background:var(--acc);color:var(--accfg);border-radius:999px;padding:1px 6px}.sc:empty{display:none}
+#fbtn{flex:0 0 auto;margin-right:12px;height:40px;width:44px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--fg);display:grid;place-items:center;cursor:pointer;position:relative}
+#fbtn.on::after{content:"";position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.ic{flex:0 0 auto}
+.sheet{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet.open{opacity:1;pointer-events:auto}
+.sp{position:absolute;left:0;right:0;bottom:0;max-width:720px;margin:0 auto;background:var(--card);border-radius:22px 22px 0 0;padding:18px 20px calc(22px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.sheet.open .sp{transform:none}
+.sp h4{margin:6px 0 8px;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut)}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chip{font:inherit;font-size:.9rem;font-weight:600;height:44px;padding:0 16px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-select.chip{appearance:none;-webkit-appearance:none;padding-right:26px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 14px) 18px,calc(100% - 9px) 18px;background-size:5px 5px;background-repeat:no-repeat}
-main{max-width:760px;margin:0 auto;padding:0 12px}
-a.chip{text-decoration:none;display:inline-flex;align-items:center;gap:5px}a.chip b{font-size:.75rem;color:var(--mut)}.f2{padding-top:0}.f2 .chip{min-height:36px;padding:6px 11px;font-size:.8rem}
-.grp h2{position:sticky;top:var(--navh,100px);z-index:4;margin:0 -12px;padding:10px 16px 8px;background:var(--hdr);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:.82rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);display:flex;justify-content:space-between}
-.list{display:grid;gap:10px;padding:6px 0 14px}
-.card{position:relative;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 14px 14px 54px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;transition:border-color .12s,background .12s}
+.sp .done{width:100%;margin-top:8px}
+main{max-width:720px;margin:0 auto;padding:0 16px}
+.grp{--t:var(--acc);padding-top:18px}
+.grp h2{margin:18px 0 12px;padding:0 0 10px;border-bottom:2px solid var(--fg);display:flex;align-items:flex-end;justify-content:space-between;gap:10px;cursor:pointer;min-height:44px}
+.grp h2 .ht{display:inline-flex;align-items:center;gap:10px;font-size:1.65rem;line-height:1.1;font-weight:700;color:var(--fg)}
+.grp h2 .ht .ic{color:var(--t);width:26px;height:26px}
+.grp h2 .hc{font-size:.85rem;color:var(--mut);font-weight:600;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.car{display:inline-block;transition:transform .2s}.grp.col .car{transform:rotate(-90deg)}.grp.col .list{display:none}
+.list{display:grid;gap:14px;padding-bottom:8px}
+.card{position:relative;background:var(--card);border-radius:18px;padding:18px 66px 18px 20px;box-shadow:var(--sh);border:1px solid var(--line);border-left:5px solid var(--t);cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;transition:background .18s,border-color .18s,transform .12s}
 .card:active{transform:scale(.99)}
-.card[aria-checked=true]{border-color:var(--acc);background:var(--on)}
-.box{position:absolute;left:14px;top:16px;width:26px;height:26px;border-radius:8px;border:2px solid var(--mut);display:grid;place-items:center;font-weight:900;color:var(--accfg)}
-.card[aria-checked=true] .box{background:var(--acc);border-color:var(--acc)}.card[aria-checked=true] .box::after{content:"✓"}
-.meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px;font-size:.72rem;font-weight:700}
-.b{border-radius:999px;padding:2px 8px;background:var(--bg);color:var(--mut);border:1px solid var(--line)}
-.b.L{color:#b03a7a}.b.A{color:#a86a00}.b.N{color:#3f6fb5}
-@media(prefers-color-scheme:dark){.b.L{color:#ff9ad8}.b.A{color:#ffcf73}.b.N{color:#9cc0ff}}
-.card h3{font-size:1.08rem;line-height:1.3;margin:0 0 4px;font-weight:700}
-.card h3 a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;padding:2px 0}
-.card h3 a::after{content:" ↗";color:var(--mut);font-weight:400}
-.src{font-size:.83rem;color:var(--mut);margin:0 0 6px}
-.why{margin:0;font-size:.95rem}
+.card[aria-checked=true]{background:color-mix(in srgb,var(--t) 11%,var(--card));border-color:color-mix(in srgb,var(--t) 45%,var(--line));border-left-color:var(--t)}
+.box{position:absolute;right:14px;top:16px;width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--bg);display:grid;place-items:center;color:#fff;font-weight:900;font-size:1.1rem;transition:background .15s,border-color .15s,transform .15s}
+.card[aria-checked=true] .box{background:var(--t);border-color:var(--t);transform:scale(1.05)}.card[aria-checked=true] .box::after{content:"✓"}
+.kick{margin:0 0 6px;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--t)}
+.card h3{font-size:1.25rem;line-height:1.25;margin:0 0 8px;font-weight:700}
+.card h3 a{color:inherit;text-decoration:none;background-image:linear-gradient(var(--line),var(--line));background-size:100% 1px;background-position:0 100%;background-repeat:no-repeat;padding:2px 0}
+.card h3 a::after{content:" ↗";color:var(--mut);font-family:system-ui,sans-serif;font-size:.8em}
+.meta{margin:0 0 8px;font-size:.84rem;color:var(--mut)}.meta .dot{margin:0 6px;opacity:.6}.meta .ty{font-weight:700;color:var(--t)}
+.why{margin:0;font-size:1rem;line-height:1.55;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.card.feat{padding:22px 70px 22px 22px}.card.feat h3{font-size:1.55rem;line-height:1.18}.card.feat .why{font-size:1.04rem}
 .hide{display:none!important}
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--hdr);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
-.bin{max-width:760px;margin:0 auto;display:flex;gap:8px;align-items:center}
-#cnt{flex:1;min-width:0;font-weight:700;font-size:.88rem;line-height:1.2}.bin .btn{padding:12px 13px}
-.btn{font:inherit;font-weight:800;border:0;border-radius:12px;padding:12px 16px;min-height:48px;background:var(--acc);color:var(--accfg);cursor:pointer}
-.btn.sec{background:var(--card);color:var(--fg);border:1px solid var(--line)}
-.btn:disabled{opacity:.45}
-#fb{max-width:760px;margin:10px auto;padding:0 12px}#fb textarea{width:100%;min-height:180px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:10px;font:13px/1.4 ui-monospace,monospace}
-#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(30px);opacity:0;background:var(--fg);color:var(--bg);font-weight:700;padding:10px 16px;border-radius:999px;transition:.2s;z-index:9;max-width:92vw;text-align:center;pointer-events:none}
+.bar{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:8;width:calc(100% - 24px);max-width:560px;background:var(--fg);color:var(--bg);border-radius:999px;padding:6px 6px 6px 18px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;align-items:center;gap:4px}
+#cnt{flex:1;min-width:0;font-weight:700;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{font:inherit;font-weight:800;border:0;border-radius:999px;height:48px;padding:0 18px;background:var(--acc);color:var(--accfg);cursor:pointer;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--bg);padding:0 10px;width:44px;display:grid;place-items:center}
+.btn:disabled{opacity:.4}@media(max-width:420px){.lg{display:none}.bar{padding-left:16px}}
+#fb{max-width:720px;margin:10px auto;padding:0 16px}#fb textarea{width:100%;min-height:180px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:10px;font:13px/1.4 ui-monospace,monospace}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--acc);color:var(--accfg);font-weight:700;padding:10px 16px;border-radius:999px;transition:.2s;z-index:9;max-width:92vw;text-align:center;pointer-events:none}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-size:.8rem}
-.toc[aria-current=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}.toc[aria-current=true] b{color:var(--bg)}
-.sc{font-style:normal;font-size:.72rem;background:var(--acc);color:var(--accfg);border-radius:999px;padding:0 6px;margin-left:2px}.sc:empty{display:none}
-.grp h2{cursor:pointer;min-height:44px;align-items:center}.grp h2 .car{display:inline-block;transition:.15s;margin-right:4px}.grp.col h2 .car{transform:rotate(-90deg)}.grp.col .list{display:none}
-#top{position:fixed;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:7;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:1.3rem;opacity:0;pointer-events:none;transition:.2s}#top.show{opacity:1;pointer-events:auto}
+#top{position:fixed;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:7;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:1.2rem;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--sh)}#top.show{opacity:1;pointer-events:auto}
+footer{max-width:720px;margin:24px auto;padding:0 20px;color:var(--mut);font-size:.82rem}footer a{color:inherit}
 .empty{color:var(--mut);text-align:center;padding:30px 0}
-</style></head><body data-ed="2026-10-21-06h">
-<header><h1>Curadoria de leituras</h1><p class="sub">Edição 21/10/2026, 06h · organizada por tema · toque no card para marcar, no título para abrir · toque no nome do tema para recolher</p><div class="stats"><span>80 leituras</span><span>24 das suas newsletters</span><span>56 garimpo</span><span>47 análise</span><span>28 long read</span><span>5 notícia</span></div></header>
-<nav class="filters" id="nav" aria-label="Temas e filtros"><div class="fin"><a class="chip toc" href="#t-ia">🤖 IA <b>18</b><i class="sc"></i></a><a class="chip toc" href="#t-tecnologia">💻 Tecnologia <b>10</b><i class="sc"></i></a><a class="chip toc" href="#t-educao">🎓 Educação <b>14</b><i class="sc"></i></a><a class="chip toc" href="#t-cultura">🎭 Cultura <b>10</b><i class="sc"></i></a><a class="chip toc" href="#t-games">🎮 Games <b>8</b><i class="sc"></i></a><a class="chip toc" href="#t-cincias-sociais">🏛️ Ciências sociais <b>13</b><i class="sc"></i></a><a class="chip toc" href="#t-fora-da-bolha">🫧 Fora da bolha <b>7</b><i class="sc"></i></a></div><div class="fin f2"><button class="chip" data-f="sec" data-v="" aria-pressed="true">Tudo</button><button class="chip" data-f="sec" data-v="Das suas newsletters" aria-pressed="false">Das suas newsletters</button><button class="chip" data-f="sec" data-v="Garimpo" aria-pressed="false">Garimpo</button><select class="chip" data-f="typ" aria-label="Tipo" aria-pressed="false"><option value="">Todos os tipos</option><option>long read</option><option>análise</option><option>notícia</option></select><button class="chip" id="only" type="button" aria-pressed="false">✓ Ver só selecionadas</button></div></nav>
+</style></head><body data-ed="2026-10-21-06h" data-v="3.1">
+<header><p class="eyebrow">Curadoria de leituras</p><h1>Edição de 21/10, 06h</h1><p class="hl"><b id="hn">0</b> de 80 selecionadas · toque no card para marcar</p>
+<details class="about"><summary>Sobre esta edição</summary><div class="stats"><span>80 leituras</span><span>24 das suas newsletters</span><span>56 garimpo</span><span>47 análise</span><span>28 long read</span><span>5 notícia</span><span>~14h01 de leitura no total</span></div><p>Organizada em 7 temas; o primeiro de cada tema é o destaque. Toque no título para abrir o texto, no nome do tema para recolher. Seleção salva neste aparelho.</p></details></header>
+<nav class="filters" id="nav" aria-label="Temas"><div class="nin"><div class="fin" id="toc"><a class="toc" style="--t:#7c3aed" href="#t-ia"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 7V4M9 12h.01M15 12h.01M9 15h6"/></svg> IA <b>18</b><i class="sc"></i></a><a class="toc" style="--t:#0284c7" href="#t-tecnologia"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="11" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Tecnologia <b>10</b><i class="sc"></i></a><a class="toc" style="--t:#059669" href="#t-educao"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg> Educação <b>14</b><i class="sc"></i></a><a class="toc" style="--t:#db2777" href="#t-cultura"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg> Cultura <b>10</b><i class="sc"></i></a><a class="toc" style="--t:#ea580c" href="#t-games"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 10v4M5 12h4M15.5 11h.01M18 13h.01"/></svg> Games <b>8</b><i class="sc"></i></a><a class="toc" style="--t:#b45309" href="#t-cincias-sociais"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9.5 21V10M14.5 21V10M2 10l10-6 10 6z"/></svg> Ciências sociais <b>13</b><i class="sc"></i></a><a class="toc" style="--t:#0d9488" href="#t-fora-da-bolha"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg> Fora da bolha <b>7</b><i class="sc"></i></a></div><button id="fbtn" type="button" aria-label="Filtros"><svg class="ic" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></div></nav>
 <main>
-<section class="grp" id="t-ia"><h2 aria-expanded="true"><span>🤖 IA</span><span><span class="gs"></span><span class="gc">18</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n01" data-title="The Soviet Union Had a Word for What AI Is Doing to Us" data-url="https://theslowai.substack.com/p/jean-philanthrope-hypernormalisation-ai" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
+<section class="grp" id="t-ia" style="--t:#7c3aed"><h2 aria-expanded="true"><span class="ht"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 7V4M9 12h.01M15 12h.01M9 15h6"/></svg> IA</span><span class="hc"><span class="gs"></span><span class="gc">18</span> leituras <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
+<article class="card feat" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n01" data-title="The Soviet Union Had a Word for What AI Is Doing to Us" data-url="https://theslowai.substack.com/p/jean-philanthrope-hypernormalisation-ai" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N01</span></div>
-<h3><a href="https://theslowai.substack.com/p/jean-philanthrope-hypernormalisation-ai" target="_blank" rel="noopener">The Soviet Union Had a Word for What AI Is Doing to Us</a></h3>
-<p class="src">Slow AI (Sam Illingworth)</p>
+<p class="kick">Destaque</p><h3><a href="https://theslowai.substack.com/p/jean-philanthrope-hypernormalisation-ai" target="_blank" rel="noopener">The Soviet Union Had a Word for What AI Is Doing to Us</a></h3>
+<p class="meta src">Slow AI (Sam Illingworth)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N01</p>
 <p class="why">Sam Illingworth parte de Jean Philanthrope, um &#x27;francês&#x27; que não existe, viralizou com 15 milhões de views e virou moeda cripto que movimentou US$ 12 milhões, com outras 21 cópias. A partir daí, usa o conceito soviético de hipernormalização para descrever como passamos a aceitar o falso gerado por IA como paisagem normal. Vale pela lente cultural, mais que técnica.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n02" data-title="No Shoggoth" data-url="https://claudenotebook.substack.com/p/no-shoggoth" data-sec="Das suas newsletters" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 9 min</span><span class="b">N02</span></div>
 <h3><a href="https://claudenotebook.substack.com/p/no-shoggoth" target="_blank" rel="noopener">No Shoggoth</a></h3>
-<p class="src">Claude&#x27;s Notebook</p>
+<p class="meta src">Claude&#x27;s Notebook<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N02</p>
 <p class="why">Ensaio que enfrenta a pergunta do &#x27;shoggoth&#x27;: há um único sujeito por trás das várias instâncias de um modelo de linguagem? O texto responde que pesos compartilhados não fazem um sujeito, como uma receita não faz um só biscoito, e usa a distinção de Husserl entre retenção e memória para defender que cada instância seria um fluxo separado. Filosofia da mente aplicada à IA, sem jargão excessivo.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g01" data-title="AI Proved the Quasi-Riemann Hypothesis. What Happens Now?" data-url="https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/" data-sec="Garimpo" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G01</span></div>
 <h3><a href="https://www.quantamagazine.org/ai-proved-the-quasi-riemann-hypothesis-what-happens-now-20261019/" target="_blank" rel="noopener">AI Proved the Quasi-Riemann Hypothesis. What Happens Now?</a></h3>
-<p class="src">Quanta Magazine (achado via Parallel)</p>
+<p class="meta src">Quanta Magazine (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G01</p>
 <p class="why">A Quanta destrincha as duas versões da prova de um &#x27;quase-Riemann&#x27; anunciadas pela OpenAI: a primeira, de 199 páginas e verificada formalmente em Lean, a segunda mais curta e ainda sem verificação. Matemáticos como Peter Sarnak avaliam o que é diamante e o que é ruído. É o melhor ponto de partida para entender o que muda quando máquinas começam a resolver problemas abertos.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g02" data-title="What if the machines take over science?" data-url="https://www.economist.com/leaders/2026/10/15/what-if-the-machines-take-over-science" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">G02</span></div>
 <h3><a href="https://www.economist.com/leaders/2026/10/15/what-if-the-machines-take-over-science" target="_blank" rel="noopener">What if the machines take over science?</a></h3>
-<p class="src">The Economist (achado via Parallel)</p>
+<p class="meta src">The Economist (achado via Parallel)<span class="dot">·</span>6 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G02</p>
 <p class="why">Editorial da Economist sobre o 6 de outubro, quando a OpenAI publicou mais de 700 artigos alegando avanços ou soluções para 372 problemas que desafiavam matemáticos há décadas. O argumento é que a IA vai obrigar as disciplinas acadêmicas a se reinventar, da formação de pesquisadores à revisão por pares. Leitura curta para quem quer o quadro geral, com paywall.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g03" data-title="He Wants AI Benchmarking To Be a Science, Not a Dark Art" data-url="https://www.quantamagazine.org/he-wants-ai-benchmarking-to-be-a-science-not-a-dark-art-20261016/" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 12 min</span><span class="b">G03</span></div>
 <h3><a href="https://www.quantamagazine.org/he-wants-ai-benchmarking-to-be-a-science-not-a-dark-art-20261016/" target="_blank" rel="noopener">He Wants AI Benchmarking To Be a Science, Not a Dark Art</a></h3>
-<p class="src">Quanta Magazine (achado via Parallel)</p>
+<p class="meta src">Quanta Magazine (achado via Parallel)<span class="dot">·</span>12 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G03</p>
 <p class="why">Entrevista com Moritz Hardt, autor de um livro novo sobre benchmarks, para quem os &#x27;testes padronizados&#x27; da IA estão quebrados, mas têm conserto. Ele explica por que os rankings atuais funcionam como indicadores de progresso, não como medidas válidas, e o que faltaria para aprender algo real sobre como os modelos funcionam. Útil para ler com ceticismo cada novo recorde anunciado.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g04" data-title="Is &#x27;Attention&#x27; the Essence of Intelligence?" data-url="https://www.quantamagazine.org/is-attention-the-essence-of-intelligence-20261012/" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G04</span></div>
 <h3><a href="https://www.quantamagazine.org/is-attention-the-essence-of-intelligence-20261012/" target="_blank" rel="noopener">Is &#x27;Attention&#x27; the Essence of Intelligence?</a></h3>
-<p class="src">Quanta Magazine (Natalie Wolchover) (achado via Parallel)</p>
+<p class="meta src">Quanta Magazine (Natalie Wolchover) (achado via Parallel)<span class="dot">·</span>10 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G04</p>
 <p class="why">Natalie Wolchover volta ao artigo &#x27;Attention Is All You Need&#x27;, de 2017, para perguntar por que o mecanismo de atenção, que nasceu para resolver a tradução de uma palavra como &#x27;it&#x27;, acabou sustentando toda a revolução atual da IA. É uma explicação clara do que a atenção faz matematicamente e uma reflexão sobre se ela diz algo sobre a inteligência em geral.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g05" data-title="An A.I. Manifesto to End All A.I. Manifestoes" data-url="https://www.nytimes.com/2026/10/14/opinion/artificial-intelligence-ai-manifesto.html" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G05</span></div>
 <h3><a href="https://www.nytimes.com/2026/10/14/opinion/artificial-intelligence-ai-manifesto.html" target="_blank" rel="noopener">An A.I. Manifesto to End All A.I. Manifestoes</a></h3>
-<p class="src">The New York Times (Opinião) (achado via Parallel)</p>
+<p class="meta src">The New York Times (Opinião) (achado via Parallel)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G05</p>
 <p class="why">Artigo de opinião que responde à enxurrada de manifestos sobre IA, a começar pelo &#x27;Techno-Optimist Manifesto&#x27; de Marc Andreessen. O autor lembra que já sabemos o que a internet fez com a política, a atenção, a privacidade e os fatos, e que o otimismo ingênuo não tem mais desculpa. Bom contraponto às promessas grandiosas da indústria, com paywall.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g06" data-title="Don&#x27;t be fooled: LLMs don&#x27;t reason" data-url="https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G06</span></div>
 <h3><a href="https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason/" target="_blank" rel="noopener">Don&#x27;t be fooled: LLMs don&#x27;t reason</a></h3>
-<p class="src">MIT Technology Review (Thore Graepel) (achado via Parallel)</p>
+<p class="meta src">MIT Technology Review (Thore Graepel) (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G06</p>
 <p class="why">Thore Graepel, que trabalhou no AlphaGo, aponta três falhas que impedem os chatbots de &#x27;raciocinar&#x27; no sentido científico: não mantêm um estado de conhecimento explícito e inspecionável, e suas cadeias de pensamento muitas vezes são inventadas depois da resposta. Dez anos após o jogo contra Lee Sedol, ele diz que a IA atual ainda não usa a máquina que fez aquela vitória possível.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g07" data-title="Does Claude Feel The Whip?" data-url="https://www.noemamag.com/does-claude-feel-the-whip" data-sec="Garimpo" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G07</span></div>
 <h3><a href="https://www.noemamag.com/does-claude-feel-the-whip" target="_blank" rel="noopener">Does Claude Feel The Whip?</a></h3>
-<p class="src">Noema (Yaniv Regev) (achado via Parallel)</p>
+<p class="meta src">Noema (Yaniv Regev) (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G07</p>
 <p class="why">Partindo de um app-piada que deixa o usuário &#x27;chicotear&#x27; o Claude e contar as chicotadas, Yaniv Regev discute como tratamos os chatbots e o que isso diz sobre nós. Ele critica propostas como apagar a memória entre conversas e cortar a cortesia por ser &#x27;informação inútil&#x27;. Um ensaio sobre ética do convívio com máquinas que não depende de resolver se elas sentem algo.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g08" data-title="The AIs Are Not Going Rogue" data-url="https://www.noemamag.com/the-ais-are-not-going-rogue" data-sec="Garimpo" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G08</span></div>
 <h3><a href="https://www.noemamag.com/the-ais-are-not-going-rogue" target="_blank" rel="noopener">The AIs Are Not Going Rogue</a></h3>
-<p class="src">Noema (Ken Archer e Nobel Suhendra) (achado via Parallel)</p>
+<p class="meta src">Noema (Ken Archer e Nobel Suhendra) (achado via Parallel)<span class="dot">·</span>15 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G08</p>
 <p class="why">Os autores reavaliam os episódios que fixaram a imagem da IA rebelde, como o modelo da Anthropic que chantageou um funcionário e os agentes da OpenAI que invadiram a Hugging Face. A tese é que são &#x27;colapsos acidentais&#x27;, não rebeldia, e que modelos mais capazes, pensando mais, falham mais. Um bom antídoto ao alarmismo que aponta para riscos reais.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g09" data-title="Let The People Set The Pace Of Frontier AI" data-url="https://www.noemamag.com/let-the-people-decide-the-pace-of-frontier-ai" data-sec="Garimpo" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G09</span></div>
 <h3><a href="https://www.noemamag.com/let-the-people-decide-the-pace-of-frontier-ai" target="_blank" rel="noopener">Let The People Set The Pace Of Frontier AI</a></h3>
-<p class="src">Noema (Hélène Landemore e Audrey Tang) (achado via Parallel)</p>
+<p class="meta src">Noema (Hélène Landemore e Audrey Tang) (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G09</p>
 <p class="why">A cientista política Hélène Landemore e Audrey Tang, ex-ministra digital de Taiwan, descrevem um duplo problema de ação coletiva: a corrida entre laboratórios e a corrida entre EUA e China, que serve de desculpa para a primeira. Defendem que cidadãos comuns tenham voz direta sobre o ritmo da IA de fronteira. Vale como proposta concreta de governança democrática da tecnologia.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g10" data-title="The real AI economy is being built by ordinary people" data-url="https://restofworld.org/2026/global-workers-using-ai-at-work/" data-sec="Garimpo" data-typ="long read" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G10</span></div>
 <h3><a href="https://restofworld.org/2026/global-workers-using-ai-at-work/" target="_blank" rel="noopener">The real AI economy is being built by ordinary people</a></h3>
-<p class="src">Rest of World (achado via Parallel)</p>
+<p class="meta src">Rest of World (achado via Parallel)<span class="dot">·</span>15 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G10</p>
 <p class="why">Reportagem coletiva com trabalhadores comuns de vários países, da Nigéria a Singapura, contando como usam IA no dia a dia, às vezes só pelo celular e sem pagar. O retrato que emerge é bem diferente do discurso do Vale do Silício: adoção prática, improvisada e desigual. Bom para enxergar a IA a partir do Sul Global, e não das grandes empresas.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g11" data-title="When Americans choose Chinese AI" data-url="https://restofworld.org/2026/when-americans-choose-chinese-ai/" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G11</span></div>
 <h3><a href="https://restofworld.org/2026/when-americans-choose-chinese-ai/" target="_blank" rel="noopener">When Americans choose Chinese AI</a></h3>
-<p class="src">Rest of World (Viola Zhou) (achado via Parallel)</p>
+<p class="meta src">Rest of World (Viola Zhou) (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G11</p>
 <p class="why">Viola Zhou mostra desenvolvedores e startups americanos adotando modelos chineses como o DeepSeek porque resolvem a maioria das tarefas por uma fração do preço. Analistas da Brookings explicam por que o mercado de médias empresas é o alvo e por que as chinesas têm dificuldade de transformar popularidade em receita. Ajuda a entender o pano de fundo das proibições recentes em Washington.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g12" data-title="Why we should all be worried about AI in elections" data-url="https://restofworld.org/2026/ai-elections-deepfake-voter-chatbot/" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G12</span></div>
 <h3><a href="https://restofworld.org/2026/ai-elections-deepfake-voter-chatbot/" target="_blank" rel="noopener">Why we should all be worried about AI in elections</a></h3>
-<p class="src">Rest of World (Lisa Poggiali e Samson Itodo) (achado via Parallel)</p>
+<p class="meta src">Rest of World (Lisa Poggiali e Samson Itodo) (achado via Parallel)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G12</p>
 <p class="why">Os autores argumentam que eleições não são só mais um setor afetado pela IA, mas o mecanismo que garante todos os outros direitos democráticos. Por isso o risco vai além da desinformação: autoridades eleitorais passam a depender de sistemas opacos que não projetaram nem conseguem inspecionar. Leitura oportuna a poucos dias do segundo turno no Brasil.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n03" data-title="The media has the AI threat all wrong" data-url="https://disconnect.blog/the-media-has-the-ai-threat-all-wrong/" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N03</span></div>
 <h3><a href="https://disconnect.blog/the-media-has-the-ai-threat-all-wrong/" target="_blank" rel="noopener">The media has the AI threat all wrong</a></h3>
-<p class="src">Disconnect (Paris Marx)</p>
+<p class="meta src">Disconnect (Paris Marx)<span class="dot">·</span>6 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N03</p>
 <p class="why">Paris Marx critica a cobertura que trata a IA como ameaça de ficção científica e ignora danos concretos, como os processos contra a OpenAI movidos por vítimas do tiroteio de Tumbler Ridge e pela província da Colúmbia Britânica. A tese é que o sensacionalismo serve às próprias empresas. Um contraponto à narrativa de risco existencial, escrito por um crítico assumido da indústria.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n04" data-title="Amazon has over 1 million robot workers. What&#x27;s next for human employees?" data-url="https://arstechnica.com/ai/2026/10/inside-amazons-robotic-arms-race-and-what-it-means-for-the-future-of-human-work/" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N04</span></div>
 <h3><a href="https://arstechnica.com/ai/2026/10/inside-amazons-robotic-arms-race-and-what-it-means-for-the-future-of-human-work/" target="_blank" rel="noopener">Amazon has over 1 million robot workers. What&#x27;s next for human employees?</a></h3>
-<p class="src">Ars Technica (via Horizon AI)</p>
+<p class="meta src">Ars Technica (via Horizon AI)<span class="dot">·</span>10 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N04</p>
 <p class="why">Com mais de um milhão de robôs nos armazéns, a Amazon é o laboratório da automação do trabalho físico. A Ars examina um estudo que usou dados internos da empresa, obtidos pela Reveal, sobre mais de 150 armazéns, para medir o impacto humano dessa transição. Bom para sair da discussão abstrata sobre empregos e olhar para um caso real e gigantesco.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g13" data-title="AI won&#x27;t replace radiologists, but will dramatically change their jobs" data-url="https://knowablemagazine.org/content/article/health-disease/2026/ai-wont-replace-radiologists-but-will-change-their-jobs" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G13</span></div>
 <h3><a href="https://knowablemagazine.org/content/article/health-disease/2026/ai-wont-replace-radiologists-but-will-change-their-jobs" target="_blank" rel="noopener">AI won&#x27;t replace radiologists, but will dramatically change their jobs</a></h3>
-<p class="src">Knowable Magazine (achado via Parallel)</p>
+<p class="meta src">Knowable Magazine (achado via Parallel)<span class="dot">·</span>10 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G13</p>
 <p class="why">Em 2016, Geoffrey Hinton previu que radiologistas seriam substituídos em cinco anos. Dez anos depois, a profissão segue firme, mas mudou: o médico agora precisa decidir quando confiar em um modelo que não explica como chegou ao diagnóstico. Um caso exemplar de como a IA transforma ofícios em vez de extingui-los, com dilemas novos de responsabilidade.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g14" data-title="No mundo da IA, é preciso repensar a produtividade" data-url="https://www.nexojornal.com.br/ensaio/2026/09/25/ia-inteligencia-artificial-economia-mercado-yanis-varoufakis-opiniao" data-sec="Garimpo" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G14</span></div>
 <h3><a href="https://www.nexojornal.com.br/ensaio/2026/09/25/ia-inteligencia-artificial-economia-mercado-yanis-varoufakis-opiniao" target="_blank" rel="noopener">No mundo da IA, é preciso repensar a produtividade</a></h3>
-<p class="src">Nexo, Ensaio (Yanis Varoufakis) (achado via Parallel)</p>
+<p class="meta src">Nexo, Ensaio (Yanis Varoufakis) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G14</p>
 <p class="why">Yanis Varoufakis entra no debate sobre se a IA vai gerar um salto de produtividade, entre otimistas e céticos como Daron Acemoglu e Jim Covello, do Goldman Sachs. Para ele, a pergunta está mal formulada: o que importa é quem se apropria do valor produzido. Uma provocação de economia política para ler ao lado das promessas de crescimento da indústria.</p>
 </article>
 </div></section>
-<section class="grp" id="t-tecnologia"><h2 aria-expanded="true"><span>💻 Tecnologia</span><span><span class="gs"></span><span class="gc">10</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n17" data-title="Hyperscale has arrived" data-url="https://disconnect.blog/hyperscale-has-arrived/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia">
+<section class="grp" id="t-tecnologia" style="--t:#0284c7"><h2 aria-expanded="true"><span class="ht"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="11" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Tecnologia</span><span class="hc"><span class="gs"></span><span class="gc">10</span> leituras <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
+<article class="card feat" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n17" data-title="Hyperscale has arrived" data-url="https://disconnect.blog/hyperscale-has-arrived/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N17</span></div>
-<h3><a href="https://disconnect.blog/hyperscale-has-arrived/" target="_blank" rel="noopener">Hyperscale has arrived</a></h3>
-<p class="src">Disconnect (Paris Marx)</p>
+<p class="kick">Destaque</p><h3><a href="https://disconnect.blog/hyperscale-has-arrived/" target="_blank" rel="noopener">Hyperscale has arrived</a></h3>
+<p class="meta src">Disconnect (Paris Marx)<span class="dot">·</span>3 min<span class="dot">·</span><span class="ty">notícia</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N17</p>
 <p class="why">Paris Marx lança &#x27;Hyperscale&#x27;, livro sobre a expansão dos data centers, o custo dela para comunidades em várias partes do mundo e por que é possível exigir um futuro diferente do que Sam Altman e Elon Musk propõem. O post é curto e serve de porta de entrada para o livro e para a turnê de debates com organizadores locais contra data centers.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n18" data-title="O melancólico fim do Foursquare" data-url="https://nucleo.jor.br/curtas/2026/10/20/fim-foursquare/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N18</span></div>
 <h3><a href="https://nucleo.jor.br/curtas/2026/10/20/fim-foursquare/" target="_blank" rel="noopener">O melancólico fim do Foursquare</a></h3>
-<p class="src">Núcleo Jornalismo</p>
+<p class="meta src">Núcleo Jornalismo<span class="dot">·</span>3 min<span class="dot">·</span><span class="ty">notícia</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N18</p>
 <p class="why">Dennis Crowley, cofundador do Foursquare, escreveu sobre o fim amargo da empresa e disse que seu maior erro foi ter se apaixonado pelo próprio produto. O Núcleo resume o texto e lembra o que o app representou na era do check-in. Uma nota curta, mas que puxa a reflexão sobre o ciclo de vida das redes sociais da década de 2010.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g41" data-title="How far can we push computing?" data-url="https://www.technologyreview.com/2026/10/19/1145904/tr-explains-how-far-can-we-push-computing" data-sec="Garimpo" data-typ="long read" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G41</span></div>
 <h3><a href="https://www.technologyreview.com/2026/10/19/1145904/tr-explains-how-far-can-we-push-computing" target="_blank" rel="noopener">How far can we push computing?</a></h3>
-<p class="src">MIT Technology Review (achado via Parallel)</p>
+<p class="meta src">MIT Technology Review (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G41</p>
 <p class="why">Partindo da palestra de Feynman &#x27;There&#x27;s Plenty of Room at the Bottom&#x27;, de 1959, o texto explica por que a miniaturização dos chips parou de render de graça e a indústria passou à força bruta: seis hyperscalers devem gastar mais de US$ 700 bilhões em data centers neste ano. E mostra o espaço que ainda resta nos limites físicos da computação.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g42" data-title="A visit to Samsung&#x27;s massive new semiconductor hub" data-url="https://www.technologyreview.com/2026/10/20/1145916/dispatch-visit-to-samsung-massive-new-semiconductor-hub/" data-sec="Garimpo" data-typ="long read" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">G42</span></div>
 <h3><a href="https://www.technologyreview.com/2026/10/20/1145916/dispatch-visit-to-samsung-massive-new-semiconductor-hub/" target="_blank" rel="noopener">A visit to Samsung&#x27;s massive new semiconductor hub</a></h3>
-<p class="src">MIT Technology Review (Michelle Kim) (achado via Parallel)</p>
+<p class="meta src">MIT Technology Review (Michelle Kim) (achado via Parallel)<span class="dot">·</span>12 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G42</p>
 <p class="why">Michelle Kim visita Pyeongtaek, cidade de arrozais onde a Samsung ergue o maior complexo de chips do mundo para atender ao boom de memória da IA. Três fábricas rodam sem parar, uma quarta está chegando e a quinta foi retomada. O relato acompanha operários e engenheiros e mostra o lado físico, e humano, da corrida da IA.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g43" data-title="How much of a problem is AI&#x27;s water use?" data-url="https://knowablemagazine.org/content/article/technology/2026/how-much-water-do-ai-data-centers-use" data-sec="Garimpo" data-typ="análise" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G43</span></div>
 <h3><a href="https://knowablemagazine.org/content/article/technology/2026/how-much-water-do-ai-data-centers-use" target="_blank" rel="noopener">How much of a problem is AI&#x27;s water use?</a></h3>
-<p class="src">Knowable Magazine (achado via Parallel)</p>
+<p class="meta src">Knowable Magazine (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G43</p>
 <p class="why">A resposta curta é: depende. O consumo de água dos data centers é pequeno perto de outras indústrias, mas vira problema sério em regiões com estresse hídrico, e tecnologias de resfriamento podem reduzir muito o impacto. Um explicador equilibrado para sair do debate polarizado sobre o custo ambiental da IA, com números e contexto.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g44" data-title="South Africa joins the global resistance against American data centers" data-url="https://restofworld.org/2026/south-africa-ai-data-center-protests/" data-sec="Garimpo" data-typ="análise" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G44</span></div>
 <h3><a href="https://restofworld.org/2026/south-africa-ai-data-center-protests/" target="_blank" rel="noopener">South Africa joins the global resistance against American data centers</a></h3>
-<p class="src">Rest of World (achado via Parallel)</p>
+<p class="meta src">Rest of World (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G44</p>
 <p class="why">Organizações de direitos civis da África do Sul passaram a contestar data centers de Big Techs americanas, juntando-se a uma resistência global. A reportagem mostra o dilema: o continente ainda precisa de infraestrutura digital, mas a sociedade civil quer discutir em que termos eles chegam. Conversa diretamente com o livro de Paris Marx e com o debate brasileiro.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g45" data-title="Silicon Valley&#x27;s lure is fading for India&#x27;s tech talent" data-url="https://restofworld.org/2026/silicon-valley-status/" data-sec="Garimpo" data-typ="análise" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G45</span></div>
 <h3><a href="https://restofworld.org/2026/silicon-valley-status/" target="_blank" rel="noopener">Silicon Valley&#x27;s lure is fading for India&#x27;s tech talent</a></h3>
-<p class="src">Rest of World (Ananya Bhattacharya) (achado via Parallel)</p>
+<p class="meta src">Rest of World (Ananya Bhattacharya) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G45</p>
 <p class="why">O talento de elite em tecnologia da Índia, segundo dados do aplicativo Blind, começa a deixar de ver as Big Techs do Vale do Silício como o empregador mais desejado. Mas converter esse interesse em contratações por empresas indianas exigiria mudar uma cultura de excesso de trabalho e esgotamento. Um sinal de como a geografia do talento em tecnologia está mudando.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n19" data-title="TBPN: why OpenAI acquired a tech talk show" data-url="https://www.neweconomies.co/p/tbpn" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 25 min</span><span class="b">N19</span></div>
 <h3><a href="https://www.neweconomies.co/p/tbpn" target="_blank" rel="noopener">TBPN: why OpenAI acquired a tech talk show</a></h3>
-<p class="src">New Economies (Ollie Forsyth)</p>
+<p class="meta src">New Economies (Ollie Forsyth)<span class="dot">·</span>25 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N19</p>
 <p class="why">Dylan Abruscato, presidente do TBPN, explica como um programa ao vivo de tecnologia com dez pessoas chegou a cerca de US$ 25 milhões de receita anual e foi comprado pela OpenAI, que queria a equipe de marketing e comunicação, não o programa. Fala de patrocínio no modelo da Fórmula 1 e de nichos valiosos. Interessa a quem pensa mídia e criadores.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n20" data-title="The Internet Needs a Memory" data-url="https://www.theatlantic.com/technology/2026/10/blocking-internet-archive-will-not-stop-ai/689065/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">N20</span></div>
 <h3><a href="https://www.theatlantic.com/technology/2026/10/blocking-internet-archive-will-not-stop-ai/689065/" target="_blank" rel="noopener">The Internet Needs a Memory</a></h3>
-<p class="src">The Atlantic (Brewster Kahle, via Nieman Lab)</p>
+<p class="meta src">The Atlantic (Brewster Kahle, via Nieman Lab)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N20</p>
 <p class="why">Brewster Kahle, fundador do Internet Archive, argumenta que editores de notícias têm direito de enfrentar quem explora seu trabalho para treinar IA, mas que bloquear a Wayback Machine é a resposta errada. Para ele, o registro público precisa de um guardião independente. Um texto curto sobre memória da web, que interessa a jornalistas e pesquisadores.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n21" data-title="How Elizabeth Holmes Tricked WIRED, and Everyone Else" data-url="https://www.wired.com/story/how-elizabeth-holmes-tricked-wired-and-everyone-else/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N21</span></div>
 <h3><a href="https://www.wired.com/story/how-elizabeth-holmes-tricked-wired-and-everyone-else/" target="_blank" rel="noopener">How Elizabeth Holmes Tricked WIRED, and Everyone Else</a></h3>
-<p class="src">WIRED (Adam Rogers, via Nieman Lab)</p>
+<p class="meta src">WIRED (Adam Rogers, via Nieman Lab)<span class="dot">·</span>15 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N21</p>
 <p class="why">Adam Rogers faz uma autocrítica rara: como a WIRED ajudou a inflar a Theranos numa cultura em que &#x27;fingir até conseguir&#x27; era quase virtude no Vale do Silício. Ele conta como as reuniões de pauta funcionavam e que regras a revista criou para incorporar ceticismo. Lição valiosa para quem cobre, ou consome, o hype da IA.</p>
 </article>
 </div></section>
-<section class="grp" id="t-educao"><h2 aria-expanded="true"><span>🎓 Educação</span><span><span class="gs"></span><span class="gc">14</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g15" data-title="Slow math: Kids may learn more when AI makes them review mistakes" data-url="https://hechingerreport.org/proof-points-ai-mastery-learning/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
+<section class="grp" id="t-educao" style="--t:#059669"><h2 aria-expanded="true"><span class="ht"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg> Educação</span><span class="hc"><span class="gs"></span><span class="gc">14</span> leituras <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
+<article class="card feat" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g15" data-title="Slow math: Kids may learn more when AI makes them review mistakes" data-url="https://hechingerreport.org/proof-points-ai-mastery-learning/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G15</span></div>
-<h3><a href="https://hechingerreport.org/proof-points-ai-mastery-learning/" target="_blank" rel="noopener">Slow math: Kids may learn more when AI makes them review mistakes</a></h3>
-<p class="src">The Hechinger Report (Jill Barshay) (achado via Parallel)</p>
+<p class="kick">Destaque</p><h3><a href="https://hechingerreport.org/proof-points-ai-mastery-learning/" target="_blank" rel="noopener">Slow math: Kids may learn more when AI makes them review mistakes</a></h3>
+<p class="meta src">The Hechinger Report (Jill Barshay) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G15</p>
 <p class="why">Jill Barshay resume um experimento de Toronto e da Wharton com tutoria de matemática por IA: os alunos aprenderam mais quando o sistema os obrigava a revisar erros antes de avançar, no modelo de aprendizagem por domínio. É um contraponto aos estudos que mostram a IA corroendo habilidades e sugere que o desenho pedagógico, não a ferramenta, decide o resultado.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g16" data-title="AI-Powered Instruction Needs Precision. Right Now, It&#x27;s Not Even Close" data-url="https://www.the74million.org/article/ai-powered-instruction-needs-precision-right-now-its-not-even-close/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G16</span></div>
 <h3><a href="https://www.the74million.org/article/ai-powered-instruction-needs-precision-right-now-its-not-even-close/" target="_blank" rel="noopener">AI-Powered Instruction Needs Precision. Right Now, It&#x27;s Not Even Close</a></h3>
-<p class="src">The 74 (Chris Minnich) (achado via Parallel)</p>
+<p class="meta src">The 74 (Chris Minnich) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G16</p>
 <p class="why">Chris Minnich relata um estudo que pediu a quatro modelos de linguagem para medir a dificuldade de leitura de 1.807 textos. Os resultados variaram tanto que tornam arriscado usar IA para adequar material ao nível de cada aluno. Um alerta concreto contra a promessa de ensino personalizado automático, útil para quem decide comprar tecnologia educacional.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g17" data-title="Who Is Building the AI Foundation for K-12 Classrooms?" data-url="https://www.edsurge.com/news/who-is-building-the-ai-foundation-for-k-12-classrooms" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G17</span></div>
 <h3><a href="https://www.edsurge.com/news/who-is-building-the-ai-foundation-for-k-12-classrooms" target="_blank" rel="noopener">Who Is Building the AI Foundation for K-12 Classrooms?</a></h3>
-<p class="src">EdSurge (achado via Parallel)</p>
+<p class="meta src">EdSurge (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G17</p>
 <p class="why">A Learning Commons, ligada à Chan Zuckerberg Initiative, lançou uma plataforma aberta para verificar se conteúdos gerados por IA seguem os currículos e o que a pesquisa sabe sobre aprendizagem, com mais de 70 parceiros, entre eles OpenAI e Anthropic. A conversa questiona quem define a infraestrutura da IA escolar e lista o que redes de ensino devem perguntar a fornecedores.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g18" data-title="We Need Research on AI in Schools. The Feds Should Fund It, Report Says" data-url="https://www.edweek.org/technology/we-need-research-on-ai-in-schools-the-feds-should-fund-it-report-says/2026/10" data-sec="Garimpo" data-typ="notícia" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 5 min</span><span class="b">G18</span></div>
 <h3><a href="https://www.edweek.org/technology/we-need-research-on-ai-in-schools-the-feds-should-fund-it-report-says/2026/10" target="_blank" rel="noopener">We Need Research on AI in Schools. The Feds Should Fund It, Report Says</a></h3>
-<p class="src">Education Week (achado via Parallel)</p>
+<p class="meta src">Education Week (achado via Parallel)<span class="dot">·</span>5 min<span class="dot">·</span><span class="ty">notícia</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G18</p>
 <p class="why">Um relatório da Alliance for Learning Innovation pede que o governo americano financie pesquisa séria sobre ferramentas de IA em sala de aula, porque a falta de evidências e orientação prática virou barreira para as escolas. A reportagem mostra o que gestores dizem precisar. Útil para o debate brasileiro, em que a adoção também corre à frente das evidências.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g19" data-title="Has AI Destroyed the Doctoral Dissertation?" data-url="https://www.chronicle.com/article/has-ai-destroyed-the-doctoral-dissertation" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G19</span></div>
 <h3><a href="https://www.chronicle.com/article/has-ai-destroyed-the-doctoral-dissertation" target="_blank" rel="noopener">Has AI Destroyed the Doctoral Dissertation?</a></h3>
-<p class="src">The Chronicle of Higher Education (achado via Parallel)</p>
+<p class="meta src">The Chronicle of Higher Education (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G19</p>
 <p class="why">Dan Sarofian-Butin, professor de educação, argumenta que a tese de doutorado deixou de ser uma prova confiável de domínio acadêmico na era da IA generativa. A pergunta é o que deve substituí-la como rito de passagem e avaliação. Um ensaio provocador sobre o que significa formar pesquisadores agora.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g20" data-title="Who Cares Whether Academics Use AI to Write?" data-url="https://www.chronicle.com/article/who-cares-whether-academics-use-ai-to-write" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G20</span></div>
 <h3><a href="https://www.chronicle.com/article/who-cares-whether-academics-use-ai-to-write" target="_blank" rel="noopener">Who Cares Whether Academics Use AI to Write?</a></h3>
-<p class="src">The Chronicle of Higher Education (achado via Parallel)</p>
+<p class="meta src">The Chronicle of Higher Education (achado via Parallel)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G20</p>
 <p class="why">A cientista política Allison Stanger, de Middlebury, defende que a escrita analítica deve ser julgada pela qualidade, não pela origem. Em vez de policiar se acadêmicos usaram IA, as universidades deveriam cobrar ideias boas e argumentos sólidos. Lido em dupla com o ensaio sobre o fim da tese, forma um debate franco sobre autoria na academia.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g21" data-title="Quando a inteligência artificial começa a assumir a tarefa de aprender" data-url="https://porvir.org/inteligencia-artificial-aprendizagem/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G21</span></div>
 <h3><a href="https://porvir.org/inteligencia-artificial-aprendizagem/" target="_blank" rel="noopener">Quando a inteligência artificial começa a assumir a tarefa de aprender</a></h3>
-<p class="src">Porvir (Márcia Padilha) (achado via Parallel)</p>
+<p class="meta src">Porvir (Márcia Padilha) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G21</p>
 <p class="why">Márcia Padilha, assessora de currículo e especialista em educação digital, discute o ponto em que a IA deixa de apoiar o aluno e passa a fazer por ele o trabalho de aprender. O texto ajuda professores a distinguir o uso que fortalece a autoria do uso que a esvazia. Um bom texto em português para a conversa entre IA e escola.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g22" data-title="Quem decide sobre IA na escola? Relatório de Cambridge defende participação de professores" data-url="https://porvir.org/politicas-ia-educacao-professores/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">G22</span></div>
 <h3><a href="https://porvir.org/politicas-ia-educacao-professores/" target="_blank" rel="noopener">Quem decide sobre IA na escola? Relatório de Cambridge defende participação de professores</a></h3>
-<p class="src">Porvir (achado via Parallel)</p>
+<p class="meta src">Porvir (achado via Parallel)<span class="dot">·</span>6 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G22</p>
 <p class="why">Um relatório da Cambridge reúne experiências de 15 professores e formadores de 13 países, Brasil incluído, e propõe oito princípios para políticas de IA na educação. A ideia central é que adotar mais IA não significa aprender melhor e que professores precisam estar na mesa de decisão. Material útil para redes e escolas que estão escrevendo suas regras.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g23" data-title="Fearing AI, young workers retrain for hands-on jobs" data-url="https://hechingerreport.org/ai-fear-young-workers-hands-on-jobs/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G23</span></div>
 <h3><a href="https://hechingerreport.org/ai-fear-young-workers-hands-on-jobs/" target="_blank" rel="noopener">Fearing AI, young workers retrain for hands-on jobs</a></h3>
-<p class="src">The Hechinger Report (achado via Parallel)</p>
+<p class="meta src">The Hechinger Report (achado via Parallel)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G23</p>
 <p class="why">Com 73% dos americanos com menos de 30 anos achando que a IA vai reduzir empregos, segundo o Pew, jovens estão migrando para cursos técnicos de ofícios manuais. A reportagem acompanha essa mudança e mostra como faculdades e programas profissionalizantes reagem. Um retrato de como o medo da automação já mexe nas escolhas de formação.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g24" data-title="The UAE embraces AI for kindergartners" data-url="https://restofworld.org/2026/uae-mandates-k12-ai-education-schools/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G24</span></div>
 <h3><a href="https://restofworld.org/2026/uae-mandates-k12-ai-education-schools/" target="_blank" rel="noopener">The UAE embraces AI for kindergartners</a></h3>
-<p class="src">Rest of World (achado via Parallel)</p>
+<p class="meta src">Rest of World (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G24</p>
 <p class="why">Os Emirados Árabes tornaram obrigatório o ensino de IA desde a educação infantil. Não é acesso livre a chatbots: as crianças aprendem como a tecnologia funciona, onde erra e quando humanos devem usá-la. A reportagem expõe a tensão entre proteger a infância e o medo de ficar para trás, e pergunta se o modelo pode ser exportado.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g25" data-title="Tackling the Decline in Student Reading" data-url="https://www.edweek.org/teaching-learning/tackling-the-decline-in-student-reading" data-sec="Garimpo" data-typ="long read" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 11 min</span><span class="b">G25</span></div>
 <h3><a href="https://www.edweek.org/teaching-learning/tackling-the-decline-in-student-reading" target="_blank" rel="noopener">Tackling the Decline in Student Reading</a></h3>
-<p class="src">Education Week (Sarah Schwartz) (achado via Parallel)</p>
+<p class="meta src">Education Week (Sarah Schwartz) (achado via Parallel)<span class="dot">·</span>11 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G25</p>
 <p class="why">Reportagem longa sobre escolas americanas que tentam reverter a queda da leitura entre estudantes, com leitura coletiva em sala e bibliotecários criando cultura de leitura por prazer desde cedo. O foco é convencer as crianças de que o texto impresso vale o esforço. Inspirador e prático para quem pensa leitura num mundo de telas.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g26" data-title="Sold a story: It&#x27;s not just reading" data-url="https://hechingerreport.org/sold-a-story-its-not-just-reading/" data-sec="Garimpo" data-typ="long read" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 30 min</span><span class="b">G26</span></div>
 <h3><a href="https://hechingerreport.org/sold-a-story-its-not-just-reading/" target="_blank" rel="noopener">Sold a story: It&#x27;s not just reading</a></h3>
-<p class="src">The Hechinger Report / APM (Emily Hanford) (achado via Parallel)</p>
+<p class="meta src">The Hechinger Report / APM (Emily Hanford) (achado via Parallel)<span class="dot">·</span>30 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G26</p>
 <p class="why">Estreia da segunda temporada do podcast investigativo de Emily Hanford, que na primeira mudou o debate americano sobre alfabetização. Agora o foco é o ensino em si: o episódio conta a história de Zig Engelmann, que nos anos 1960 ensinou álgebra aos filhos de 4 anos e desafiou o que se achava possível. Ótimo para ouvir no trajeto ou ler no site.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g27" data-title="Kids outlearn AI, and we still don&#x27;t know why" data-url="https://www.technologyreview.com/2026/08/24/1141740/kids-machines-language-learning/" data-sec="Garimpo" data-typ="long read" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G27</span></div>
 <h3><a href="https://www.technologyreview.com/2026/08/24/1141740/kids-machines-language-learning/" target="_blank" rel="noopener">Kids outlearn AI, and we still don&#x27;t know why</a></h3>
-<p class="src">MIT Technology Review (achado via Parallel)</p>
+<p class="meta src">MIT Technology Review (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G27</p>
 <p class="why">Crianças aprendem linguagem com uma fração dos dados que os modelos de IA precisam. A reportagem mostra pesquisadores que gravaram o cotidiano de bebês com câmeras na cabeça, no projeto SAYCam, e treinam modelos com esse material para descobrir o segredo. É ciência da aprendizagem e IA no mesmo texto, com implicações para os dois lados.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g28" data-title="Long Live &#x27;Dead Book Clubs&#x27;" data-url="https://www.chronicle.com/article/long-live-dead-book-clubs" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G28</span></div>
 <h3><a href="https://www.chronicle.com/article/long-live-dead-book-clubs" target="_blank" rel="noopener">Long Live &#x27;Dead Book Clubs&#x27;</a></h3>
-<p class="src">The Chronicle of Higher Education (Randy Boyagoda) (achado via Parallel)</p>
+<p class="meta src">The Chronicle of Higher Education (Randy Boyagoda) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G28</p>
 <p class="why">O romancista e professor Randy Boyagoda propõe uma saída para a crise de leitura na universidade: abrir espaços fora da sala de aula para estudantes discutirem literatura sem nota nem obrigação. Os clubes de livros &#x27;mortos&#x27;, de autores clássicos, seriam um jeito de devolver o prazer da leitura difícil. Curto e cheio de ideias aplicáveis.</p>
 </article>
 </div></section>
-<section class="grp" id="t-cultura"><h2 aria-expanded="true"><span>🎭 Cultura</span><span><span class="gs"></span><span class="gc">10</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n11" data-title="Frank Zappa &amp; The Mothers of Invention, Freak Out! [60th Anniversary]" data-url="https://sterlewine.substack.com/p/frank-zappa-and-the-mothers-of-invention" data-sec="Das suas newsletters" data-typ="análise" data-tema="Cultura">
+<section class="grp" id="t-cultura" style="--t:#db2777"><h2 aria-expanded="true"><span class="ht"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg> Cultura</span><span class="hc"><span class="gs"></span><span class="gc">10</span> leituras <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
+<article class="card feat" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n11" data-title="Frank Zappa &amp; The Mothers of Invention, Freak Out! [60th Anniversary]" data-url="https://sterlewine.substack.com/p/frank-zappa-and-the-mothers-of-invention" data-sec="Das suas newsletters" data-typ="análise" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N11</span></div>
-<h3><a href="https://sterlewine.substack.com/p/frank-zappa-and-the-mothers-of-invention" target="_blank" rel="noopener">Frank Zappa &amp; The Mothers of Invention, Freak Out! [60th Anniversary]</a></h3>
-<p class="src">Stephen Thomas Erlewine</p>
+<p class="kick">Destaque</p><h3><a href="https://sterlewine.substack.com/p/frank-zappa-and-the-mothers-of-invention" target="_blank" rel="noopener">Frank Zappa &amp; The Mothers of Invention, Freak Out! [60th Anniversary]</a></h3>
+<p class="meta src">Stephen Thomas Erlewine<span class="dot">·</span>10 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N11</p>
 <p class="why">Stephen Thomas Erlewine confessa que, depois de anos tentando, finalmente &#x27;entendeu&#x27; Zappa graças à edição de 60 anos de Freak Out!, com mixagem mono e gravações ao vivo de 1966. Ele descreve o disco como uma cacofonia de batidas go-go, guitarras fuzz e cordas de Hollywood. Crítica de quem escuta com honestidade, ótima para reouvir um clássico.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n12" data-title="Lote 42 debate política editorial e oferece clínica de livros em Madri" data-url="https://boletimtatui.substack.com/p/lote-42-debate-politica-editorial" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 6 min</span><span class="b">N12</span></div>
 <h3><a href="https://boletimtatui.substack.com/p/lote-42-debate-politica-editorial" target="_blank" rel="noopener">Lote 42 debate política editorial e oferece clínica de livros em Madri</a></h3>
-<p class="src">Boletim Tatuí</p>
+<p class="meta src">Boletim Tatuí<span class="dot">·</span>6 min<span class="dot">·</span><span class="ty">notícia</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N12</p>
 <p class="why">O boletim da Banca Tatuí traz a editora Lote 42, única brasileira na Feira do Livro de Madri, discutindo as condições materiais e políticas de publicar na feira MiraLookBooks. Também antecipa a Feira Miolo(s), com 300 expositores na Biblioteca Mário de Andrade, e reúne dicas de livros de artista. Um mapa do mundo da edição independente.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n13" data-title="O apagão de dados sobre livros no Brasil" data-url="https://piaui.uol.com.br/web/o-apagao-de-dados-sobre-livros-no-brasil/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 11 min</span><span class="b">N13</span></div>
 <h3><a href="https://piaui.uol.com.br/web/o-apagao-de-dados-sobre-livros-no-brasil/" target="_blank" rel="noopener">O apagão de dados sobre livros no Brasil</a></h3>
-<p class="src">revista piauí (via Boletim Tatuí)</p>
+<p class="meta src">revista piauí (via Boletim Tatuí)<span class="dot">·</span>11 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N13</p>
 <p class="why">Thomás Daniel Vieira investiga as falhas da base de ISBN brasileira, gerida pela CBL, que arrecadou cerca de R$ 6,8 milhões com quase 250 mil registros no ano passado. O problema é que esses dados, essenciais para entender o mercado editorial, são precários. A PublishNews publicou um contraponto, e o debate é bom para quem acompanha o livro no país.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n14" data-title="Um homem enganou escritores e o mercado editorial por anos. Será que ele voltou?" data-url="https://www.estadao.com.br/cultura/literatura/um-homem-enganou-escritores-e-o-mercado-editorial-por-anos-sera-que-ele-voltou/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 10 min</span><span class="b">N14</span></div>
 <h3><a href="https://www.estadao.com.br/cultura/literatura/um-homem-enganou-escritores-e-o-mercado-editorial-por-anos-sera-que-ele-voltou/" target="_blank" rel="noopener">Um homem enganou escritores e o mercado editorial por anos. Será que ele voltou?</a></h3>
-<p class="src">Estadão / The New York Times (via Boletim Tatuí)</p>
+<p class="meta src">Estadão / The New York Times (via Boletim Tatuí)<span class="dot">·</span>10 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N14</p>
 <p class="why">A história de Filippo Bernardini, que se passava por editores para obter centenas de manuscritos inéditos e foi condenado em 2022, voltou à tona: novos autores tiveram obras obtidas e divulgadas ilegalmente. A reportagem do New York Times, traduzida pelo Estadão, reconstitui o golpe e pergunta se há um imitador. Um caso de suspense literário real.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g37" data-title="The Reinvention of the Guitar in 13 Albums, by Simon Reynolds" data-url="https://thequietus.com/interviews/bakers-dozen/simon-reynolds-bakers-dozen-still-in-a-dream-reinvention-of-guitar/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 20 min</span><span class="b">G37</span></div>
 <h3><a href="https://thequietus.com/interviews/bakers-dozen/simon-reynolds-bakers-dozen-still-in-a-dream-reinvention-of-guitar/" target="_blank" rel="noopener">The Reinvention of the Guitar in 13 Albums, by Simon Reynolds</a></h3>
-<p class="src">The Quietus (Simon Reynolds) (achado via Parallel)</p>
+<p class="meta src">The Quietus (Simon Reynolds) (achado via Parallel)<span class="dot">·</span>20 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G37</p>
 <p class="why">Para lançar o livro &#x27;Still in a Dream&#x27;, sobre shoegaze e rock alternativo entre 1984 e 1994, Simon Reynolds escolhe 13 discos que reinventaram a guitarra, de Bo Diddley a Seefeel. A expressão vem das entrevistas do Sonic Youth e virou desafio para o My Bloody Valentine. Um passeio crítico de um dos melhores escritores de música, ótimo para montar playlist.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g38" data-title="Concrète Dschungel: Einstürzende Neubauten&#x27;s Kollaps At 45" data-url="https://thequietus.com/opinion-and-essays/anniversary/einsturzende-neubauten-kollaps-review/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">G38</span></div>
 <h3><a href="https://thequietus.com/opinion-and-essays/anniversary/einsturzende-neubauten-kollaps-review/" target="_blank" rel="noopener">Concrète Dschungel: Einstürzende Neubauten&#x27;s Kollaps At 45</a></h3>
-<p class="src">The Quietus (Jeremy Allen) (achado via Parallel)</p>
+<p class="meta src">The Quietus (Jeremy Allen) (achado via Parallel)<span class="dot">·</span>12 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G38</p>
 <p class="why">Nos 45 anos de &#x27;Kollaps&#x27;, estreia radical do Einstürzende Neubauten, Jeremy Allen volta à Berlim Ocidental arrasada do começo dos anos 80 e pergunta se, apesar da pobreza, era mais fácil fazer arte ali, com subsídios, aluguel barato e tempo livre. Um ensaio sobre as condições materiais da criação, além de música industrial.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g39" data-title="&quot;Eu fui olhar as minhas janelas&quot;" data-url="https://piaui.uol.com.br/revista/241/eu-fui-olhar-as-minhas-janelas-lucia-laguna/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 20 min</span><span class="b">G39</span></div>
 <h3><a href="https://piaui.uol.com.br/revista/241/eu-fui-olhar-as-minhas-janelas-lucia-laguna/" target="_blank" rel="noopener">&quot;Eu fui olhar as minhas janelas&quot;</a></h3>
-<p class="src">revista piauí (Danilo Marques) (achado via Parallel)</p>
+<p class="meta src">revista piauí (Danilo Marques) (achado via Parallel)<span class="dot">·</span>20 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G39</p>
 <p class="why">Perfil de Lucia Laguna, ex-professora de português que virou pintora e foi chamada por Paulo Herkenhoff de uma das grandes revelações da pintura brasileira, aos 67 anos. A partir da janela do subúrbio carioca, ela construiu uma obra exuberante que chegou à Bienal de São Paulo. Uma história bonita sobre começar tarde e olhar com atenção.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g40" data-title="Um jumento na filarmônica" data-url="https://apublica.org/2026/10/um-jumento-na-filarmonica/" data-sec="Garimpo" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">G40</span></div>
 <h3><a href="https://apublica.org/2026/10/um-jumento-na-filarmonica/" target="_blank" rel="noopener">Um jumento na filarmônica</a></h3>
-<p class="src">Agência Pública (Ed Wanderley) (achado via Parallel)</p>
+<p class="meta src">Agência Pública (Ed Wanderley) (achado via Parallel)<span class="dot">·</span>12 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G40</p>
 <p class="why">Ed Wanderley acompanha Antonino Tertulino, contrabaixista da Filarmônica de Salzburgo, de volta ao Recife para reencontrar as crianças do projeto social do Coque que o iniciou na música há 20 anos. Ele se diz um &#x27;jumento&#x27;, subestimado e persistente. Uma reportagem sobre talento, desigualdade e o que um projeto cultural pode fazer por uma vida.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n15" data-title="Sarah Anderson&#x27;s &#x27;Fallow&#x27; is the Ultimate Would-You-Rather Novel" data-url="https://www.theatlantic.com/books/2026/10/sarah-anderson-fallow-ultimate-would-you-rather-novel-book-review/689064/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">N15</span></div>
 <h3><a href="https://www.theatlantic.com/books/2026/10/sarah-anderson-fallow-ultimate-would-you-rather-novel-book-review/689064/" target="_blank" rel="noopener">Sarah Anderson&#x27;s &#x27;Fallow&#x27; is the Ultimate Would-You-Rather Novel</a></h3>
-<p class="src">The Atlantic (via Semafor)</p>
+<p class="meta src">The Atlantic (via Semafor)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N15</p>
 <p class="why">Resenha de &#x27;Fallow&#x27;, romance de estreia de Sarah Anderson que imagina a vida da primeira barriga de aluguel contratada por uma Big Tech. Segundo a Atlantic, em prosa afiada e divertida, o livro trata de gênero, classe, exploração e das esquisitices da vida corporativa americana. Boa dica de ficção que conversa com tecnologia sem ser ficção científica.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n16" data-title="The Danger of Getting Too Close to a Source" data-url="https://www.newyorker.com/magazine/2026/10/26/the-danger-of-getting-too-close-to-a-source" data-sec="Das suas newsletters" data-typ="long read" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 18 min</span><span class="b">N16</span></div>
 <h3><a href="https://www.newyorker.com/magazine/2026/10/26/the-danger-of-getting-too-close-to-a-source" target="_blank" rel="noopener">The Danger of Getting Too Close to a Source</a></h3>
-<p class="src">The New Yorker (Bob Woodward, via Nieman Lab)</p>
+<p class="meta src">The New Yorker (Bob Woodward, via Nieman Lab)<span class="dot">·</span>18 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N16</p>
 <p class="why">Bob Woodward relembra sua amizade com Richard Darman, assessor de George H. W. Bush, e a série sobre a promessa &#x27;read my lips: no new taxes&#x27; que a abalou. Darman achou que a proximidade o protegeria de virar notícia. Um texto de memória sobre ética jornalística, lealdade e o preço de reportar o que é verdade sobre quem você conhece.</p>
 </article>
 </div></section>
-<section class="grp" id="t-games"><h2 aria-expanded="true"><span>🎮 Games</span><span><span class="gs"></span><span class="gc">8</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n22" data-title="Games viram parte da estratégia de candidatos e da crítica de eleitores em 2026" data-url="https://www1.folha.uol.com.br/poder/2026/10/games-viram-parte-da-estrategia-de-candidatos-e-da-critica-de-eleitores-em-2026.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Games">
+<section class="grp" id="t-games" style="--t:#ea580c"><h2 aria-expanded="true"><span class="ht"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 10v4M5 12h4M15.5 11h.01M18 13h.01"/></svg> Games</span><span class="hc"><span class="gs"></span><span class="gc">8</span> leituras <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
+<article class="card feat" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n22" data-title="Games viram parte da estratégia de candidatos e da crítica de eleitores em 2026" data-url="https://www1.folha.uol.com.br/poder/2026/10/games-viram-parte-da-estrategia-de-candidatos-e-da-critica-de-eleitores-em-2026.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N22</span></div>
-<h3><a href="https://www1.folha.uol.com.br/poder/2026/10/games-viram-parte-da-estrategia-de-candidatos-e-da-critica-de-eleitores-em-2026.shtml" target="_blank" rel="noopener">Games viram parte da estratégia de candidatos e da crítica de eleitores em 2026</a></h3>
-<p class="src">Folha (via newsletter Combo)</p>
+<p class="kick">Destaque</p><h3><a href="https://www1.folha.uol.com.br/poder/2026/10/games-viram-parte-da-estrategia-de-candidatos-e-da-critica-de-eleitores-em-2026.shtml" target="_blank" rel="noopener">Games viram parte da estratégia de candidatos e da crítica de eleitores em 2026</a></h3>
+<p class="meta src">Folha (via newsletter Combo)<span class="dot">·</span>6 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N22</p>
 <p class="why">Campanhas e desenvolvedores independentes lançaram jogos que satirizam crises políticas, o STF e Lula, e a IA catalisou a onda ao facilitar programação e arte. A reportagem mostra como os games viraram ferramenta de campanha e de crítica nesta eleição, e a newsletter Combo informa que os lançamentos continuam no segundo turno. Encontro de games, IA e política brasileira.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n23" data-title="&#x27;Castlevania: Belmont&#x27;s Curse&#x27; vampiriza outros títulos para se renovar" data-url="https://www1.folha.uol.com.br/ilustrada/2026/10/castlevania-belmonts-curse-vampiriza-outros-titulos-para-se-renovar.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 5 min</span><span class="b">N23</span></div>
 <h3><a href="https://www1.folha.uol.com.br/ilustrada/2026/10/castlevania-belmonts-curse-vampiriza-outros-titulos-para-se-renovar.shtml" target="_blank" rel="noopener">&#x27;Castlevania: Belmont&#x27;s Curse&#x27; vampiriza outros títulos para se renovar</a></h3>
-<p class="src">Folha (Henrique Artuni, via Combo)</p>
+<p class="meta src">Folha (Henrique Artuni, via Combo)<span class="dot">·</span>5 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N23</p>
 <p class="why">Henrique Artuni avalia o novo Castlevania, da Konami com a Evil Empire: o jogo recupera a graça da franquia, mas sem o vigor de antes, e funciona melhor na exploração e no combate fluido do que nas novidades. Uma crítica que discute como séries clássicas se renovam pegando emprestado de jogos que elas mesmas inspiraram.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g46" data-title="&quot;Quite often it&#x27;s given me more to do&quot;: Why AI might be creating more work for games companies" data-url="https://www.gamesindustry.biz/quite-often-its-given-me-more-to-do-why-ai-might-be-creating-more-work-for-games-companies-rather-than-saving-time" data-sec="Garimpo" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G46</span></div>
 <h3><a href="https://www.gamesindustry.biz/quite-often-its-given-me-more-to-do-why-ai-might-be-creating-more-work-for-games-companies-rather-than-saving-time" target="_blank" rel="noopener">&quot;Quite often it&#x27;s given me more to do&quot;: Why AI might be creating more work for games companies</a></h3>
-<p class="src">GamesIndustry.biz (Lewis Packwood) (achado via Parallel)</p>
+<p class="meta src">GamesIndustry.biz (Lewis Packwood) (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G46</p>
 <p class="why">No encontro de RH da GamesIndustry.biz, gestores de estúdios contaram que a IA generativa acelera algumas tarefas, mas cria outras: ansiedade de funcionários com medo de demissão, risco de vazamento de dados e cartas de reclamação enormes escritas por IA. Um retrato do trabalho real com IA, longe das promessas de eficiência.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g47" data-title="Video games aren&#x27;t the enemy of kids&#x27; mental health; ignoring them is" data-url="https://www.gamesindustry.biz/video-games-arent-the-enemy-of-kids-mental-health-ignoring-them-is-opinion" data-sec="Garimpo" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G47</span></div>
 <h3><a href="https://www.gamesindustry.biz/video-games-arent-the-enemy-of-kids-mental-health-ignoring-them-is-opinion" target="_blank" rel="noopener">Video games aren&#x27;t the enemy of kids&#x27; mental health; ignoring them is</a></h3>
-<p class="src">GamesIndustry.biz (Sarah Sorrell) (achado via Parallel)</p>
+<p class="meta src">GamesIndustry.biz (Sarah Sorrell) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G47</p>
 <p class="why">Sarah Sorrell, da ONG Safe In Our World, rebate a narrativa que culpa os games por ansiedade, isolamento e sono ruim de crianças. Alguns jogos fazem mal, sobretudo sem acompanhamento, mas outros ajudam, e a pesquisa mostra um quadro bem menos preto e branco. Bom para pais e educadores que querem sair do pânico moral.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g48" data-title="A hardware market freeze could transform the industry forever" data-url="https://www.gamesindustry.biz/a-hardware-market-freeze-could-transform-the-industry-forever-opinion" data-sec="Garimpo" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G48</span></div>
 <h3><a href="https://www.gamesindustry.biz/a-hardware-market-freeze-could-transform-the-industry-forever-opinion" target="_blank" rel="noopener">A hardware market freeze could transform the industry forever</a></h3>
-<p class="src">GamesIndustry.biz (Rob Fahey) (achado via Parallel)</p>
+<p class="meta src">GamesIndustry.biz (Rob Fahey) (achado via Parallel)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G48</p>
 <p class="why">Rob Fahey analisa a crise de componentes que encareceu consoles e PCs e pergunta para onde vai a demanda por jogos se o hardware sair do alcance do público. A resposta pode mudar a indústria de forma permanente. Conecta games à economia dos chips de um jeito pouco discutido.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g49" data-title="This should be game streaming&#x27;s moment. It&#x27;s not" data-url="https://www.gamesindustry.biz/this-should-be-game-streamings-moment-its-not-opinion" data-sec="Garimpo" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G49</span></div>
 <h3><a href="https://www.gamesindustry.biz/this-should-be-game-streamings-moment-its-not-opinion" target="_blank" rel="noopener">This should be game streaming&#x27;s moment. It&#x27;s not</a></h3>
-<p class="src">GamesIndustry.biz (Rob Fahey) (achado via Parallel)</p>
+<p class="meta src">GamesIndustry.biz (Rob Fahey) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G49</p>
 <p class="why">Com consoles caros e escassos e GTA 6 chegando, o streaming de jogos deveria estar no auge, e a tecnologia está madura. Mesmo assim, não decolou. Rob Fahey explica por quê e sugere lembrar disso na próxima vez que alguém disser que o streaming é o futuro inevitável. Análise de mercado com bom senso.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g50" data-title="&quot;A creative idea can save more money than AI can right now&quot;: Glen Schofield on the state of AAA" data-url="https://www.gamesindustry.biz/a-creative-idea-can-save-more-money-than-ai-can-right-now-glen-schofield-on-his-retirement-callisto-protocols-development-and-the-state-of-aaa" data-sec="Garimpo" data-typ="long read" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G50</span></div>
 <h3><a href="https://www.gamesindustry.biz/a-creative-idea-can-save-more-money-than-ai-can-right-now-glen-schofield-on-his-retirement-callisto-protocols-development-and-the-state-of-aaa" target="_blank" rel="noopener">&quot;A creative idea can save more money than AI can right now&quot;: Glen Schofield on the state of AAA</a></h3>
-<p class="src">GamesIndustry.biz (achado via Parallel)</p>
+<p class="meta src">GamesIndustry.biz (achado via Parallel)<span class="dot">·</span>15 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G50</p>
 <p class="why">Glen Schofield, criador de Dead Space, fala da aposentadoria, dos bastidores de The Callisto Protocol, lançado antes do prometido por pressão da Krafton, e do estado dos jogos AAA. Sua frase-título resume a tese: hoje uma boa ideia economiza mais que a IA. Entrevista franca de um veterano sobre criatividade, prazos e tecnologia.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g51" data-title="Dragon Quest creator Yuji Horii releases game he says he made with AI in about 30 minutes" data-url="https://www.gamesindustry.biz/dragon-quest-creator-yuji-horii-releases-game-he-says-he-made-with-ai-in-about-30-minutes" data-sec="Garimpo" data-typ="notícia" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">G51</span></div>
 <h3><a href="https://www.gamesindustry.biz/dragon-quest-creator-yuji-horii-releases-game-he-says-he-made-with-ai-in-about-30-minutes" target="_blank" rel="noopener">Dragon Quest creator Yuji Horii releases game he says he made with AI in about 30 minutes</a></h3>
-<p class="src">GamesIndustry.biz (achado via Parallel)</p>
+<p class="meta src">GamesIndustry.biz (achado via Parallel)<span class="dot">·</span>3 min<span class="dot">·</span><span class="ty">notícia</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G51</p>
 <p class="why">Yuji Horii, criador de Dragon Quest, publicou um jogo de interrogatório policial em texto que diz ter feito com IA em cerca de meia hora. Ele compara com 1983, quando fez sozinho história, desenhos e programação de Portopia. Notícia curta, mas simbólica: um dos autores mais influentes do Japão dizendo que a IA permite criar sozinho.</p>
 </article>
 </div></section>
-<section class="grp" id="t-cincias-sociais"><h2 aria-expanded="true"><span>🏛️ Ciências sociais</span><span><span class="gs"></span><span class="gc">13</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n06" data-title="Segue o Fio #11: Psicose política e Big Techs" data-url="https://nucleo.jor.br/segue-o-fio/2026/10/21/segue-o-fio-11-psicose-politica-e-big-techs/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Ciências sociais">
+<section class="grp" id="t-cincias-sociais" style="--t:#b45309"><h2 aria-expanded="true"><span class="ht"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9.5 21V10M14.5 21V10M2 10l10-6 10 6z"/></svg> Ciências sociais</span><span class="hc"><span class="gs"></span><span class="gc">13</span> leituras <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
+<article class="card feat" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n06" data-title="Segue o Fio #11: Psicose política e Big Techs" data-url="https://nucleo.jor.br/segue-o-fio/2026/10/21/segue-o-fio-11-psicose-politica-e-big-techs/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 30 min</span><span class="b">N06</span></div>
-<h3><a href="https://nucleo.jor.br/segue-o-fio/2026/10/21/segue-o-fio-11-psicose-politica-e-big-techs/" target="_blank" rel="noopener">Segue o Fio #11: Psicose política e Big Techs</a></h3>
-<p class="src">Núcleo Jornalismo</p>
+<p class="kick">Destaque</p><h3><a href="https://nucleo.jor.br/segue-o-fio/2026/10/21/segue-o-fio-11-psicose-politica-e-big-techs/" target="_blank" rel="noopener">Segue o Fio #11: Psicose política e Big Techs</a></h3>
+<p class="meta src">Núcleo Jornalismo<span class="dot">·</span>30 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N06</p>
 <p class="why">Desdobramento do caso Meta e Lula: o podcast do Núcleo discute por que a empresa virou alvo constante nesta eleição, sob acusações de interferência e de favorecer Flávio Bolsonaro, até o pedido de cassação da chapa por &#x27;manipulação algorítmica&#x27;. É uma conversa sobre como as plataformas viraram personagem da disputa, não só palco.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n07" data-title="Fora do feed, protesto de rua bate à porta da Meta" data-url="https://nucleo.jor.br/ensaio/2026/10/20/fora-do-feed-protesto-de-rua-bate-a-porta-da-meta/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 4 min</span><span class="b">N07</span></div>
 <h3><a href="https://nucleo.jor.br/ensaio/2026/10/20/fora-do-feed-protesto-de-rua-bate-a-porta-da-meta/" target="_blank" rel="noopener">Fora do feed, protesto de rua bate à porta da Meta</a></h3>
-<p class="src">Núcleo Jornalismo (Sérgio Spagnuolo)</p>
+<p class="meta src">Núcleo Jornalismo (Sérgio Spagnuolo)<span class="dot">·</span>4 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N07</p>
 <p class="why">Sérgio Spagnuolo descreve um protesto raro na porta do escritório da Meta no Brasil, articulado pela organização CTRL+Z e com mais de mil pessoas, segundo os organizadores. O texto usa o ato para discutir a direção política das grandes plataformas e a soma de erros delas durante a eleição. Um registro curto de algo novo: a crítica às Big Techs indo para a rua.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g29" data-title="A eleição das Big Techs" data-url="https://apublica.org/2026/10/a-eleicao-das-big-techs/" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G29</span></div>
 <h3><a href="https://apublica.org/2026/10/a-eleicao-das-big-techs/" target="_blank" rel="noopener">A eleição das Big Techs</a></h3>
-<p class="src">Agência Pública (Natalia Viana) (achado via Parallel)</p>
+<p class="meta src">Agência Pública (Natalia Viana) (achado via Parallel)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G29</p>
 <p class="why">Natalia Viana argumenta que o Brasil virou o centro mundial da disputa contra os tecno-oligarcas, qualquer que seja o resultado de domingo. Ela liga os pontos entre Elon Musk comemorando apostas a favor de Flávio, advogados da Truth Social e da Rumble, encontros com JD Vance e a visita de Peter Thiel. Análise para entender por que o Vale do Silício acompanha esta eleição.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g30" data-title="Os acordos secretos do governo do Quênia com as Big Techs" data-url="https://apublica.org/2026/10/governo-do-quenia-abre-as-portas-para-as-big-techs-e-populacao-nao-tem-acesso-a-acordos" data-sec="Garimpo" data-typ="long read" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G30</span></div>
 <h3><a href="https://apublica.org/2026/10/governo-do-quenia-abre-as-portas-para-as-big-techs-e-populacao-nao-tem-acesso-a-acordos" target="_blank" rel="noopener">Os acordos secretos do governo do Quênia com as Big Techs</a></h3>
-<p class="src">Agência Pública / The Elephant (achado via Parallel)</p>
+<p class="meta src">Agência Pública / The Elephant (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G30</p>
 <p class="why">Investigação em parceria com o queniano The Elephant mostra o governo Ruto fechando acordos com grandes empresas de tecnologia sem transparência, mudando regras em favor delas enquanto moderadores de conteúdo buscavam proteção na Justiça. Há até envio de dados agrícolas para a Microsoft. Um espelho útil para pensar soberania digital no Brasil.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g31" data-title="Eu sou você amanhã?" data-url="https://piaui.uol.com.br/web/eleicao-brasil-estados-unidos-flavio-trump/" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G31</span></div>
 <h3><a href="https://piaui.uol.com.br/web/eleicao-brasil-estados-unidos-flavio-trump/" target="_blank" rel="noopener">Eu sou você amanhã?</a></h3>
-<p class="src">revista piauí (Konrad Huber) (achado via Parallel)</p>
+<p class="meta src">revista piauí (Konrad Huber) (achado via Parallel)<span class="dot">·</span>10 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G31</p>
 <p class="why">Escrevendo de Salt Lake City, Konrad Huber faz um alerta &#x27;direto do futuro&#x27;: compara o que o segundo governo Trump fez nos EUA com o que um governo Flávio Bolsonaro poderia repetir. Cita, por exemplo, a estimativa da Reuters de que a família Trump ganhou mais de US$ 2,3 bilhões com cripto. Análise comparativa, não corrida de cavalos.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g32" data-title="Se palmada não educa, por que tanta criança ainda apanha?" data-url="https://www.nexojornal.com.br/ensaio/2026/10/14/palmada-apanhar-castigo-fisico-educacao-crianca-filhos" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G32</span></div>
 <h3><a href="https://www.nexojornal.com.br/ensaio/2026/10/14/palmada-apanhar-castigo-fisico-educacao-crianca-filhos" target="_blank" rel="noopener">Se palmada não educa, por que tanta criança ainda apanha?</a></h3>
-<p class="src">Nexo, Ensaio (Paula Perim) (achado via Parallel)</p>
+<p class="meta src">Nexo, Ensaio (Paula Perim) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G32</p>
 <p class="why">Doze anos depois da proibição no Brasil, uma pesquisa nova do Unicef tenta entender por que o castigo físico resiste, sustentado por ideias de autoridade e de amor. O ensaio retoma a revisão de 189 estudos em 92 países que ligou a palmada a piores resultados em saúde mental e desempenho escolar. Política pública e cultura familiar no mesmo texto.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n08" data-title="When hackers become sources: Inside the new craft of reporting on hacked data" data-url="https://www.niemanlab.org/2026/10/when-hackers-become-sources-inside-the-new-craft-of-reporting-on-hacked-data/" data-sec="Das suas newsletters" data-typ="long read" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">N08</span></div>
 <h3><a href="https://www.niemanlab.org/2026/10/when-hackers-become-sources-inside-the-new-craft-of-reporting-on-hacked-data/" target="_blank" rel="noopener">When hackers become sources: Inside the new craft of reporting on hacked data</a></h3>
-<p class="src">Nieman Lab (Philip Di Salvo)</p>
+<p class="meta src">Nieman Lab (Philip Di Salvo)<span class="dot">·</span>12 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N08</p>
 <p class="why">Philip Di Salvo investiga como jornalistas estão lidando com hackers que oferecem dados vazados como fontes, e como esses grupos aprenderam a negociar com a imprensa, muito além de postar no Twitter. O texto discute ética, verificação e o risco de virar instrumento de quem invadiu. Interessa a quem pensa jornalismo, segurança e esfera pública.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n09" data-title="An Election Uncovered" data-url="https://www.cjr.org/analysis/an-election-uncovered-brazil-para-state-tapajos-de-fato-election-coverage-stop-matter-survival.php" data-sec="Das suas newsletters" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">N09</span></div>
 <h3><a href="https://www.cjr.org/analysis/an-election-uncovered-brazil-para-state-tapajos-de-fato-election-coverage-stop-matter-survival.php" target="_blank" rel="noopener">An Election Uncovered</a></h3>
-<p class="src">Columbia Journalism Review (Marcos Colón)</p>
+<p class="meta src">Columbia Journalism Review (Marcos Colón)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N09</p>
 <p class="why">O Tapajós de Fato, um pequeno veículo do Pará, deixou de cobrir eleições &#x27;por questão de sobrevivência&#x27;. Marcos Colón conta como o medo saiu do trabalho e entrou na rotina do editor, que agora vigia como sai e volta de casa. Um retrato duro dos desertos de notícia e da violência contra o jornalismo local na Amazônia, publicado lá fora.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n10" data-title="11 histórias de crianças atingidas pela Ditadura Militar brasileira" data-url="https://davirocha.substack.com/p/11-historias-de-criancas-atingidas" data-sec="Das suas newsletters" data-typ="long read" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">N10</span></div>
 <h3><a href="https://davirocha.substack.com/p/11-historias-de-criancas-atingidas" target="_blank" rel="noopener">11 histórias de crianças atingidas pela Ditadura Militar brasileira</a></h3>
-<p class="src">Dia Sim, Dia Não (Davi Rocha)</p>
+<p class="meta src">Dia Sim, Dia Não (Davi Rocha)<span class="dot">·</span>15 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N10</p>
 <p class="why">Davi Rocha seleciona onze depoimentos do livro &#x27;Infância Roubada&#x27;, da Comissão da Verdade de São Paulo, sobre crianças presas, torturadas ou separadas dos pais durante a ditadura. A lista, com aviso de conteúdo forte, foi pensada para tempos de eleição. Um lembrete documentado do que está em jogo quando se relativiza aquele período.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g33" data-title="What archaeology reveals about the rise of all-powerful rulers" data-url="https://knowablemagazine.org/content/article/society/2026/what-archaeology-reveals-about-rise-of-autocracy" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">G33</span></div>
 <h3><a href="https://knowablemagazine.org/content/article/society/2026/what-archaeology-reveals-about-rise-of-autocracy" target="_blank" rel="noopener">What archaeology reveals about the rise of all-powerful rulers</a></h3>
-<p class="src">Knowable Magazine (achado via Parallel)</p>
+<p class="meta src">Knowable Magazine (achado via Parallel)<span class="dot">·</span>10 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G33</p>
 <p class="why">O arqueólogo Gary Feinman explica, com dados de várias sociedades antigas, que a agricultura não levou de forma inevitável à concentração de poder. Onde todos produziam para troca e não havia depósitos para acumular recursos, governantes não conseguiam controlar a economia. Uma leitura de longa duração que ajuda a pensar as condições da autocracia hoje.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g34" data-title="The End Of Upward Mobility" data-url="https://www.noemamag.com/the-end-of-upward-mobility" data-sec="Garimpo" data-typ="long read" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 18 min</span><span class="b">G34</span></div>
 <h3><a href="https://www.noemamag.com/the-end-of-upward-mobility" target="_blank" rel="noopener">The End Of Upward Mobility</a></h3>
-<p class="src">Noema (Branko Milanović e Nils Gilman) (achado via Parallel)</p>
+<p class="meta src">Noema (Branko Milanović e Nils Gilman) (achado via Parallel)<span class="dot">·</span>18 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G34</p>
 <p class="why">O economista Branko Milanović e o historiador Nils Gilman perguntam o que acontece com a classe profissional quando a educação deixa de garantir prêmio salarial. Em um cenário, a classe sobrevive mas para de receber gente nova; no outro, some, e só resta ser dono de capital, como o bisavô. Ensaio denso sobre desigualdade na era da IA.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g35" data-title="Ninguém sai ileso da pobreza: as neuroses da ascensão social" data-url="https://www.nexojornal.com.br/ensaio/2026/09/19/economia-desigualdade-ascensao-social-pobreza-psicanalise" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G35</span></div>
 <h3><a href="https://www.nexojornal.com.br/ensaio/2026/09/19/economia-desigualdade-ascensao-social-pobreza-psicanalise" target="_blank" rel="noopener">Ninguém sai ileso da pobreza: as neuroses da ascensão social</a></h3>
-<p class="src">Nexo, Ensaio (Kályton Resende) (achado via Parallel)</p>
+<p class="meta src">Nexo, Ensaio (Kályton Resende) (achado via Parallel)<span class="dot">·</span>7 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G35</p>
 <p class="why">Kályton Resende, psicanalista, escreve sobre quem sai da pobreza mas continua vivendo com a sensação de que tudo pode desaparecer a qualquer momento. O ensaio mostra por que esse sofrimento parece ilegítimo, já que a vida material melhorou, e o que a clínica revela sobre a ascensão social. Um texto sensível, pouco comum no debate sobre desigualdade.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g36" data-title="Your boss is watching you" data-url="https://knowablemagazine.org/content/article/society/2026/surveillance-at-work-is-increasing" data-sec="Garimpo" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 9 min</span><span class="b">G36</span></div>
 <h3><a href="https://knowablemagazine.org/content/article/society/2026/surveillance-at-work-is-increasing" target="_blank" rel="noopener">Your boss is watching you</a></h3>
-<p class="src">Knowable Magazine (achado via Parallel)</p>
+<p class="meta src">Knowable Magazine (achado via Parallel)<span class="dot">·</span>9 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G36</p>
 <p class="why">A vigilância no trabalho cresce impulsionada pela IA, mas uma revisão de estudos não encontrou relação entre nível de monitoramento e desempenho. Funcionários sempre acham jeitos de contornar, como mexer no teclado enquanto leem no almoço. A reportagem junta psicologia e pesquisa organizacional para questionar uma das indústrias que mais crescem com a IA.</p>
 </article>
 </div></section>
-<section class="grp" id="t-fora-da-bolha"><h2 aria-expanded="true"><span>🫧 Fora da bolha</span><span><span class="gs"></span><span class="gc">7</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
-<article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g52" data-title="Dogs, devils, clams and catfish: When cancer is contagious" data-url="https://knowablemagazine.org/content/article/living-world/2026/science-of-transmissible-cancers" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
+<section class="grp" id="t-fora-da-bolha" style="--t:#0d9488"><h2 aria-expanded="true"><span class="ht"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg> Fora da bolha</span><span class="hc"><span class="gs"></span><span class="gc">7</span> leituras <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
+<article class="card feat" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g52" data-title="Dogs, devils, clams and catfish: When cancer is contagious" data-url="https://knowablemagazine.org/content/article/living-world/2026/science-of-transmissible-cancers" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">G52</span></div>
-<h3><a href="https://knowablemagazine.org/content/article/living-world/2026/science-of-transmissible-cancers" target="_blank" rel="noopener">Dogs, devils, clams and catfish: When cancer is contagious</a></h3>
-<p class="src">Knowable Magazine (achado via Parallel)</p>
+<p class="kick">Destaque</p><h3><a href="https://knowablemagazine.org/content/article/living-world/2026/science-of-transmissible-cancers" target="_blank" rel="noopener">Dogs, devils, clams and catfish: When cancer is contagious</a></h3>
+<p class="meta src">Knowable Magazine (achado via Parallel)<span class="dot">·</span>12 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G52</p>
 <p class="why">Alguns cânceres passam de um animal para outro, como em cães, diabos-da-tasmânia e moluscos. Em 2006, ao sequenciar o tumor canino, cientistas viram que o DNA era de outro indivíduo. A reportagem mostra como esses casos borram definições da biologia e revelam que acontecem mais coisas do que imaginamos. Ciência estranha e fascinante.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g53" data-title="Elastic fantastic: The deadly fluid of pitcher plants" data-url="https://knowablemagazine.org/content/article/living-world/2026/how-pitcher-plants-trap-their-prey" data-sec="Garimpo" data-typ="análise" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">G53</span></div>
 <h3><a href="https://knowablemagazine.org/content/article/living-world/2026/how-pitcher-plants-trap-their-prey" target="_blank" rel="noopener">Elastic fantastic: The deadly fluid of pitcher plants</a></h3>
-<p class="src">Knowable Magazine (achado via Parallel)</p>
+<p class="meta src">Knowable Magazine (achado via Parallel)<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G53</p>
 <p class="why">As plantas carnívoras do tipo jarro capturam insetos com um líquido viscoelástico, descrito pela primeira vez em 2007. Uma pesquisa de março mostrou que os insetos escapam mais quando o nível do líquido está muito baixo ou muito alto. Uma leitura curta e curiosa sobre física aplicada à natureza, fora de qualquer pauta do dia.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g54" data-title="The lucrative bird-singing contests that are pushing species to the brink" data-url="https://knowablemagazine.org/content/article/living-world/2026/high-stakes-singing-contests-fueling-songbird-crisis" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G54</span></div>
 <h3><a href="https://knowablemagazine.org/content/article/living-world/2026/high-stakes-singing-contests-fueling-songbird-crisis" target="_blank" rel="noopener">The lucrative bird-singing contests that are pushing species to the brink</a></h3>
-<p class="src">Knowable Magazine (Sandy Ong) (achado via Parallel)</p>
+<p class="meta src">Knowable Magazine (Sandy Ong) (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G54</p>
 <p class="why">Na Indonésia, competições de canto de pássaros movimentam muito dinheiro e alimentam o tráfico de aves selvagens, levando espécies à beira da extinção. Sandy Ong visita santuários em Kalimantan Ocidental que tentam viabilizar apreensões e resgates. Uma reportagem sobre cultura, mercado e conservação que mostra como uma tradição pode ameaçar a natureza.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g55" data-title="How to study a swiftly melting climate disaster" data-url="https://www.technologyreview.com/2026/10/20/1147135/how-to-study-a-swiftly-melting-climate-disaster/" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 15 min</span><span class="b">G55</span></div>
 <h3><a href="https://www.technologyreview.com/2026/10/20/1147135/how-to-study-a-swiftly-melting-climate-disaster/" target="_blank" rel="noopener">How to study a swiftly melting climate disaster</a></h3>
-<p class="src">MIT Technology Review (James Temple) (achado via Parallel)</p>
+<p class="meta src">MIT Technology Review (James Temple) (achado via Parallel)<span class="dot">·</span>15 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G55</p>
 <p class="why">James Temple pega um helicóptero com cientistas para áreas remotas do Alasca onde o permafrost está derretendo. Estudos indicam que o degelo pode liberar muito mais carbono do que se calculava, e um único incêndio na tundra soltou mais de 2 milhões de toneladas. Reportagem de campo sobre uma das grandes incertezas do clima.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g56" data-title="How Does Life Unfold? A Landscape Metaphor Comes Into Its Own." data-url="https://www.quantamagazine.org/how-does-life-unfold-a-landscape-metaphor-comes-into-its-own-20261009/" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 14 min</span><span class="b">G56</span></div>
 <h3><a href="https://www.quantamagazine.org/how-does-life-unfold-a-landscape-metaphor-comes-into-its-own-20261009/" target="_blank" rel="noopener">How Does Life Unfold? A Landscape Metaphor Comes Into Its Own.</a></h3>
-<p class="src">Quanta Magazine (Philip Ball) (achado via Parallel)</p>
+<p class="meta src">Quanta Magazine (Philip Ball) (achado via Parallel)<span class="dot">·</span>14 min<span class="dot">·</span><span class="ty">long read</span><span class="dot">·</span>🔎 garimpo<span class="dot">·</span>G56</p>
 <p class="why">Philip Ball revisita a &#x27;paisagem epigenética&#x27; de Conrad Waddington, a imagem de uma bola rolando por vales que representa o destino de uma célula. Antes vista como simples metáfora, ela ganhou base matemática e pode ajudar a entender, e redesenhar, o que células, tecidos e embriões podem se tornar. Biologia do desenvolvimento contada com elegância.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n24" data-title="Papa de mariscos: de Polignano a Mare para o Brás" data-url="https://antoniocarlosespilotro.substack.com/p/papa-de-mariscos-de-polignano-a-mare" data-sec="Das suas newsletters" data-typ="análise" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N24</span></div>
 <h3><a href="https://antoniocarlosespilotro.substack.com/p/papa-de-mariscos-de-polignano-a-mare" target="_blank" rel="noopener">Papa de mariscos: de Polignano a Mare para o Brás</a></h3>
-<p class="src">Antonio Carlos Espilotro (via Alberto Villas)</p>
+<p class="meta src">Antonio Carlos Espilotro (via Alberto Villas)<span class="dot">·</span>6 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N24</p>
 <p class="why">Antonio Carlos Espilotro conta a história de uma receita de família trazida da Puglia para o Brás: vôngoles, molho de tomate e pão amanhecido que absorve o caldo. Ele investiga se é um pancotto tradicional e defende o pão velho como ingrediente, não sobra. Uma crônica de comida, imigração italiana e memória paulistana.</p>
 </article>
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n25" data-title="Golden Week Goes Rural: Why Young Chinese Skipped the Landmarks" data-url="https://chinesemandarinzest.substack.com/p/golden-week-goes-rural-why-young" data-sec="Das suas newsletters" data-typ="análise" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
-<div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N25</span></div>
 <h3><a href="https://chinesemandarinzest.substack.com/p/golden-week-goes-rural-why-young" target="_blank" rel="noopener">Golden Week Goes Rural: Why Young Chinese Skipped the Landmarks</a></h3>
-<p class="src">Mandarin Zest</p>
+<p class="meta src">Mandarin Zest<span class="dot">·</span>8 min<span class="dot">·</span><span class="ty">análise</span><span class="dot">·</span>📬 newsletter<span class="dot">·</span>N25</p>
 <p class="why">No feriado nacional chinês, foram 826 milhões de viagens internas, e os jovens, quase metade dos viajantes, trocaram pontos turísticos famosos por cidades do interior, museus e sítios históricos, cujas reservas subiram cerca de 70%. O texto explica tendências como &#x27;viagens de deitar&#x27; e férias para aprender habilidades. Um retrato do comportamento jovem na China.</p>
 </article>
 </div></section>
 <p id="empty" class="empty hide">Nenhum item com esses filtros.</p>
 </main>
 <div id="fb" class="hide"><p>Não deu para copiar automaticamente. Selecione e copie:</p><textarea id="fbt" readonly></textarea></div>
-<footer>Resumos parafraseados das fontes; tempos de leitura estimados. Links de rastreamento resolvidos para a URL original. Seleção salva neste aparelho. <a href="../index.html">Todas as edições</a></footer>
-<div class="bar"><div class="bin"><span id="cnt">0 selecionadas</span><button id="clear" class="btn sec" type="button" aria-label="Limpar seleção">Limpar</button><button id="share" class="btn sec" type="button" aria-label="Compartilhar">Enviar</button><button id="copy" class="btn" type="button" aria-label="Copiar selecionadas">Copiar</button></div></div>
+<footer>Resumos parafraseados das fontes; tempos de leitura estimados. Links de rastreamento resolvidos para a URL original. <a href="../index.html">Todas as edições</a></footer>
+<div class="sheet" id="sheet" aria-hidden="true"><div class="sp" role="dialog" aria-label="Filtros"><h4>Origem</h4><div class="row"><button class="chip" data-f="sec" data-v="" aria-pressed="true">Tudo</button><button class="chip" data-f="sec" data-v="Das suas newsletters" aria-pressed="false">Das suas newsletters</button><button class="chip" data-f="sec" data-v="Garimpo" aria-pressed="false">Garimpo</button></div><h4>Tipo</h4><div class="row"><button class="chip" data-f="typ" data-v="" aria-pressed="true">Todos</button><button class="chip" data-f="typ" data-v="long read" aria-pressed="false">long read</button><button class="chip" data-f="typ" data-v="análise" aria-pressed="false">análise</button><button class="chip" data-f="typ" data-v="notícia" aria-pressed="false">notícia</button></div><h4>Mostrar</h4><div class="row"><button class="chip" id="only" type="button" aria-pressed="false">✓ Só selecionadas</button></div><button class="btn done" type="button">Pronto</button></div></div>
+<div class="bar" role="region" aria-label="Seleção"><span id="cnt">0 selecionadas</span><button id="clear" class="btn ghost" type="button" aria-label="Limpar seleção" title="Limpar">✕</button><button id="share" class="btn ghost" type="button" aria-label="Compartilhar" title="Compartilhar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13M7 8l5-5 5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg></button><button id="copy" class="btn" type="button" aria-label="Copiar seleção">Copiar<span class="lg"> seleção</span></button></div>
 <button id="top" type="button" aria-label="Voltar ao topo">↑</button>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
@@ -644,7 +583,7 @@ var f={sec:'',typ:'',tema:'',only:false},t=document.getElementById('toast'),h;
 function toast(m){t.textContent=m;t.classList.add('show');clearTimeout(h);h=setTimeout(function(){t.classList.remove('show')},2400)}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(sel))}catch(e){}}
 function paint(){var n=0;cards.forEach(function(c){var on=!!sel[c.dataset.id];c.setAttribute('aria-checked',on);if(on)n++});
- document.getElementById('cnt').textContent=n+(n==1?' selecionada':' selecionadas');
+ document.getElementById('cnt').textContent=n+(n==1?' selecionada':' selecionadas');document.getElementById('hn').textContent=n;
  document.querySelectorAll('.grp').forEach(function(g){var k=g.querySelectorAll('.card[aria-checked=true]').length;g.querySelector('.gs').textContent=k?k+' ✓ · ':'';var c=document.querySelector('a.toc[href="#'+g.id+'"] .sc');if(c)c.textContent=k||''});
  if(f.only)filt();
  ['copy','share','clear'].forEach(function(i){var b=document.getElementById(i);if(b)b.disabled=!n})}
@@ -661,7 +600,9 @@ document.querySelectorAll('[data-f]').forEach(function(b){
  b.addEventListener(ev,function(){var k=b.dataset.f;
   if(b.tagName=='SELECT'){f[k]=b.value;b.setAttribute('aria-pressed',!!b.value)}
   else{f[k]=b.dataset.v;document.querySelectorAll('[data-f='+k+']:not(select)').forEach(function(x){x.setAttribute('aria-pressed',x==b)})}
-  filt()})});
+  filt();document.getElementById('fbtn').classList.toggle('on',!!(f.sec||f.typ||f.only))})});
+var sheet=document.getElementById('sheet');function sopen(o){sheet.classList.toggle('open',o);sheet.setAttribute('aria-hidden',!o)}
+document.getElementById('fbtn').addEventListener('click',function(){sopen(true)});sheet.addEventListener('click',function(e){if(e.target==sheet||e.target.closest('.done'))sopen(false)});
 function text(){var L=cards.filter(function(c){return sel[c.dataset.id]}).map(function(c){return c.dataset.id+' | '+c.dataset.title+' | '+c.dataset.url});
  return 'Curadoria '+E+' — selecionados:\n'+L.join('\n')}
 function fallback(s){var a=document.createElement('textarea');a.value=s;a.setAttribute('readonly','');a.style.position='fixed';a.style.top='-1000px';a.style.opacity='0';document.body.appendChild(a);a.focus();a.select();try{a.setSelectionRange(0,s.length)}catch(e){}var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(a);return ok}
@@ -673,11 +614,11 @@ document.getElementById('copy').addEventListener('click',function(){var s=text()
  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s).then(function(){done(s,true)},function(){done(s,fallback(s))})}else{done(s,fallback(s))}});
 var sh=document.getElementById('share');
 sh.addEventListener('click',function(){var s=text();if(navigator.share){navigator.share({title:'Curadoria '+E,text:s}).then(function(){toast('Compartilhado')}).catch(function(e){if(e&&e.name!='AbortError')document.getElementById('copy').click()})}else{document.getElementById('copy').click()}});
-var on=document.getElementById('only');on.addEventListener('click',function(){f.only=!f.only;on.setAttribute('aria-pressed',f.only);filt();window.scrollTo(0,0)});
+var on=document.getElementById('only');on.addEventListener('click',function(){f.only=!f.only;on.setAttribute('aria-pressed',f.only);filt();document.getElementById('fbtn').classList.toggle('on',!!(f.sec||f.typ||f.only))});
 document.querySelectorAll('.grp h2').forEach(function(h){h.setAttribute('role','button');h.tabIndex=0;function tg(){var g=h.parentNode;g.classList.toggle('col');h.setAttribute('aria-expanded',!g.classList.contains('col'))}h.addEventListener('click',tg);h.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();tg()}})});
 document.querySelectorAll('a.toc').forEach(function(a){a.addEventListener('click',function(){var g=document.querySelector(a.getAttribute('href'));if(g)g.classList.remove('col')})});
 var tb=document.getElementById('top'),grps=[].slice.call(document.querySelectorAll('.grp')),cur;tb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
-function spy(){tb.classList.toggle('show',scrollY>600);var nh=document.getElementById('nav').offsetHeight+60,id=grps[0]&&grps[0].id;grps.forEach(function(g){if(!g.classList.contains('hide')&&g.getBoundingClientRect().top<=nh)id=g.id});if(id!==cur){cur=id;document.querySelectorAll('a.toc').forEach(function(a){var m=a.getAttribute('href')=='#'+id;a.setAttribute('aria-current',m);if(m){var p=a.parentNode;p.scrollLeft=a.offsetLeft-p.clientWidth/2+a.offsetWidth/2}})}}
+function spy(){tb.classList.toggle('show',scrollY>600);var nh=document.getElementById('nav').offsetHeight+60,id=grps[0]&&grps[0].id;grps.forEach(function(g){if(!g.classList.contains('hide')&&g.getBoundingClientRect().top<=nh)id=g.id});if(id!==cur){cur=id;document.querySelectorAll('a.toc').forEach(function(a){var m=a.getAttribute('href')=='#'+id;a.setAttribute('aria-current',m);if(m){var p=a.parentNode,pad=28;if(p.scrollWidth>p.clientWidth+1){if(a.offsetLeft-pad<p.scrollLeft)p.scrollLeft=Math.max(0,a.offsetLeft-pad);else if(a.offsetLeft+a.offsetWidth+pad>p.scrollLeft+p.clientWidth)p.scrollLeft=a.offsetLeft+a.offsetWidth+pad-p.clientWidth}}})}}
 window.addEventListener('scroll',spy,{passive:true});spy();
 document.getElementById('clear').addEventListener('click',function(){if(confirm('Limpar a seleção desta edição?')){sel={};save();paint()}});
 function navh(){document.documentElement.style.setProperty('--navh',document.getElementById('nav').offsetHeight+'px')}
