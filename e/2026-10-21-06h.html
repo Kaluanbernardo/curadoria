@@ -38,7 +38,7 @@ a.chip{text-decoration:none;display:inline-flex;align-items:center;gap:5px}a.chi
 .hide{display:none!important}
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:8;background:var(--hdr);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}
 .bin{max-width:760px;margin:0 auto;display:flex;gap:8px;align-items:center}
-#cnt{flex:1;font-weight:700;font-size:.92rem}
+#cnt{flex:1;min-width:0;font-weight:700;font-size:.88rem;line-height:1.2}.bin .btn{padding:12px 13px}
 .btn{font:inherit;font-weight:800;border:0;border-radius:12px;padding:12px 16px;min-height:48px;background:var(--acc);color:var(--accfg);cursor:pointer}
 .btn.sec{background:var(--card);color:var(--fg);border:1px solid var(--line)}
 .btn:disabled{opacity:.45}
@@ -46,12 +46,16 @@ a.chip{text-decoration:none;display:inline-flex;align-items:center;gap:5px}a.chi
 #toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(30px);opacity:0;background:var(--fg);color:var(--bg);font-weight:700;padding:10px 16px;border-radius:999px;transition:.2s;z-index:9;max-width:92vw;text-align:center;pointer-events:none}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-size:.8rem}
+.toc[aria-current=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}.toc[aria-current=true] b{color:var(--bg)}
+.sc{font-style:normal;font-size:.72rem;background:var(--acc);color:var(--accfg);border-radius:999px;padding:0 6px;margin-left:2px}.sc:empty{display:none}
+.grp h2{cursor:pointer;min-height:44px;align-items:center}.grp h2 .car{display:inline-block;transition:.15s;margin-right:4px}.grp.col h2 .car{transform:rotate(-90deg)}.grp.col .list{display:none}
+#top{position:fixed;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:7;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:1.3rem;opacity:0;pointer-events:none;transition:.2s}#top.show{opacity:1;pointer-events:auto}
 .empty{color:var(--mut);text-align:center;padding:30px 0}
 </style></head><body data-ed="2026-10-21-06h">
-<header><h1>Curadoria de leituras</h1><p class="sub">Edição 21/10/2026, 06h · organizada por tema · toque no card para marcar, no título para abrir</p><div class="stats"><span>80 leituras</span><span>24 das suas newsletters</span><span>56 garimpo</span><span>47 análise</span><span>28 long read</span><span>5 notícia</span></div></header>
-<nav class="filters" id="nav" aria-label="Temas e filtros"><div class="fin"><a class="chip toc" href="#t-ia">🤖 IA <b>18</b></a><a class="chip toc" href="#t-tecnologia">💻 Tecnologia <b>10</b></a><a class="chip toc" href="#t-educao">🎓 Educação <b>14</b></a><a class="chip toc" href="#t-cultura">🎭 Cultura <b>10</b></a><a class="chip toc" href="#t-games">🎮 Games <b>8</b></a><a class="chip toc" href="#t-cincias-sociais">🏛️ Ciências sociais <b>13</b></a><a class="chip toc" href="#t-fora-da-bolha">🫧 Fora da bolha <b>7</b></a></div><div class="fin f2"><button class="chip" data-f="sec" data-v="" aria-pressed="true">Tudo</button><button class="chip" data-f="sec" data-v="Das suas newsletters" aria-pressed="false">Das suas newsletters</button><button class="chip" data-f="sec" data-v="Garimpo" aria-pressed="false">Garimpo</button><select class="chip" data-f="typ" aria-label="Tipo" aria-pressed="false"><option value="">Todos os tipos</option><option>long read</option><option>análise</option><option>notícia</option></select></div></nav>
+<header><h1>Curadoria de leituras</h1><p class="sub">Edição 21/10/2026, 06h · organizada por tema · toque no card para marcar, no título para abrir · toque no nome do tema para recolher</p><div class="stats"><span>80 leituras</span><span>24 das suas newsletters</span><span>56 garimpo</span><span>47 análise</span><span>28 long read</span><span>5 notícia</span></div></header>
+<nav class="filters" id="nav" aria-label="Temas e filtros"><div class="fin"><a class="chip toc" href="#t-ia">🤖 IA <b>18</b><i class="sc"></i></a><a class="chip toc" href="#t-tecnologia">💻 Tecnologia <b>10</b><i class="sc"></i></a><a class="chip toc" href="#t-educao">🎓 Educação <b>14</b><i class="sc"></i></a><a class="chip toc" href="#t-cultura">🎭 Cultura <b>10</b><i class="sc"></i></a><a class="chip toc" href="#t-games">🎮 Games <b>8</b><i class="sc"></i></a><a class="chip toc" href="#t-cincias-sociais">🏛️ Ciências sociais <b>13</b><i class="sc"></i></a><a class="chip toc" href="#t-fora-da-bolha">🫧 Fora da bolha <b>7</b><i class="sc"></i></a></div><div class="fin f2"><button class="chip" data-f="sec" data-v="" aria-pressed="true">Tudo</button><button class="chip" data-f="sec" data-v="Das suas newsletters" aria-pressed="false">Das suas newsletters</button><button class="chip" data-f="sec" data-v="Garimpo" aria-pressed="false">Garimpo</button><select class="chip" data-f="typ" aria-label="Tipo" aria-pressed="false"><option value="">Todos os tipos</option><option>long read</option><option>análise</option><option>notícia</option></select><button class="chip" id="only" type="button" aria-pressed="false">✓ Ver só selecionadas</button></div></nav>
 <main>
-<section class="grp" id="t-ia"><h2><span>🤖 IA</span><span class="gc">18</span></h2><div class="list">
+<section class="grp" id="t-ia"><h2 aria-expanded="true"><span>🤖 IA</span><span><span class="gs"></span><span class="gc">18</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n01" data-title="The Soviet Union Had a Word for What AI Is Doing to Us" data-url="https://theslowai.substack.com/p/jean-philanthrope-hypernormalisation-ai" data-sec="Das suas newsletters" data-typ="análise" data-tema="IA">
 <span class="box" aria-hidden="true"></span>
 <div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 8 min</span><span class="b">N01</span></div>
@@ -179,7 +183,7 @@ footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-siz
 <p class="why">Yanis Varoufakis entra no debate sobre se a IA vai gerar um salto de produtividade, entre otimistas e céticos como Daron Acemoglu e Jim Covello, do Goldman Sachs. Para ele, a pergunta está mal formulada: o que importa é quem se apropria do valor produzido. Uma provocação de economia política para ler ao lado das promessas de crescimento da indústria.</p>
 </article>
 </div></section>
-<section class="grp" id="t-tecnologia"><h2><span>💻 Tecnologia</span><span class="gc">10</span></h2><div class="list">
+<section class="grp" id="t-tecnologia"><h2 aria-expanded="true"><span>💻 Tecnologia</span><span><span class="gs"></span><span class="gc">10</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n17" data-title="Hyperscale has arrived" data-url="https://disconnect.blog/hyperscale-has-arrived/" data-sec="Das suas newsletters" data-typ="notícia" data-tema="Tecnologia">
 <span class="box" aria-hidden="true"></span>
 <div class="meta"><span class="b">📬 newsletter</span><span class="b N">notícia</span><span class="b">⏱ 3 min</span><span class="b">N17</span></div>
@@ -251,7 +255,7 @@ footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-siz
 <p class="why">Adam Rogers faz uma autocrítica rara: como a WIRED ajudou a inflar a Theranos numa cultura em que &#x27;fingir até conseguir&#x27; era quase virtude no Vale do Silício. Ele conta como as reuniões de pauta funcionavam e que regras a revista criou para incorporar ceticismo. Lição valiosa para quem cobre, ou consome, o hype da IA.</p>
 </article>
 </div></section>
-<section class="grp" id="t-educao"><h2><span>🎓 Educação</span><span class="gc">14</span></h2><div class="list">
+<section class="grp" id="t-educao"><h2 aria-expanded="true"><span>🎓 Educação</span><span><span class="gs"></span><span class="gc">14</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g15" data-title="Slow math: Kids may learn more when AI makes them review mistakes" data-url="https://hechingerreport.org/proof-points-ai-mastery-learning/" data-sec="Garimpo" data-typ="análise" data-tema="Educação">
 <span class="box" aria-hidden="true"></span>
 <div class="meta"><span class="b">🔎 garimpo</span><span class="b A">análise</span><span class="b">⏱ 7 min</span><span class="b">G15</span></div>
@@ -351,7 +355,7 @@ footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-siz
 <p class="why">O romancista e professor Randy Boyagoda propõe uma saída para a crise de leitura na universidade: abrir espaços fora da sala de aula para estudantes discutirem literatura sem nota nem obrigação. Os clubes de livros &#x27;mortos&#x27;, de autores clássicos, seriam um jeito de devolver o prazer da leitura difícil. Curto e cheio de ideias aplicáveis.</p>
 </article>
 </div></section>
-<section class="grp" id="t-cultura"><h2><span>🎭 Cultura</span><span class="gc">10</span></h2><div class="list">
+<section class="grp" id="t-cultura"><h2 aria-expanded="true"><span>🎭 Cultura</span><span><span class="gs"></span><span class="gc">10</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n11" data-title="Frank Zappa &amp; The Mothers of Invention, Freak Out! [60th Anniversary]" data-url="https://sterlewine.substack.com/p/frank-zappa-and-the-mothers-of-invention" data-sec="Das suas newsletters" data-typ="análise" data-tema="Cultura">
 <span class="box" aria-hidden="true"></span>
 <div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 10 min</span><span class="b">N11</span></div>
@@ -423,7 +427,7 @@ footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-siz
 <p class="why">Bob Woodward relembra sua amizade com Richard Darman, assessor de George H. W. Bush, e a série sobre a promessa &#x27;read my lips: no new taxes&#x27; que a abalou. Darman achou que a proximidade o protegeria de virar notícia. Um texto de memória sobre ética jornalística, lealdade e o preço de reportar o que é verdade sobre quem você conhece.</p>
 </article>
 </div></section>
-<section class="grp" id="t-games"><h2><span>🎮 Games</span><span class="gc">8</span></h2><div class="list">
+<section class="grp" id="t-games"><h2 aria-expanded="true"><span>🎮 Games</span><span><span class="gs"></span><span class="gc">8</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n22" data-title="Games viram parte da estratégia de candidatos e da crítica de eleitores em 2026" data-url="https://www1.folha.uol.com.br/poder/2026/10/games-viram-parte-da-estrategia-de-candidatos-e-da-critica-de-eleitores-em-2026.shtml" data-sec="Das suas newsletters" data-typ="análise" data-tema="Games">
 <span class="box" aria-hidden="true"></span>
 <div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 6 min</span><span class="b">N22</span></div>
@@ -481,7 +485,7 @@ footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-siz
 <p class="why">Yuji Horii, criador de Dragon Quest, publicou um jogo de interrogatório policial em texto que diz ter feito com IA em cerca de meia hora. Ele compara com 1983, quando fez sozinho história, desenhos e programação de Portopia. Notícia curta, mas simbólica: um dos autores mais influentes do Japão dizendo que a IA permite criar sozinho.</p>
 </article>
 </div></section>
-<section class="grp" id="t-cincias-sociais"><h2><span>🏛️ Ciências sociais</span><span class="gc">13</span></h2><div class="list">
+<section class="grp" id="t-cincias-sociais"><h2 aria-expanded="true"><span>🏛️ Ciências sociais</span><span><span class="gs"></span><span class="gc">13</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-n06" data-title="Segue o Fio #11: Psicose política e Big Techs" data-url="https://nucleo.jor.br/segue-o-fio/2026/10/21/segue-o-fio-11-psicose-politica-e-big-techs/" data-sec="Das suas newsletters" data-typ="análise" data-tema="Ciências sociais">
 <span class="box" aria-hidden="true"></span>
 <div class="meta"><span class="b">📬 newsletter</span><span class="b A">análise</span><span class="b">⏱ 30 min</span><span class="b">N06</span></div>
@@ -574,7 +578,7 @@ footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-siz
 <p class="why">A vigilância no trabalho cresce impulsionada pela IA, mas uma revisão de estudos não encontrou relação entre nível de monitoramento e desempenho. Funcionários sempre acham jeitos de contornar, como mexer no teclado enquanto leem no almoço. A reportagem junta psicologia e pesquisa organizacional para questionar uma das indústrias que mais crescem com a IA.</p>
 </article>
 </div></section>
-<section class="grp" id="t-fora-da-bolha"><h2><span>🫧 Fora da bolha</span><span class="gc">7</span></h2><div class="list">
+<section class="grp" id="t-fora-da-bolha"><h2 aria-expanded="true"><span>🫧 Fora da bolha</span><span><span class="gs"></span><span class="gc">7</span> <span class="car" aria-hidden="true">▾</span></span></h2><div class="list">
 <article class="card" role="checkbox" tabindex="0" aria-checked="false" data-id="2026-10-21-06h-g52" data-title="Dogs, devils, clams and catfish: When cancer is contagious" data-url="https://knowablemagazine.org/content/article/living-world/2026/science-of-transmissible-cancers" data-sec="Garimpo" data-typ="long read" data-tema="Fora da bolha">
 <span class="box" aria-hidden="true"></span>
 <div class="meta"><span class="b">🔎 garimpo</span><span class="b L">long read</span><span class="b">⏱ 12 min</span><span class="b">G52</span></div>
@@ -629,19 +633,22 @@ footer{max-width:760px;margin:12px auto;padding:0 16px;color:var(--mut);font-siz
 </main>
 <div id="fb" class="hide"><p>Não deu para copiar automaticamente. Selecione e copie:</p><textarea id="fbt" readonly></textarea></div>
 <footer>Resumos parafraseados das fontes; tempos de leitura estimados. Links de rastreamento resolvidos para a URL original. Seleção salva neste aparelho. <a href="../index.html">Todas as edições</a></footer>
-<div class="bar"><div class="bin"><span id="cnt">0 selecionados</span><button id="clear" class="btn sec" type="button" aria-label="Limpar seleção">✕</button><button id="share" class="btn sec" type="button">Compartilhar</button><button id="copy" class="btn" type="button">Copiar selecionados</button></div></div>
+<div class="bar"><div class="bin"><span id="cnt">0 selecionadas</span><button id="clear" class="btn sec" type="button" aria-label="Limpar seleção">Limpar</button><button id="share" class="btn sec" type="button" aria-label="Compartilhar">Enviar</button><button id="copy" class="btn" type="button" aria-label="Copiar selecionadas">Copiar</button></div></div>
+<button id="top" type="button" aria-label="Voltar ao topo">↑</button>
 <div id="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){
 var E=document.body.dataset.ed,KEY='curadoria:sel:'+E,cards=[].slice.call(document.querySelectorAll('.card'));
 var sel={};try{sel=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-var f={sec:'',typ:'',tema:''},t=document.getElementById('toast'),h;
+var f={sec:'',typ:'',tema:'',only:false},t=document.getElementById('toast'),h;
 function toast(m){t.textContent=m;t.classList.add('show');clearTimeout(h);h=setTimeout(function(){t.classList.remove('show')},2400)}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(sel))}catch(e){}}
 function paint(){var n=0;cards.forEach(function(c){var on=!!sel[c.dataset.id];c.setAttribute('aria-checked',on);if(on)n++});
- document.getElementById('cnt').textContent=n+(n==1?' selecionado':' selecionados');
+ document.getElementById('cnt').textContent=n+(n==1?' selecionada':' selecionadas');
+ document.querySelectorAll('.grp').forEach(function(g){var k=g.querySelectorAll('.card[aria-checked=true]').length;g.querySelector('.gs').textContent=k?k+' ✓ · ':'';var c=document.querySelector('a.toc[href="#'+g.id+'"] .sc');if(c)c.textContent=k||''});
+ if(f.only)filt();
  ['copy','share','clear'].forEach(function(i){var b=document.getElementById(i);if(b)b.disabled=!n})}
-function filt(){var vis=0;cards.forEach(function(c){var ok=(!f.sec||c.dataset.sec==f.sec)&&(!f.typ||c.dataset.typ==f.typ)&&(!f.tema||c.dataset.tema==f.tema);c.classList.toggle('hide',!ok);if(ok)vis++});
+function filt(){var vis=0;cards.forEach(function(c){var ok=(!f.sec||c.dataset.sec==f.sec)&&(!f.typ||c.dataset.typ==f.typ)&&(!f.tema||c.dataset.tema==f.tema)&&(!f.only||sel[c.dataset.id]);c.classList.toggle('hide',!ok);if(ok)vis++});
  document.querySelectorAll('.grp').forEach(function(g){var k=g.querySelectorAll('.card:not(.hide)').length;g.classList.toggle('hide',!k);g.querySelector('.gc').textContent=k});
  document.getElementById('empty').classList.toggle('hide',vis>0)}
 function toggle(c){var id=c.dataset.id;if(sel[id])delete sel[id];else sel[id]=1;save();paint()}
@@ -665,7 +672,13 @@ function done(s,ok){var fb=document.getElementById('fb'),x=document.getElementBy
 document.getElementById('copy').addEventListener('click',function(){var s=text();
  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(s).then(function(){done(s,true)},function(){done(s,fallback(s))})}else{done(s,fallback(s))}});
 var sh=document.getElementById('share');
-if(navigator.share){sh.addEventListener('click',function(){navigator.share({title:'Curadoria '+E,text:text()}).catch(function(){})})}else{sh.remove()}
+sh.addEventListener('click',function(){var s=text();if(navigator.share){navigator.share({title:'Curadoria '+E,text:s}).then(function(){toast('Compartilhado')}).catch(function(e){if(e&&e.name!='AbortError')document.getElementById('copy').click()})}else{document.getElementById('copy').click()}});
+var on=document.getElementById('only');on.addEventListener('click',function(){f.only=!f.only;on.setAttribute('aria-pressed',f.only);filt();window.scrollTo(0,0)});
+document.querySelectorAll('.grp h2').forEach(function(h){h.setAttribute('role','button');h.tabIndex=0;function tg(){var g=h.parentNode;g.classList.toggle('col');h.setAttribute('aria-expanded',!g.classList.contains('col'))}h.addEventListener('click',tg);h.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();tg()}})});
+document.querySelectorAll('a.toc').forEach(function(a){a.addEventListener('click',function(){var g=document.querySelector(a.getAttribute('href'));if(g)g.classList.remove('col')})});
+var tb=document.getElementById('top'),grps=[].slice.call(document.querySelectorAll('.grp')),cur;tb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+function spy(){tb.classList.toggle('show',scrollY>600);var nh=document.getElementById('nav').offsetHeight+60,id=grps[0]&&grps[0].id;grps.forEach(function(g){if(!g.classList.contains('hide')&&g.getBoundingClientRect().top<=nh)id=g.id});if(id!==cur){cur=id;document.querySelectorAll('a.toc').forEach(function(a){var m=a.getAttribute('href')=='#'+id;a.setAttribute('aria-current',m);if(m){var p=a.parentNode;p.scrollLeft=a.offsetLeft-p.clientWidth/2+a.offsetWidth/2}})}}
+window.addEventListener('scroll',spy,{passive:true});spy();
 document.getElementById('clear').addEventListener('click',function(){if(confirm('Limpar a seleção desta edição?')){sel={};save();paint()}});
 function navh(){document.documentElement.style.setProperty('--navh',document.getElementById('nav').offsetHeight+'px')}
 navh();window.addEventListener('resize',navh);
