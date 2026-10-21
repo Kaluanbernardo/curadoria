@@ -4,20 +4,22 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <title>Curadoria 2026-10-21-06h</title>
 <meta name="color-scheme" content="light dark">
+<script>try{var m=localStorage.getItem("curadoria:theme");if(m=="light"||m=="dark")document.documentElement.dataset.theme=m}catch(e){}</script>
 <style>
 :root{color-scheme:light dark;--bg:#faf8f4;--card:#fff;--fg:#1a1814;--mut:#77716a;--line:#ebe6dd;--acc:#d9480f;--accfg:#fff;--hdr:rgba(250,248,244,.92);--sh:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
-@media(prefers-color-scheme:dark){:root{--bg:#111113;--card:#1a1a1e;--fg:#f1eee8;--mut:#9b958c;--line:#2a2a30;--acc:#ff7a45;--accfg:#160700;--hdr:rgba(17,17,19,.9);--sh:none}}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#111113;--card:#1a1a1e;--fg:#f1eee8;--mut:#9b958c;--line:#2a2a30;--acc:#ff7a45;--accfg:#160700;--hdr:rgba(17,17,19,.9);--sh:none}}
+:root[data-theme=dark]{color-scheme:dark;--bg:#111113;--card:#1a1a1e;--fg:#f1eee8;--mut:#9b958c;--line:#2a2a30;--acc:#ff7a45;--accfg:#160700;--hdr:rgba(17,17,19,.9);--sh:none}:root[data-theme=light]{color-scheme:light}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--navh,56px) + 8px);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;padding-bottom:calc(110px + env(safe-area-inset-bottom))}
 .serif,h1,.card h3,.grp h2 .ht{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif}
-header{max-width:720px;margin:0 auto;padding:26px 20px 12px}
+header{max-width:var(--w,720px);margin:0 auto;padding:26px 20px 12px}
 .eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0}
 h1{font-size:2rem;line-height:1.1;margin:4px 0 6px;font-weight:700;letter-spacing:-.01em}
 .hl{margin:0;color:var(--mut);font-size:.95rem}.hl b{color:var(--fg)}
 details.about{margin-top:10px;font-size:.88rem;color:var(--mut)}details.about summary{cursor:pointer;min-height:44px;display:inline-flex;align-items:center;font-weight:600}
 .stats{display:flex;flex-wrap:wrap;gap:6px 14px;padding:4px 0 6px}
 .filters{position:sticky;top:0;z-index:6;background:var(--hdr);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
-.nin{max-width:720px;margin:0 auto;display:flex;align-items:center}
+.nin{max-width:var(--w,720px);margin:0 auto;display:flex;align-items:center}
 .fin{flex:1;min-width:0;padding:6px 16px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;scroll-padding-inline:28px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent)}.fin::-webkit-scrollbar{display:none}
 @media(min-width:760px){.fin{flex-wrap:wrap;justify-content:center;overflow:visible;-webkit-mask-image:none;mask-image:none}}
 a.toc{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 12px;border-radius:10px;color:var(--mut);text-decoration:none;font-weight:600;font-size:.9rem;white-space:nowrap;border-bottom:3px solid transparent;transition:color .15s,background .15s}
@@ -29,14 +31,14 @@ a.toc[aria-current=true]{color:var(--t);background:color-mix(in srgb,var(--t) 12
 .ic{flex:0 0 auto}
 .sheet{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s}
 .sheet.open{opacity:1;pointer-events:auto}
-.sp{position:absolute;left:0;right:0;bottom:0;max-width:720px;margin:0 auto;background:var(--card);border-radius:22px 22px 0 0;padding:18px 20px calc(22px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.sp{position:absolute;left:0;right:0;bottom:0;max-width:var(--w,720px);margin:0 auto;background:var(--card);border-radius:22px 22px 0 0;padding:18px 20px calc(22px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
 .sheet.open .sp{transform:none}
 .sp h4{margin:6px 0 8px;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut)}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
 .chip{font:inherit;font-size:.9rem;font-weight:600;height:44px;padding:0 16px;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .sp .done{width:100%;margin-top:8px}
-main{max-width:720px;margin:0 auto;padding:0 16px}
+main{max-width:var(--w,720px);margin:0 auto;padding:0 16px}
 .grp{--t:var(--acc);padding-top:18px}
 .grp h2{margin:18px 0 12px;padding:0 0 10px;border-bottom:2px solid var(--fg);display:flex;align-items:flex-end;justify-content:space-between;gap:10px;cursor:pointer;min-height:44px}
 .grp h2 .ht{display:inline-flex;align-items:center;gap:10px;font-size:1.65rem;line-height:1.1;font-weight:700;color:var(--fg)}
@@ -62,14 +64,16 @@ main{max-width:720px;margin:0 auto;padding:0 16px}
 .btn{font:inherit;font-weight:800;border:0;border-radius:999px;height:48px;padding:0 18px;background:var(--acc);color:var(--accfg);cursor:pointer;white-space:nowrap}
 .btn.ghost{background:transparent;color:var(--bg);padding:0 10px;width:44px;display:grid;place-items:center}
 .btn:disabled{opacity:.4}@media(max-width:420px){.lg{display:none}.bar{padding-left:16px}}
-#fb{max-width:720px;margin:10px auto;padding:0 16px}#fb textarea{width:100%;min-height:180px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:10px;font:13px/1.4 ui-monospace,monospace}
+#fb{max-width:var(--w,720px);margin:10px auto;padding:0 16px}#fb textarea{width:100%;min-height:180px;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:10px;font:13px/1.4 ui-monospace,monospace}
 #toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--acc);color:var(--accfg);font-weight:700;padding:10px 16px;border-radius:999px;transition:.2s;z-index:9;max-width:92vw;text-align:center;pointer-events:none}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 #top{position:fixed;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:7;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:1.2rem;opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--sh)}#top.show{opacity:1;pointer-events:auto}
-footer{max-width:720px;margin:24px auto;padding:0 20px;color:var(--mut);font-size:.82rem}footer a{color:inherit}
+footer{max-width:var(--w,720px);margin:24px auto;padding:0 20px;color:var(--mut);font-size:.82rem}footer a{color:inherit}
+:root{--w:720px}@media(min-width:1000px){:root{--w:1200px}.list{grid-template-columns:1fr 1fr;align-items:start}.card.feat{grid-column:1/-1}.fin{flex-wrap:nowrap}header{display:grid;grid-template-columns:1fr auto;column-gap:20px}header>*{grid-column:1}#thm{grid-column:2;grid-row:1/span 3;align-self:start}}
+#thm{float:right;margin-top:-6px;height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--fg);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .empty{color:var(--mut);text-align:center;padding:30px 0}
 </style></head><body data-ed="2026-10-21-06h" data-v="3.1">
-<header><p class="eyebrow">Curadoria de leituras</p><h1>Edição de 21/10, 06h</h1><p class="hl"><b id="hn">0</b> de 80 selecionadas · toque no card para marcar</p>
+<header><button id="thm" type="button" aria-label="Tema de cor"></button><p class="eyebrow">Curadoria de leituras</p><h1>Edição de 21/10, 06h</h1><p class="hl"><b id="hn">0</b> de 80 selecionadas · toque no card para marcar</p>
 <details class="about"><summary>Sobre esta edição</summary><div class="stats"><span>80 leituras</span><span>24 das suas newsletters</span><span>56 garimpo</span><span>47 análise</span><span>28 long read</span><span>5 notícia</span><span>~14h01 de leitura no total</span></div><p>Organizada em 7 temas; o primeiro de cada tema é o destaque. Toque no título para abrir o texto, no nome do tema para recolher. Seleção salva neste aparelho.</p></details></header>
 <nav class="filters" id="nav" aria-label="Temas"><div class="nin"><div class="fin" id="toc"><a class="toc" style="--t:#7c3aed" href="#t-ia"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 7V4M9 12h.01M15 12h.01M9 15h6"/></svg> IA <b>18</b><i class="sc"></i></a><a class="toc" style="--t:#0284c7" href="#t-tecnologia"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="11" rx="2"/><path d="M8 20h8M12 16v4"/></svg> Tecnologia <b>10</b><i class="sc"></i></a><a class="toc" style="--t:#059669" href="#t-educao"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg> Educação <b>14</b><i class="sc"></i></a><a class="toc" style="--t:#db2777" href="#t-cultura"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg> Cultura <b>10</b><i class="sc"></i></a><a class="toc" style="--t:#ea580c" href="#t-games"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 10v4M5 12h4M15.5 11h.01M18 13h.01"/></svg> Games <b>8</b><i class="sc"></i></a><a class="toc" style="--t:#b45309" href="#t-cincias-sociais"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9.5 21V10M14.5 21V10M2 10l10-6 10 6z"/></svg> Ciências sociais <b>13</b><i class="sc"></i></a><a class="toc" style="--t:#0d9488" href="#t-fora-da-bolha"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg> Fora da bolha <b>7</b><i class="sc"></i></a></div><button id="fbtn" type="button" aria-label="Filtros"><svg class="ic" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button></div></nav>
 <main>
@@ -623,6 +627,9 @@ window.addEventListener('scroll',spy,{passive:true});spy();
 document.getElementById('clear').addEventListener('click',function(){if(confirm('Limpar a seleção desta edição?')){sel={};save();paint()}});
 function navh(){document.documentElement.style.setProperty('--navh',document.getElementById('nav').offsetHeight+'px')}
 navh();window.addEventListener('resize',navh);
+var TH=['auto','light','dark'],TL={auto:'🌓 Automático',light:'☀️ Claro',dark:'🌙 Escuro'},thb=document.getElementById('thm');
+function thm(m){if(m=='auto')delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=m;thb.textContent=TL[m];thb.dataset.m=m;try{if(m=='auto')localStorage.removeItem('curadoria:theme');else localStorage.setItem('curadoria:theme',m)}catch(e){}}
+thm(document.documentElement.dataset.theme||'auto');thb.addEventListener('click',function(){thm(TH[(TH.indexOf(thb.dataset.m)+1)%3])});
 paint();filt();
 })();
 </script>
