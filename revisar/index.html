@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Revisar curadoria</title>
+<meta name="description" content="Revise as edições da Curadoria, guarde os textos e copie a lista para o chat.">
+<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Revisar">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>try{var m=localStorage.getItem("curadoria:theme");if(m=="light"||m=="dark")document.documentElement.dataset.theme=m;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<link rel="stylesheet" href="app.css?v=ed050f77c6">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="back" id="back" href="#/" hidden aria-label="Voltar às edições">←<span> Edições</span></a>
+    <div class="ttl"><p class="ey">Curadoria</p><h1 id="h1">Revisar</h1></div>
+    <button id="thm" type="button" aria-label="Mudar tema">☾</button>
+  </header>
+  <main id="view" aria-live="polite"><p class="mut load">Carregando…</p></main>
+</div>
+<div class="bar" id="bar" role="region" aria-label="Seleção" hidden>
+  <span id="cnt" aria-live="polite">0 guardados</span>
+  <button class="gh" id="clear" type="button">Limpar</button>
+  <button id="copy" type="button">Copiar</button>
+</div>
+<div class="sheet" id="fb" hidden role="dialog" aria-modal="true" aria-labelledby="fbh">
+  <div class="sheet-in">
+    <h2 id="fbh">Copie o texto abaixo</h2>
+    <p class="mut">Não consegui copiar automaticamente. Selecione e copie; depois marque como revisada.</p>
+    <textarea id="fbt" readonly rows="8"></textarea>
+    <div class="row"><button class="gh" id="fbx" type="button">Fechar</button><button id="fbok" type="button">Já copiei — revisada</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js?v=ed050f77c6"></script>
+</body></html>
