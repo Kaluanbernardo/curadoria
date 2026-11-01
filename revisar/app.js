@@ -40,11 +40,19 @@ var tt;function toast(s){var t=$('#toast');t.textContent=s;t.classList.add('on')
 
 /* ---------- dados ---------- */
 function getJSON(u){return fetch(u,{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})}
-function seed(){ // 1ª visita: marca como revisadas as edições já em feedback.json
- if(localStorage.getItem(SK))return Promise.resolve();
- return getJSON('SEED_REVIEWED.json').then(function(list){var r=reviewed(),t=new Date().toISOString();
-  (list||[]).forEach(function(ed){if(!r[ed])r[ed]=t});store(RK,r);localStorage.setItem(SK,'1')}).catch(function(){});
+function syncReviewed(){ // a cada carga: junta reviewed.json + SEED (feedback no servidor → some do app)
+ return getJSON('reviewed.json').catch(function(){return null}).then(function(map){
+  var r=reviewed(),t=new Date().toISOString(),n=0;
+  if(map&&typeof map=='object'&&!Array.isArray(map)){
+   Object.keys(map).forEach(function(ed){if(!r[ed]){r[ed]=map[ed]||t;n++}});
+  }
+  return getJSON('SEED_REVIEWED.json').then(function(list){
+   (list||[]).forEach(function(ed){if(!r[ed]){r[ed]=t;n++}});
+   if(n)store(RK,r);localStorage.setItem(SK,'1');
+  }).catch(function(){if(n)store(RK,r)});
+ }).catch(function(){});
 }
+function seed(){return syncReviewed()}
 function getEditions(){
  if(editions)return Promise.resolve(editions);
  return getJSON('editions.json').catch(function(){return getJSON('../editions.json')}).then(function(d){
