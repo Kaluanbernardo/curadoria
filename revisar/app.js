@@ -19,7 +19,7 @@ function selOf(ed){return load('curadoria:sel:'+ed,{})||{}}
 /* ---------- regra de exposição ---------- */
 function pubTime(ed){var m=ID.exec(ed);return m?Date.UTC(+m[1],m[2]-1,+m[3],+m[4]+3):NaN} // America/Sao_Paulo = UTC-3
 function age(ed,now){return (now||Date.now())-pubTime(ed)}
-function eligible(ed,rv,now){return !rv[ed]||age(ed,now)<H72}
+function eligible(ed,rv,now){return !rv[ed]&&age(ed,now)<H72}
 window.__revisar={eligible:eligible,pubTime:pubTime};
 
 /* ---------- formatação ---------- */
@@ -76,7 +76,7 @@ function renderList(){
  Promise.all([seed(),getEditions()]).then(function(){
   var rv=reviewed(),now=Date.now(),eds=editions.filter(function(e){return eligible(e.id,rv,now)});
   var pend=eds.filter(function(e){return !rv[e.id]}).length;
-  var h='<p class="lede">'+(pend?plural(pend,'edição pendente','edições pendentes'):'Tudo revisado')+' · revisadas somem da lista após 72 h.</p>';
+  var h='<p class="lede">'+(pend?plural(pend,'edição pendente','edições pendentes'):'Tudo revisado')+' · só entram edições com menos de 72 h.</p>';
   if(!eds.length)h+='<div class="empty"><b>Nada para revisar</b>Quando sair edição nova, ela aparece aqui.</div>';
   else h+='<ul class="eds">'+eds.map(function(e){
    var a=age(e.id,now),s=selOf(e.id),n=Object.keys(s).length,r=rv[e.id];
