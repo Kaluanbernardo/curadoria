@@ -127,7 +127,6 @@ function renderList(){
         if(old.length)h+='<h2 class="h-sec">Pendentes antigas</h2><p class="lede sub">Mais de 72 h, ainda sem seleção registrada.</p><ul class="eds">'+old.map(function(e){return edCard(e,now,'pendentes')}).join('')+'</ul>';
       }
     }
-    h+='<p class="foot"><a href="../">Todas as edições no site ↗</a></p>';
     view.innerHTML=h;
   }).catch(function(e){view.innerHTML='<div class="empty"><b>Sem conexão</b>Não consegui carregar a lista de edições ('+esc(e.message)+').</div>'});
 }
