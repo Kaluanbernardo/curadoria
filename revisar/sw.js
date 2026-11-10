@@ -1,6 +1,6 @@
 // Service worker do Revisar curadoria. VERSION é trocado pelo build.py.
-const VERSION='81e9422753';
-const SHELL=['./','index.html','app.css?v='+VERSION,'app.js?v='+VERSION,'manifest.webmanifest','editions.json','SEED_REVIEWED.json',
+const VERSION='d6c7210c5b';
+const SHELL=['./','index.html','app.css?v='+VERSION,'app.js?v='+VERSION,'manifest.webmanifest','editions.json','reviewed.json','SEED_REVIEWED.json',
   'icon-192.png','icon-512.png','icon-maskable-192.png','icon-maskable-512.png','apple-touch-icon.png'];
 const CACHE='revisar-'+VERSION, PAGES='revisar-pages', MAX_PAGES=40;
 
