@@ -86,3 +86,17 @@ h2.tm{scroll-margin-top:16px}
   #view .ed-layout{display:grid;grid-template-columns:240px minmax(0,700px);gap:48px;align-items:start}
   #view .ed-nav{position:sticky;top:12px}
 }
+
+/* biblioteca de salvos */
+.tabs{flex-wrap:wrap}
+.sv-q-lab,.sv-nav .ofl{display:block}
+.sv-q,.sv-sel{width:100%;min-height:44px;margin:6px 0 10px;padding:0 14px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:12px;font:inherit}
+.sv-nav .chips{flex-wrap:wrap;overflow:visible;margin:6px 0 10px}
+.sv-count{color:var(--mut);font-weight:600;margin:0 0 8px}
+.sv-item{padding:18px 0;border-bottom:1px solid var(--line)}
+.sv-item .meta a{color:var(--acc);font-weight:600;text-decoration:none}
+.sv-sec .tm{margin-top:22px}
+@media (min-width:980px){
+  #view .sv-layout{display:grid;grid-template-columns:240px minmax(0,700px);gap:48px;align-items:start}
+  #view .sv-nav{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+}

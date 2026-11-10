@@ -1,4 +1,4 @@
-/* Revisar curadoria — PWA vanilla. Rotas: #/ (pendentes), #/arquivo e #/e/<ED>. */
+/* Revisar curadoria — PWA vanilla. Rotas: #/ (pendentes), #/arquivo, #/salvos e #/e/<ED>. */
 (function(){
 'use strict';
 var CK='curadoria:copied', H72=72*3600e3;
@@ -8,8 +8,10 @@ var view=$('#view'), bar=$('#bar');
 var cache={};          // ED -> itens parseados
 var editions=null;     // [{id, href, publishedAt, items}]
 var rvMap=null;        // fonte da verdade: reviewed.json do servidor
+var salvos=null;       // {items:[...]} de salvos.json
 var cur=null;          // estado da revisão aberta
 var listTab='pendentes';
+var sv={q:'',tema:'',idioma:'',origem:'',periodo:'',grupo:'data',fonte:''};
 
 /* ---------- armazenamento ---------- */
 function load(k,d){try{var v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}}
@@ -63,6 +65,13 @@ function loadReviewed(force){
     return rvMap;
   }).catch(function(){if(!rvMap)rvMap={};return rvMap});
 }
+function loadSalvos(force){
+  if(salvos&&!force)return Promise.resolve(salvos);
+  return getJSON('salvos.json').then(function(d){
+    salvos=(d&&Array.isArray(d.items))?d:{items:[]};
+    return salvos;
+  }).catch(function(){if(!salvos)salvos={items:[]};return salvos});
+}
 function getEditions(force){
   if(editions&&!force)return Promise.resolve(editions);
   return getJSON('editions.json').catch(function(){return getJSON('../editions.json')}).then(function(d){
@@ -98,22 +107,22 @@ function edCard(e,now,mode){
   if(n)tags+='<span class="tag">'+plural(n,'guardado','guardados')+'</span>';
   return '<li><a class="ed'+(r?' rv':'')+'" href="#/e/'+esc(e.id)+'" data-ed="'+esc(e.id)+'"><h2>'+esc(label(e.id))+'</h2><p class="m">'+esc(e.id)+(e.items?' · '+e.items+' textos':'')+' · há '+dur(a)+'</p><div class="tags">'+tags+'</div></a></li>';
 }
-function tabsHtml(pend,arch){
-  var on=listTab==='arquivo';
-  return '<nav class="tabs" role="tablist" aria-label="Listas de edições">'+
-    '<a class="tab" role="tab" id="tab-p" href="#/" aria-selected="'+(!on)+'">Pendentes<span>'+pend+'</span></a>'+
-    '<a class="tab" role="tab" id="tab-a" href="#/arquivo" aria-selected="'+on+'">Arquivo<span>'+arch+'</span></a>'+
+function tabsHtml(pend,arch,salv){
+  return '<nav class="tabs" role="tablist" aria-label="Listas de edições e biblioteca">'+
+    '<a class="tab" role="tab" id="tab-p" href="#/" aria-selected="'+(listTab==='pendentes')+'">Pendentes<span>'+pend+'</span></a>'+
+    '<a class="tab" role="tab" id="tab-a" href="#/arquivo" aria-selected="'+(listTab==='arquivo')+'">Arquivo<span>'+arch+'</span></a>'+
+    '<a class="tab" role="tab" id="tab-s" href="#/salvos" aria-selected="'+(listTab==='salvos')+'">Salvos<span>'+(salv||0)+'</span></a>'+
     '</nav>';
 }
 function renderList(){
   cur=null;bar.hidden=true;$('#back').hidden=true;$('#h1').textContent=listTab==='arquivo'?'Arquivo':'Revisar';document.title=listTab==='arquivo'?'Arquivo · Revisar curadoria':'Revisar curadoria';
-  Promise.all([loadReviewed(),getEditions()]).then(function(){
+  Promise.all([loadReviewed(),getEditions(),loadSalvos()]).then(function(){
     var now=Date.now();
     var pend=editions.filter(function(e){return !isReviewed(e.id)});
     var arch=editions.filter(function(e){return isReviewed(e.id)});
     var recent=pend.filter(function(e){return isRecent(e.id,now)});
     var old=pend.filter(function(e){return !isRecent(e.id,now)});
-    var h=tabsHtml(pend.length,arch.length);
+    var h=tabsHtml(pend.length,arch.length,(salvos.items||[]).length);
     if(listTab==='arquivo'){
       h+='<p class="lede">'+(arch.length?plural(arch.length,'edição revisada','edições revisadas')+' · mais recentes primeiro.':'Nenhuma edição revisada ainda.')+' Só entram aqui depois que a seleção é enviada no chat.</p>';
       if(!arch.length)h+='<div class="empty"><b>Arquivo vazio</b>Quando a seleção for registrada, a edição aparece aqui.</div>';
@@ -131,9 +140,123 @@ function renderList(){
   }).catch(function(e){view.innerHTML='<div class="empty"><b>Sem conexão</b>Não consegui carregar a lista de edições ('+esc(e.message)+').</div>'});
 }
 
+
+/* ---------- biblioteca de salvos ---------- */
+function monLabel(ym){
+  if(!ym)return '';
+  var p=ym.split('-');
+  return new Date(Date.UTC(+p[0],+p[1]-1,1,15)).toLocaleDateString('pt-BR',{month:'short',year:'numeric',timeZone:'America/Sao_Paulo'}).replace(/\./g,'');
+}
+function inPeriod(it,now){
+  if(!sv.periodo)return true;
+  var t=it.publishedAt?Date.parse(it.publishedAt):NaN;
+  if(sv.periodo==='7')return !isNaN(t)&&now-t<=7*864e5;
+  if(sv.periodo==='30')return !isNaN(t)&&now-t<=30*864e5;
+  if(/^\d{4}-\d{2}$/.test(sv.periodo))return (it.publishedAt||'').slice(0,7)===sv.periodo;
+  return true;
+}
+function matchSalvo(it,now){
+  if(sv.tema&&it.tema!==sv.tema)return false;
+  if(sv.idioma&&it.idioma!==sv.idioma)return false;
+  if(sv.origem&&it.origem!==sv.origem)return false;
+  if(sv.fonte&&it.dominio!==sv.fonte&&it.fonte!==sv.fonte)return false;
+  if(!inPeriod(it,now))return false;
+  if(sv.q){
+    var q=sv.q.toLowerCase();
+    var blob=(it.title+' '+(it.resumo||'')+' '+(it.fonte||'')+' '+(it.dominio||'')+' '+(it.subtema||'')+' '+(it.edicao||'')+' '+(it.tema||'')).toLowerCase();
+    if(blob.indexOf(q)<0)return false;
+  }
+  return true;
+}
+function chip(attr,val,label,n,on){
+  return '<button type="button" '+attr+'="'+esc(val)+'" aria-pressed="'+!!on+'">'+label+(n!=null?'<span>'+n+'</span>':'')+'</button>';
+}
+function renderSalvos(){
+  cur=null;bar.hidden=true;$('#back').hidden=true;$('#h1').textContent='Salvos';document.title='Salvos · Revisar curadoria';
+  view.innerHTML='<p class="mut load">Carregando salvos…</p>';
+  Promise.all([loadReviewed(),getEditions(),loadSalvos()]).then(function(){
+    var now=Date.now();
+    var all=salvos.items||[];
+    var pend=editions.filter(function(e){return !isReviewed(e.id)});
+    var arch=editions.filter(function(e){return isReviewed(e.id)});
+    var vis=all.filter(function(it){return matchSalvo(it,now)});
+    // contagens nos filtros (sobre o conjunto já filtrado pelos OUTROS critérios)
+    function countBy(key,except){
+      var map={};
+      all.forEach(function(it){
+        var hold=sv[except]; sv[except]='';
+        var ok=matchSalvo(it,now);
+        sv[except]=hold;
+        if(!ok)return;
+        var k=it[key]||'';
+        map[k]=(map[k]||0)+1;
+      });
+      return map;
+    }
+    var byTema=countBy('tema','tema');
+    var byIdioma=countBy('idioma','idioma');
+    var byOrig=countBy('origem','origem');
+    var byFonte=countBy('dominio','fonte');
+    var temas=['IA','Tecnologia','Educação','Cultura','Games','Ciências sociais','Produto','Psicologia e filosofia','Ciência da vida','Saúde e corpo','Fora da bolha'];
+    Object.keys(byTema).forEach(function(t){if(temas.indexOf(t)<0)temas.push(t)});
+    temas=temas.filter(function(t){return byTema[t]||t===sv.tema});
+    var meses=[];
+    all.forEach(function(it){var ym=(it.publishedAt||'').slice(0,7);if(ym&&meses.indexOf(ym)<0)meses.push(ym)});
+    meses.sort().reverse();
+    var fontes=Object.keys(byFonte).filter(Boolean).sort(function(a,b){return (byFonte[b]-byFonte[a])||a.localeCompare(b)});
+    var h=tabsHtml(pend.length,arch.length,all.length);
+    h+='<p class="lede">'+(all.length?plural(all.length,'link salvo','links salvos')+' das edições que você já selecionou.':'Nenhum link salvo ainda.')+' Filtre por editoria, período, fonte ou idioma. Cada texto abre o original.</p>';
+    h+='<div class="sv-layout">';
+    h+='<aside class="sv-nav ed-nav" aria-label="Filtros da biblioteca">';
+    h+='<label class="sv-q-lab" for="sv-q">Buscar</label>';
+    h+='<input id="sv-q" class="sv-q" type="search" placeholder="Título, resumo, fonte…" value="'+esc(sv.q)+'" autocomplete="off">';
+    h+='<p class="ofl">Editoria</p><div class="chips of" role="group">'+chip('data-sv-tema','','Todas',null,!sv.tema)+temas.map(function(t){return chip('data-sv-tema',t,t,byTema[t]||0,sv.tema===t)}).join('')+'</div>';
+    h+='<p class="ofl">Período</p><div class="chips of" role="group">'+chip('data-sv-periodo','','Tudo',null,!sv.periodo)+chip('data-sv-periodo','7','7 dias',null,sv.periodo==='7')+chip('data-sv-periodo','30','30 dias',null,sv.periodo==='30')+meses.map(function(ym){return chip('data-sv-periodo',ym,monLabel(ym),null,sv.periodo===ym)}).join('')+'</div>';
+    h+='<p class="ofl">Origem</p><div class="chips of" role="group">'+chip('data-sv-origem','','Todas',null,!sv.origem)+chip('data-sv-origem','newsletter','Newsletters',byOrig.newsletter||0,sv.origem==='newsletter')+chip('data-sv-origem','busca','Busca',byOrig.busca||0,sv.origem==='busca')+'</div>';
+    h+='<p class="ofl">Idioma</p><div class="chips of" role="group">'+chip('data-sv-idioma','','Todos',null,!sv.idioma)+[{k:'pt',l:'Português'},{k:'en',l:'Inglês'},{k:'es',l:'Espanhol'}].filter(function(x){return byIdioma[x.k]||sv.idioma===x.k}).map(function(x){return chip('data-sv-idioma',x.k,x.l,byIdioma[x.k]||0,sv.idioma===x.k)}).join('')+'</div>';
+    if(fontes.length){
+      h+='<p class="ofl" for="sv-fonte">Fonte</p><select id="sv-fonte" class="sv-sel" aria-label="Fonte">';
+      h+='<option value="">Todas as fontes</option>';
+      fontes.forEach(function(f){h+='<option value="'+esc(f)+'"'+(sv.fonte===f?' selected':'')+'>'+esc(f)+' ('+byFonte[f]+')</option>'});
+      h+='</select>';
+    }
+    h+='<p class="ofl">Agrupar</p><div class="chips of" role="group">'+chip('data-sv-grupo','data','Por data',null,sv.grupo==='data')+chip('data-sv-grupo','tema','Por editoria',null,sv.grupo==='tema')+'</div>';
+    h+='</aside><div class="sv-main">';
+    h+='<p class="sv-count">'+plural(vis.length,'resultado','resultados')+(vis.length!==all.length?' de '+all.length:'')+'</p>';
+    if(!vis.length){
+      h+='<div class="empty"><b>Nada com esses filtros</b>Limpe a busca ou escolha outra editoria.</div>';
+    }else{
+      var groups=[], gi={};
+      vis.forEach(function(it){
+        var k=sv.grupo==='tema'?(it.tema||'Outros'):label(it.edicao);
+        if(!gi[k]){gi[k]=[];groups.push(k)}
+        gi[k].push(it);
+      });
+      groups.forEach(function(k){
+        h+='<section class="sv-sec"><h2 class="tm">'+esc(k)+'<small>'+plural(gi[k].length,'link','links')+'</small></h2>';
+        gi[k].forEach(function(it){
+          var meta=[it.fonte||it.dominio, it.origem==='newsletter'?'newsletter':(it.origem==='busca'?'busca':''), it.idioma&&it.idioma.toUpperCase(), it.subtema].filter(Boolean).join(' · ');
+          h+='<article class="sv-item">';
+          h+='<p class="meta"><a href="#/e/'+esc(it.edicao)+'">'+esc(label(it.edicao))+'</a>'+(it.tema?' · '+esc(it.tema):'')+'</p>';
+          h+='<h3><a href="'+esc(it.url)+'" target="_blank" rel="noopener">'+esc(it.title)+'</a></h3>';
+          if(it.resumo)h+='<p class="r">'+esc(it.resumo)+'</p>';
+          if(meta)h+='<p class="meta">'+esc(meta)+'</p>';
+          if(it.also&&it.also.length)h+='<p class="also">Também em: '+it.also.map(function(l){return '<a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.title||l.url)+' ↗</a>'}).join(' · ')+'</p>';
+          h+='<div class="act"><a href="'+esc(it.url)+'" target="_blank" rel="noopener">Ler ↗</a></div>';
+          h+='</article>';
+        });
+        h+='</section>';
+      });
+    }
+    h+='</div></div>';
+    view.innerHTML=h;
+    var q=$('#sv-q');if(q){q.addEventListener('input',function(){sv.q=q.value;renderSalvos()});if(sv.q)try{q.focus();q.setSelectionRange(sv.q.length,sv.q.length)}catch(e){}}
+    var sel=$('#sv-fonte');if(sel)sel.addEventListener('change',function(){sv.fonte=sel.value;renderSalvos()});
+  }).catch(function(e){view.innerHTML='<div class="empty"><b>Sem conexão</b>Não consegui carregar os salvos ('+esc(e.message)+').</div>'});
+}
 /* ---------- revisão ---------- */
 function renderEdition(ed){
-  $('#back').hidden=false;$('#back').href=listTab==='arquivo'?'#/arquivo':'#/';$('#h1').textContent=label(ed);document.title='Revisar '+ed;bar.hidden=true;
+  $('#back').hidden=false;$('#back').href=listTab==='arquivo'?'#/arquivo':(listTab==='salvos'?'#/salvos':'#/');$('#h1').textContent=label(ed);document.title='Revisar '+ed;bar.hidden=true;
   view.innerHTML='<p class="mut load">Carregando edição…</p>';window.scrollTo(0,0);
   Promise.all([getEdition(ed),loadReviewed()]).then(function(res){
     var items=res[0];
@@ -195,6 +318,15 @@ function filt(){
   });
 }
 view.addEventListener('click',function(e){
+  var sb=e.target.closest('button');
+  if(sb&&(sb.hasAttribute('data-sv-tema')||sb.hasAttribute('data-sv-periodo')||sb.hasAttribute('data-sv-origem')||sb.hasAttribute('data-sv-idioma')||sb.hasAttribute('data-sv-grupo'))){
+    if(sb.hasAttribute('data-sv-tema'))sv.tema=sb.getAttribute('data-sv-tema');
+    if(sb.hasAttribute('data-sv-periodo'))sv.periodo=sb.getAttribute('data-sv-periodo');
+    if(sb.hasAttribute('data-sv-origem'))sv.origem=sb.getAttribute('data-sv-origem');
+    if(sb.hasAttribute('data-sv-idioma'))sv.idioma=sb.getAttribute('data-sv-idioma');
+    if(sb.hasAttribute('data-sv-grupo'))sv.grupo=sb.getAttribute('data-sv-grupo')||'data';
+    renderSalvos();return;
+  }
   if(!cur)return;
   var link=e.target.closest('nav.idx a');
   if(link){
@@ -239,14 +371,16 @@ $('#clear').onclick=function(){if(cur&&confirm('Limpar a seleção desta ediçã
 function route(){
   var m=/^#\/e\/([\w-]+)$/.exec(location.hash);
   var ar=/^#\/arquivo\/?$/.exec(location.hash);
+  var svh=/^#\/salvos\/?$/.exec(location.hash);
   $('#fb').hidden=true;
   if(m){renderEdition(m[1]);return}
+  if(svh){listTab='salvos';renderSalvos();return}
   listTab=ar?'arquivo':'pendentes';
   renderList();
 }
 addEventListener('hashchange',route);
-addEventListener('pageshow',function(e){if(e.persisted&&!cur){rvMap=null;editions=null;renderList()}});
-document.addEventListener('visibilitychange',function(){if(!document.hidden&&!cur){rvMap=null;editions=null;renderList()}}); // rebusca reviewed.json e edições novas
+addEventListener('pageshow',function(e){if(e.persisted&&!cur){rvMap=null;editions=null;salvos=null;route()}});
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&!cur){rvMap=null;editions=null;salvos=null;route()}});
 route();
 
 if('serviceWorker' in navigator&&location.protocol!='file:')navigator.serviceWorker.register('sw.js').catch(function(){});
