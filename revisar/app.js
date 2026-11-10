@@ -31,6 +31,7 @@ var DF=new Intl.DateTimeFormat('pt-BR',{weekday:'short',day:'numeric',month:'sho
 function label(ed){var m=ID.exec(ed);return m?DF.format(new Date(pubTime(ed))).replace(/\./g,'')+' · '+m[4]+'h':ed}
 function dur(ms){var h=Math.max(0,Math.floor(ms/3600e3));return h<1?'menos de 1 h':h<48?h+' h':Math.floor(h/24)+' d'}
 function plural(n,a,b){return n+' '+(n==1?a:b)}
+function slug(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 function reviewedWhen(v){
   if(v==null||v==='')return '';
   var s=String(v);
@@ -143,14 +144,24 @@ function renderEdition(ed){
     var r=isReviewed(ed),c=copied()[ed];
     var banner=r?'<p class="banner">✓ Revisada'+esc(reviewedWhen(rvMap[ed]))+'. Você pode copiar de novo.</p>':
       (c?'<p class="banner wait">Copiada, aguardando registro. Cole a lista no chat para marcar como revisada.</p>':'');
+    var idx=temas.map(function(t){return '<a href="#s-'+esc(slug(t))+'" data-t="'+esc(t)+'">'+esc(t)+'<span><b></b><i class="ic" style="font-style:normal">'+cnt(function(i){return i.tema==t})+'</i></span></a>'}).join('');
     var h=banner+
-     '<div class="filters"><div class="chips" role="group" aria-label="Temas"><button type="button" data-tema="" aria-pressed="true">Todos<span>'+items.length+'</span></button>'+
-     temas.map(function(t){return '<button type="button" data-tema="'+esc(t)+'" aria-pressed="false">'+esc(t)+'<span>'+cnt(function(i){return i.tema==t})+'</span></button>'}).join('')+'</div>'+
-     '<div class="chips" role="group" aria-label="Origem"><button type="button" data-org="" aria-pressed="true">Todas origens</button><button type="button" data-org="newsletter" aria-pressed="false">Newsletters<span>'+cnt(function(i){return i.org.indexOf('newsletter')>=0})+'</span></button>'+
-     '<button type="button" data-org="busca" aria-pressed="false">Busca<span>'+cnt(function(i){return i.org.indexOf('busca')>=0})+'</span></button><button type="button" id="only" aria-pressed="false">Só guardados<span id="onlyn">0</span></button></div></div>'+
-     temas.map(function(t){var its=items.filter(function(i){return i.tema==t});
-      return '<section data-t="'+esc(t)+'"><h2 class="tm">'+esc(t)+'<small><span class="sc">'+its.length+'</span> textos</small></h2>'+its.map(card).join('')+'</section>'}).join('')+
-     '<p class="foot"><a href="'+esc(edHref(ed))+'">Abrir a página original da edição ↗</a></p>';
+     '<div class="ed-layout">'+
+     '<aside class="ed-nav" aria-label="Filtros e índice de temas">'+
+      '<p class="ofl" id="ofl">Origem</p>'+
+      '<div class="of chips" role="group" aria-labelledby="ofl">'+
+       '<button type="button" data-org="" aria-pressed="true">Todas origens</button>'+
+       '<button type="button" data-org="newsletter" aria-pressed="false">Newsletters<span>'+cnt(function(i){return i.org.indexOf('newsletter')>=0})+'</span></button>'+
+       '<button type="button" data-org="busca" aria-pressed="false">Busca<span>'+cnt(function(i){return i.org.indexOf('busca')>=0})+'</span></button>'+
+       '<button type="button" id="only" aria-pressed="false">Só guardados<span id="onlyn">0</span></button>'+
+      '</div>'+
+      '<nav class="idx" aria-label="Índice de temas">'+idx+'</nav>'+
+     '</aside>'+
+     '<div class="ed-main">'+
+      temas.map(function(t){var its=items.filter(function(i){return i.tema==t});
+        return '<section id="s-'+esc(slug(t))+'" data-t="'+esc(t)+'"><h2 class="tm">'+esc(t)+'<small><span class="sc">'+its.length+'</span> textos</small></h2>'+its.map(card).join('')+'</section>'}).join('')+
+      '<p class="foot"><a href="'+esc(edHref(ed))+'">Abrir a página original da edição ↗</a></p>'+
+     '</div></div>';
     view.innerHTML=h;bar.hidden=false;paint();
   }).catch(function(e){view.innerHTML='<div class="empty"><b>Não consegui abrir '+esc(ed)+'</b>'+esc(e.message)+'</div><p class="foot"><a href="#/">← Voltar às edições</a></p>'});
 }
@@ -166,16 +177,34 @@ function paint(){
   if(!cur)return;var n=0;
   view.querySelectorAll('article[data-id]').forEach(function(a){var on=!!cur.sel[a.dataset.id],b=a.querySelector('[data-sel]');if(on)n++;
     a.classList.toggle('on',on);b.setAttribute('aria-pressed',on);b.textContent=on?'✓ Guardado':'Guardar'});
-  $('#cnt').textContent=plural(n,'guardado','guardados');$('#onlyn').textContent=n;filt();
+  $('#cnt').textContent=plural(n,'guardado','guardados');$('#onlyn').textContent=n;
+  view.querySelectorAll('nav.idx a').forEach(function(l){
+    var k=cur.items.filter(function(i){return i.tema==l.dataset.t&&cur.sel[i.id]}).length;
+    var b=l.querySelector('b');if(b)b.textContent=k?k+' ✓ · ':'';
+  });
+  filt();
 }
 function filt(){
   var byId={};cur.items.forEach(function(i){byId[i.id]=i});
   view.querySelectorAll('article[data-id]').forEach(function(a){var i=byId[a.dataset.id];
     a.hidden=(cur.tema&&i.tema!=cur.tema)||(cur.org&&i.org.indexOf(cur.org)<0)||(cur.only&&!cur.sel[i.id])});
   view.querySelectorAll('section[data-t]').forEach(function(s){var v=s.querySelectorAll('article:not([hidden])').length;s.hidden=!v;s.querySelector('.sc').textContent=v});
+  view.querySelectorAll('nav.idx a').forEach(function(l){
+    var v=cur.items.filter(function(i){return i.tema==l.dataset.t&&!(cur.tema&&i.tema!=cur.tema)&&!(cur.org&&i.org.indexOf(cur.org)<0)&&!(cur.only&&!cur.sel[i.id])}).length;
+    var ic=l.querySelector('.ic');if(ic)ic.textContent=v;
+    l.hidden=!v;
+  });
 }
 view.addEventListener('click',function(e){
-  if(!cur)return;var b=e.target.closest('button');if(!b)return;
+  if(!cur)return;
+  var link=e.target.closest('nav.idx a');
+  if(link){
+    e.preventDefault();
+    var sec=view.querySelector('section[data-t="'+link.dataset.t+'"]')||view.querySelector('#s-'+slug(link.dataset.t));
+    if(sec)sec.scrollIntoView({behavior:'smooth',block:'start'});
+    return;
+  }
+  var b=e.target.closest('button');if(!b)return;
   if(b.hasAttribute('data-sel')){var id=b.closest('article').dataset.id;if(cur.sel[id])delete cur.sel[id];else cur.sel[id]=1;store('curadoria:sel:'+cur.ed,cur.sel);paint();return}
   if(b.hasAttribute('data-tema')){cur.tema=b.dataset.tema;b.parentNode.querySelectorAll('[data-tema]').forEach(function(x){x.setAttribute('aria-pressed',x==b)});filt();return}
   if(b.hasAttribute('data-org')){cur.org=b.dataset.org;b.parentNode.querySelectorAll('[data-org]').forEach(function(x){x.setAttribute('aria-pressed',x==b)});filt();return}

@@ -71,4 +71,18 @@ article p.r{margin:0 0 10px;font-size:17px;line-height:1.6}
 .sheet h2{margin:0 0 4px;font-size:1.3rem}.sheet textarea{width:100%;font:14px/1.4 ui-monospace,Menlo,monospace;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px}
 .sheet .row{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}.sheet button.gh{background:transparent;color:var(--fg);border:1px solid var(--line)}
 .load{padding:40px 0;text-align:center}
+/* índice de temas (contagem + selecionados), como nas páginas da edição */
+.ofl{font-size:.82rem;color:var(--mut);margin:8px 0 0;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.ed-nav .of{flex-wrap:wrap;overflow:visible;margin:8px 0 4px}
+nav.idx{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:16px 0 12px;padding:6px 0}
+nav.idx a{display:flex;justify-content:space-between;min-height:44px;align-items:center;text-decoration:none;font-weight:600;border-bottom:1px dotted var(--line);gap:10px}
+nav.idx a:last-child{border:0}
+nav.idx a span{color:var(--mut);font-weight:400;white-space:nowrap}
+nav.idx a span b{color:var(--acc)}
+h2.tm{scroll-margin-top:16px}
 @media (min-width:700px){h1{font-size:2.2rem}.wrap{padding-left:24px;padding-right:24px}.filters{margin:0 -24px;padding-left:24px;padding-right:24px}}
+@media (min-width:980px){
+  .wrap{max-width:1180px}
+  #view .ed-layout{display:grid;grid-template-columns:240px minmax(0,700px);gap:48px;align-items:start}
+  #view .ed-nav{position:sticky;top:12px}
+}
